@@ -20,11 +20,11 @@
   left: 0;
   width: 100%;
   z-index: 900;
-  background: #020617;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   padding: 8px 0 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.55);
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.55);
 }
 
 .railway__track {

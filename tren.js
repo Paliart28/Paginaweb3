@@ -16,7 +16,6 @@ const coloresSeccion = {
     "patrones": "#F5F1E6",      // beige
     "metodologia": "#FFFFFF",   // blanco
     "equipo": "#E5EAF1"         // gris
-};
 
 // Cambia color del tren + riel
 function setColor(seccionID) {
