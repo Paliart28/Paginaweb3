@@ -50,9 +50,6 @@
         </div>
     </nav>
 </header>
-
-
-
 <!-- =========================================================
      INICIO
 ========================================================= -->
@@ -307,7 +304,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     L.polyline(tramo, { color: "#1E3A68", weight: 4 }).addTo(mapa);
 });
-</script>
+// Estaciones como puntos
+estaciones.forEach(coord => {
+  L.circleMarker(coord, {
+    radius: 5,
+    fillColor: "#FFFFFF",
+    color: "#111827",
+    weight: 1,
+    fillOpacity: 1
+  }).addTo(map);
+});
 
+// Punto del accidente (estático)
+var accidente = [-33.6069, -70.7040];
+var accMarker = L.circleMarker(accidente, {
+  radius: 12,
+  fillColor: "#D90429",
+  color: "#FFFFFF",
+  weight: 3,
+  fillOpacity: 1
+}).addTo(map);
+
+// Toggle del panel al hacer clic
+accMarker.on("click", function() {
+  const panel = document.getElementById("hero-sidebar");
+
+  if (!panel) return;
+
+  // Si está visible → esconder
+  if (panel.classList.contains("show")) {
+    panel.classList.remove("show");
+    return;
+  }
+
+  // Si está oculto → mostrar y hacer zoom
+  panel.classList.add("show");
+
+  L.esri.basemapLayer("Imagery").addTo(map);
+  map.flyTo(accidente, 16, { duration: 1.5 });
+});
+</script>
+</body>
 </body>
 </html>
