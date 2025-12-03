@@ -30,6 +30,11 @@
     <div class="pc-topbar">
         <img src="foto logo.png" class="pc-logo" alt="Logo Punto Ciego">
         <span class="pc-title">Punto Ciego</span>
+
+        <div class="train-wrapper"> 
+        <div class="train-track">
+        </div> <div class="track-line">
+        </div>
     <nav class="pc-trainbar">
         <div class="pc-track">
             <div class="pc-line"></div>
@@ -42,7 +47,9 @@
                 <button class="station" data-step="5" data-target="metodologia">Metodología</button>
                 <button class="station" data-step="6" data-target="equipo">Equipo</button>
             </div>
-            <div class="train-sprite" id="train-sprite">🚆</div> </div> </div> </header> <main class="story-main"></main>
+            <div class="train-sprite" id="train-sprite">🚆</div>
+         </div> </div> </header>
+             <main class="story-main"></main>
         </div>
     </nav>
 </header>
@@ -340,6 +347,27 @@ accMarker.on("click", function() {
   map.flyTo(accidente, 16, { duration: 1.5 });
 });
 </script>
-</body>
+<script>
+document.querySelectorAll(".station").forEach(btn => {
+    btn.addEventListener("click", () => {
+        
+        // Marcar estación activa
+        document.querySelectorAll(".station").forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        // Mover tren
+        const step = parseInt(btn.dataset.step);
+        const total = 6; // 7 estaciones → 0–6
+        const porcentaje = (step / total) * 100;
+        document.getElementById("train-sprite").style.left = porcentaje + "%";
+
+        // Scroll suave a la sección correspondiente
+        const target = btn.dataset.target;
+        document.getElementById(target).scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
+</script>
 </body>
 </html>
