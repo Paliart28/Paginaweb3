@@ -249,112 +249,57 @@ La combinación de imprudencia individual con infraestructura defectuosa aparece
 
 <script src="tren.js"></script>
 
-<!-- MAPA SAN BERNARDO -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    // Coordenadas reales del accidente
-    const accidente = [-33.5933, -70.6996];
-
-    // Crear mapa
-    const mapa = L.map("mapa-san-bernardo", {
-        zoomControl: true,
-        scrollWheelZoom: true
-    }).setView(accidente, 16);
-
-    // Capa base estilo OpenStreetMap
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-    }).addTo(mapa);
-
-    // POLILÍNEA DEL TRAMO (estilo parecido al ejemplo)
-    const tramo = [
-        [-33.5850, -70.7050],
-        [-33.5890, -70.7020],
-        [-33.5933, -70.6996],
-        [-33.5980, -70.6960],
-        [-33.6020, -70.6930]
-    ];
-
-    L.polyline(tramo, {
-        color: "#1E3A68",    // azul acero (tu paleta)
-        weight: 6,           // línea gruesa (igual al ejemplo)
-        opacity: 0.85
-    }).addTo(mapa);
-
-    // MARCADOR circular tipo METRO SANTIAGO
-    const marcador = L.circleMarker(accidente, {
-        radius: 12,
-        fillColor: "#D90429",   // rojo alerta como el ejemplo
-        color: "#ffffff",
-        weight: 3,
-        fillOpacity: 1
-    }).addTo(mapa);
-
-    // POPUP profesional
-    marcador.bindPopup(`
-        <div style="max-width:230px">
-            <h4 style="margin:0 0 6px; font-family:'Poppins'; font-size:16px;">Accidente San Bernardo (2023)</h4>
-            <p style="font-size:13px; margin:0;">
-                Colisión entre convoy de pasajeros y de carga.
-                <br><br><strong>Click de nuevo para cerrar.</strong>
-            </p>
-        </div>
-    `);
-
-    // efecto de apertura/cierre igual al de ejemplo
-    marcador.on("click", () => {
-        if (mapa.hasLayer(marcador)) {
-            marcador.openPopup();
-        }
-    });
-});
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const contenedor = document.getElementById("mapa-san-bernardo");
-    if (!contenedor) {
-        console.error("⚠ No existe el div del mapa");
-        return;
-    }
+    const divMapa = document.getElementById("mapa-san-bernardo");
+    if (!divMapa) return; // seguridad
 
-    // Crear mapa centrado en San Bernardo
-    const accidente = [-33.5933, -70.6996];
-    const mapa = L.map("mapa-san-bernardo").setView(accidente, 16);
+    // Coordenadas del accidente
+    const acc = [-33.5933, -70.6996];
 
+    // Crear mapa Leaflet
+    const mapa = L.map("mapa-san-bernardo", {
+        zoomControl: true,
+        scrollWheelZoom: true
+    }).setView(acc, 16);
+
+    // Capa base
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
+        maxZoom: 19
     }).addTo(mapa);
 
     // Línea del tramo
-    const tramo = [
+    L.polyline([
         [-33.5850, -70.7050],
         [-33.5890, -70.7020],
-        accidente,
+        acc,
         [-33.5980, -70.6960]
-    ];
-
-    L.polyline(tramo, {
+    ], {
         color: "#1E3A68",
         weight: 6,
         opacity: 0.9
     }).addTo(mapa);
 
-    // Marcador
-    const marker = L.circleMarker(accidente, {
+    // PUNTO tipo estación
+    const marker = L.circleMarker(acc, {
         radius: 12,
         fillColor: "#D90429",
         color: "#ffffff",
-        weight: 3,
-        fillOpacity: 1
+        fillOpacity: 1,
+        weight: 3
     }).addTo(mapa);
 
-    marker.bindPopup(`
-        <h4 style="margin:0; font-family:Poppins;">Accidente San Bernardo</h4>
-        <p style="margin-top:4px;">Colisión entre convoy de pasajeros y carga.</p>
-    `);
+    // POPUP SOLO AL CLIC
+    const popup = `
+        <h3 style="margin:0; font-family:poppins;">Accidente San Bernardo</h3>
+        <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" style="width:100%;margin:10px 0;border-radius:6px;">
+        <p style="margin:0;">Colisión entre tren de carga y pasajeros (2023).</p>
+    `;
+
+    marker.on("click", () => {
+        marker.bindPopup(popup).openPopup();
+    });
 });
 </script>
 </body>

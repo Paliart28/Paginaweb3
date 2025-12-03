@@ -8,16 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const estaciones = document.querySelectorAll(".station");
     const riel = document.querySelector(".pc-line");
 
-    const secciones = [
-        { id: "inicio", color: "#F5F1E6" },        // beige
-        { id: "san-bernardo", color: "#1E3A68" },  // acero
-        { id: "senializacion", color: "#E5EAF1" }, // gris
-        { id: "territorio", color: "#ffffff" },    // blanco
-        { id: "patrones", color: "#F5F1E6" },      // beige
-        { id: "metodologia", color: "#ffffff" },   // blanco
-        { id: "equipo", color: "#E5EAF1" }         // gris
-    ];
+const coloresSeccion = {
+    "inicio": "#F5F1E6",        // beige
+    "san-bernardo": "#1E3A68",  // acero
+    "senializacion": "#E5EAF1", // gris
+    "territorio": "#FFFFFF",    // blanco
+    "patrones": "#F5F1E6",      // beige
+    "metodologia": "#FFFFFF",   // blanco
+    "equipo": "#E5EAF1"         // gris
+};
 
+// Cambia color del tren + riel
+function setColor(seccionID) {
+    const color = coloresSeccion[seccionID];
+    tren.style.color = color;
+    riel.style.backgroundColor = color;
+}
     // --------------------------------------------------------
     // MOVER TREN AL HACER CLIC
     // --------------------------------------------------------
@@ -42,9 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // FUNCIÓN PARA MOVER TREN Y CAMBIAR COLORES
     // --------------------------------------------------------
     function moverTren(index) {
-        const porcentaje = (index / (secciones.length - 1)) * 100;
-        tren.style.left = porcentaje + "%";
+const track = document.querySelector(".pc-line");
+const trackWidth = track.offsetWidth;
 
+const x = (step / (estaciones.length - 1)) * trackWidth;
+tren.style.transform = `translateX(${x}px)`;
         // Cambiar colores dinámicamente
         const color = secciones[index].color;
         tren.style.color = color;

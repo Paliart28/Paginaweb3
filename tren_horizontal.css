@@ -123,3 +123,8 @@ body {
     height: 14px;
   }
 }
+.train-icon {
+    position: absolute;
+    top: -12px;
+    transition: transform 0.6s ease;
+}
