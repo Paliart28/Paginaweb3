@@ -10,13 +10,15 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="tren_horizontal.css">
+
+    <!-- Leaflet CSS -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhI0C4JwZJzv+VQ+3ZkS3jH0zYhCti0p0h+0="
+      integrity="sha256-p4NxAoJBhI0C4JwZJzv+VQ+3ZkS3jH0YhCti0p0h+0="
       crossorigin=""
     />
-    <link rel="stylesheet" href="style_mapasanbernardo.css">
 </head>
 <body>
 
@@ -38,6 +40,25 @@
         </nav>
     </header>
 
+    <!-- TREN HORIZONTAL DE SECCIONES -->
+    <section class="tren-bar">
+        <div class="tren-track">
+            <div class="tren-line"></div>
+            <div class="tren-stations">
+                <button class="tren-station active" data-target="inicio">Inicio</button>
+                <button class="tren-station" data-target="san-bernardo">San Bernardo</button>
+                <button class="tren-station" data-target="senializacion">Señalización</button>
+                <button class="tren-station" data-target="territorio">Territorio</button>
+                <button class="tren-station" data-target="patrones">Patrones humanos</button>
+                <button class="tren-station" data-target="metodologia">Metodología</button>
+                <button class="tren-station" data-target="equipo">Equipo</button>
+            </div>
+            <div class="tren-icon" aria-hidden="true">
+                🚆
+            </div>
+        </div>
+    </section>
+
     <!-- HERO / INTRO -->
     <section class="hero-story" id="inicio">
         <div class="hero-inner">
@@ -56,7 +77,7 @@
         <div class="cita-contenido">
             <span class="cita-comillas">“</span>
             <blockquote>
-                <strong> La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados.</strong>
+                <strong>La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados.</strong>
             </blockquote>
             <span class="cita-comillas cierre">”</span>
         </div>
@@ -65,66 +86,68 @@
     <!-- =========================
          CASO SAN BERNARDO
     ========================== -->
-    <section id="san-bernardo">
-  <div class="section-visual">
+    <section id="san-bernardo" class="section section-beige">
+        <div class="section-visual">
 
-    <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
+            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
 
-    <!-- COLUMNA IZQUIERDA: TEXTO -->
-    <div class="texto">
-      <p>
-        San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen alta
-        circulación peatonal, cruces irregulares y fallas en la señalización que reflejan los patrones
-        descritos en las secciones anteriores.
-      </p>
-      <p>
-        El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
-        junto con el contexto urbano que rodea la línea férrea. El caso evidencia cómo se cruzan las
-        dimensiones humanas, territoriales y de infraestructura en un mismo punto crítico.
-      </p>
-      <p>
-        A partir de este accidente, se vuelve evidente la necesidad de fortalecer la protección en cruces
-        a nivel, mejorar la señalización y revisar la planificación urbana en torno a la vía férrea para
-        evitar que estos patrones se repitan en otros puntos del país.
-      </p>
-    </div>
+            <!-- COLUMNA IZQUIERDA: TEXTO -->
+            <div class="texto">
+                <p>
+                    San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen alta
+                    circulación peatonal, cruces irregulares y fallas en la señalización que reflejan los patrones
+                    descritos en las secciones anteriores.
+                </p>
+                <p>
+                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
+                    junto con el contexto urbano que rodea la línea férrea. El caso evidencia cómo se cruzan las
+                    dimensiones humanas, territoriales y de infraestructura en un mismo punto crítico.
+                </p>
+                <p>
+                    A partir de este accidente, se vuelve evidente la necesidad de fortalecer la protección en cruces
+                    a nivel, mejorar la señalización y revisar la planificación urbana en torno a la vía férrea para
+                    evitar que estos patrones se repitan en otros puntos del país.
+                </p>
+            </div>
 
-    <!-- COLUMNA DERECHA: MAPA + FOTO EN TARJETAS -->
-    <div class="col-derecha">
+            <!-- COLUMNA DERECHA: MAPA + FOTO EN TARJETAS -->
+            <div class="col-derecha">
 
-      <!-- TARJETA MAPA -->
-      <div class="tarjeta-mapa">
-        <h3>Mapa interactivo del siniestro en San Bernardo</h3>
-        <div id="mapa-san-bernardo"></div>
-      </div>
+                <!-- TARJETA MAPA -->
+                <div class="tarjeta-grafico tarjeta-mapa">
+                    <h3>Mapa interactivo del siniestro en San Bernardo</h3>
+                    <div id="mapa-san-bernardo"></div>
+                </div>
 
-      <!-- TARJETA FOTO ACCIDENTE (CAMBIA LA RUTA DE LA IMAGEN) -->
-      <div class="tarjeta-grafico tarjeta-accidente">
-        <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario en San Bernardo">
-        <h3>Accidente ferroviario San Bernardo (2024)</h3>
-        <p>
-          El jueves 29 de junio de 2023, un tren de pasajeros colisionó con un convoy de carga en la comuna
-          de San Bernardo, dejando heridos y daños importantes en la infraestructura ferroviaria.
-        </p>
-        <p>
-          Este hecho volvió a poner en la discusión pública las debilidades en la seguridad de los cruces
-          ferroviarios, la falta de medidas preventivas y la necesidad de revisar los protocolos de
-          operación en tramos con alta circulación peatonal.
-        </p>
-      </div>
+                <!-- TARJETA FOTO ACCIDENTE -->
+                <div class="tarjeta-grafico tarjeta-accidente">
+                    <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario en San Bernardo">
+                    <h3>Accidente ferroviario San Bernardo (2023)</h3>
+                    <p>
+                        El jueves 29 de junio de 2023, un tren de pasajeros colisionó con un convoy de carga en la comuna
+                        de San Bernardo, dejando heridos y daños importantes en la infraestructura ferroviaria.
+                    </p>
+                    <p>
+                        Este hecho volvió a poner en la discusión pública las debilidades en la seguridad de los cruces
+                        ferroviarios, la falta de medidas preventivas y la necesidad de revisar los protocolos de
+                        operación en tramos con alta circulación peatonal.
+                    </p>
+                </div>
 
-    </div>
-  </div>
-</section>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
          CRÓNICA 1 – SISTEMA Y SEÑALIZACIÓN
     ========================== -->
-    <section class="section dark" id="senializacion">
-        <div class="section-inner">
+    <section class="section section-naranja" id="senializacion">
+        <div class="section-visual">
+
             <h2>1. Fallas estructurales: señalización que no previene atropellos</h2>
 
-            <article class="cronica">
+            <!-- TEXTO IZQUIERDA -->
+            <div class="texto">
                 <p>
                     Todos los años mueren personas atropelladas en las vías férreas de nuestro país. Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias del peatón involucradas, sino que fallas estructurales del sistema ferroviario chileno, como un sistema de señalización poco seguro para evitar siniestros.
                 </p>
@@ -135,152 +158,97 @@
                     AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice el movimiento del tren.
                 </p>
                 <p>
-                    El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridos reposan en su estado más restrictivo (señales absolutas, siempre con su foco alumbrando en aspecto Rojo solo y señales no absolutas siempre con su foco alumbrando en aspecto Amarillo solo).
+                    El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridos reposan en su estado más restrictivo (señales absolutas, siempre con su foco alumbrando en aspecto rojo solo y señales no absolutas siempre con su foco alumbrando en aspecto amarillo solo).
                 </p>
                 <p>
                     Ambos sistemas presentan debilidades para prevenir atropellos, mostrando que la señalización no es suficientemente segura para alertar o proteger a los peatones, lo cual es coincidente con las cifras de fallecidos en siniestros ferroviarios del tipo atropello. En el caso de AUV, existe una alta dependencia en el error humano y falta de automatización, lo que reduce la capacidad de respuesta rápida y segura ante situaciones imprevistas.
                 </p>
                 <p>
-                    El sistema CTC, aunque más complejo con señales luminosas y enclavamientos, opera con limitaciones técnicas relevantes. Según un artículo en el blog del Instituto Ferroviario chileno, se menciona que “La delincuencia organizada que roba constante e impunemente catenaria y cables subterráneos de los sistemas de señalización de EFE en sectores de plena vía, lo cual obliga a no emplear las vías afectadas en sectores de vía doble (…) o genera situaciones no deseadas, tales como fallas y degradaciones del sistema de Control de Tráfico Centralizado (CTC), las cuales fuerzan movilizaciones con sistemas, radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas (fail safe) como sí ocurre con el CTC a plena capacidad”.
+                    El sistema CTC, aunque más complejo con señales luminosas y enclavamientos, opera con limitaciones técnicas relevantes. Según un artículo en el blog del Instituto Ferroviario chileno, se menciona que “La delincuencia organizada que roba constante e impunemente catenaria y cables subterráneos de los sistemas de señalización de EFE en sectores de plena vía, lo cual obliga a no emplear las vías afectadas en sectores de vía doble (…) o genera situaciones no deseadas, tales como fallas y degradaciones del sistema de Control de Tráfico Centralizado (CTC), las cuales fuerzan movilizaciones con sistemas radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas (fail safe) como sí ocurre con el CTC a plena capacidad”.
                 </p>
-            </article>
+            </div>
 
-            <!-- GRÁFICOS ASOCIADOS CRÓNICA 1 -->
-            <div class="viz-bloque">
-                <h3>Distribución de sistemas AUV y CTC en el tramo estudiado</h3>
-                <p class="viz-desc">
-                    Este gráfico muestra cómo se distribuyen los sistemas de señalización AUV y CTC en el tramo entre Estación Central y la Región de O’Higgins, y permite observar qué tramos operan con mayor dependencia del error humano.
-                </p>
-                <div class="viz-contenedor">
-                    <iframe src="graficos\andrés_vis1.html" loading="lazy"></iframe>
+            <!-- GRÁFICOS DERECHA -->
+            <div class="col-derecha">
+                <div class="tarjeta-grafico">
+                    <h3>Distribución de sistemas AUV y CTC en el tramo estudiado</h3>
+                    <p class="viz-desc">
+                        Este gráfico muestra cómo se distribuyen los sistemas de señalización AUV y CTC en el tramo entre Estación Central y la Región de O’Higgins, y permite observar qué tramos operan con mayor dependencia del error humano.
+                    </p>
+                    <div class="viz-contenedor">
+                        <iframe src="graficos/andrés_vis1.html" loading="lazy"></iframe>
+                    </div>
                 </div>
-                <div class="viz-contenedor">
-                    <iframe src="graficos\andrés_vis2.html" loading="lazy"></iframe>
+
+                <div class="tarjeta-grafico">
+                    <div class="viz-contenedor">
+                        <iframe src="graficos/andrés_vis2.html" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- =========================
          CRÓNICA 2 – TERRITORIO Y DESIGUALDAD
     ========================== -->
-    <section class="section light" id="territorio">
-        <div class="section-inner">
+    <section class="section section-amarillo" id="territorio">
+        <div class="section-visual">
+
             <h2>2. Territorios en riesgo: cruces irregulares y desigualdad</h2>
-            <article class="cronica">
-                <p>Cada año, decenas de personas mueren o resultan heridas en las vías férreas de Chile. Los siniestros ferroviarios, aunque menos frecuentes que los de tránsito vehicular, tienen consecuencias graves y muchas veces invisibles para la opinión pública. Según el último informe de la Comisión Nacional de Seguridad de Tránsito (CONASET), solo en 2023 se registraron 95 siniestros ferroviarios, con 35 fallecidos. La mayoría de estos casos se concentran en la Región Metropolitana, O'Higgins y Maule, donde la red de trenes convive con zonas urbanas densas y cruces a nivel que no siempre cuentan con la protección adecuada.</p>
-                <p>La Empresa de Ferrocarriles del Estado (EFE) reconoce oficialmente más de 700 cruces ferroviarios a nivel en todo Chile, de los cuales una parte importante se concentra en la capital y su área metropolitana. Sin embargo, la cifra real es mucho mayor si se consideran los cruces irregulares: accesos abiertos por diversas razones, la costumbre, la urgencia o la falta de alternativas.</p>
-                <p>El análisis territorial revela una evaluación clara entre la presencia de cruces irregulares y factores como la densidad poblacional, el nivel de prioridad social y el tipo de suelo en uso. En sectores residenciales de alta densidad, donde la movilidad peatonal es fundamental, los cruces informales son más frecuentes. En zonas industriales, los pasos irregulares facilitan el acceso de trabajadores y vehículos, a menudo sin ningún tipo de protección. La visualización de datos —un gráfico de barras agrupadas por comuna y tipo de regulación— permite dimensionar la desigualdad en el acceso a cruces seguros. Mientras algunas comunas cuentan con una red de cruces regulados y protegidos, otras dependen casi exclusivamente de pasos informales.</p>
+
+            <!-- TEXTO IZQUIERDA -->
+            <div class="texto">
                 <p>
-                </p>La normativa chilena sobre cruces ferroviarios, establecida por el Decreto Supremo 38 de 1986, distingue entre cruces con y sin barreras, y establece criterios para su protección y señalización. Sin embargo, la realidad supera la norma: muchos cruces formales carecen de infraestructura adecuada, y los informales quedan fuera de cualquier regulación. El Ministerio de Transportes ha propuesto en los últimos años una actualización de la normativa, con nuevos estándares de protección y criterios para la desnivelación de cruces en función del índice de peligrosidad.
+                    Cada año, decenas de personas mueren o resultan heridas en las vías férreas de Chile. Los siniestros ferroviarios, aunque menos frecuentes que los de tránsito vehicular, tienen consecuencias graves y muchas veces invisibles para la opinión pública. Según el último informe de la Comisión Nacional de Seguridad de Tránsito (CONASET), solo en 2023 se registraron 95 siniestros ferroviarios, con 35 fallecidos. La mayoría de estos casos se concentran en la Región Metropolitana, O'Higgins y Maule, donde la red de trenes convive con zonas urbanas densas y cruces a nivel que no siempre cuentan con la protección adecuada.
                 </p>
-            </article>
-        <h2 class="section-title">Santiago y los cruces que se repiten</h2>
-        <p class="section-body">
-          A medida que el trazado avanza desde Estación Central hacia el sur, los cruces ferroviarios
-          se insertan en una ciudad que creció hacia la vía, muchas veces sin que la infraestructura
-          de resguardo se actualizara al mismo ritmo. En comunas residenciales y zonas industriales,
-          los siniestros se concentran en puntos donde la visibilidad es limitada o las barreras son parciales.
-        </p>
-        <div class="flourish-embed flourish-cards" data-src="visualisation/26561140"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/26561140/thumbnail" width="100%" alt="cards visualization" /></noscript></div>
+                <p>
+                    La Empresa de Ferrocarriles del Estado (EFE) reconoce oficialmente más de 700 cruces ferroviarios a nivel en todo Chile, de los cuales una parte importante se concentra en la capital y su área metropolitana. Sin embargo, la cifra real es mucho mayor si se consideran los cruces irregulares: accesos abiertos por diversas razones, la costumbre, la urgencia o la falta de alternativas.
+                </p>
+                <p>
+                    El análisis territorial revela una evaluación clara entre la presencia de cruces irregulares y factores como la densidad poblacional, el nivel de prioridad social y el tipo de suelo en uso. En sectores residenciales de alta densidad, donde la movilidad peatonal es fundamental, los cruces informales son más frecuentes. En zonas industriales, los pasos irregulares facilitan el acceso de trabajadores y vehículos, a menudo sin ningún tipo de protección. La visualización de datos —un gráfico de barras agrupadas por comuna y tipo de regulación— permite dimensionar la desigualdad en el acceso a cruces seguros. Mientras algunas comunas cuentan con una red de cruces regulados y protegidos, otras dependen casi exclusivamente de pasos informales.
+                </p>
+                <p>
+                    La normativa chilena sobre cruces ferroviarios, establecida por el Decreto Supremo 38 de 1986, distingue entre cruces con y sin barreras, y establece criterios para su protección y señalización. Sin embargo, la realidad supera la norma: muchos cruces formales carecen de infraestructura adecuada, y los informales quedan fuera de cualquier regulación. El Ministerio de Transportes ha propuesto en los últimos años una actualización de la normativa, con nuevos estándares de protección y criterios para la desnivelación de cruces en función del índice de peligrosidad.
+                </p>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <style>
-    #vis.vega-embed {
-      width: 100%;
-      display: flex;
-    }
+                <h3 class="subtitulo-inline">Santiago y los cruces que se repiten</h3>
+                <p>
+                    A medida que el trazado avanza desde Estación Central hacia el sur, los cruces ferroviarios
+                    se insertan en una ciudad que creció hacia la vía, muchas veces sin que la infraestructura
+                    de resguardo se actualizara al mismo ritmo. En comunas residenciales y zonas industriales,
+                    los siniestros se concentran en puntos donde la visibilidad es limitada o las barreras son parciales.
+                </p>
+            </div>
 
-    #vis.vega-embed details,
-    #vis.vega-embed details summary {
-      position: relative;
-    }
-  </style>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-</head>
-<body>
-  <div id="vis"></div>
-  <script>
-    (function(vegaEmbed) {
-      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-22d69211e6d2a1f66ea056149b31955e"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Regulaci\u00f3n", "scale": {"domain": ["Regulado", "Irregular"], "range": ["#5A75FA", "#FA945D"]}, "title": "Regulaci\u00f3n", "type": "nominal"}, "tooltip": [{"field": "Regulaci\u00f3n", "type": "nominal"}, {"field": "Total", "type": "quantitative"}, {"field": "Regi\u00f3n", "type": "nominal"}, {"field": "\u00cdndice de Ruralidad por Comuna", "type": "nominal"}, {"field": "Densidad Poblacional por KM Cuadrado", "type": "quantitative"}], "x": {"field": "Total", "type": "quantitative"}, "y": {"field": "Comuna", "type": "ordinal"}}, "height": 500, "title": "Cantidad de cruces ferroviarios en uso por regulaci\u00f3n y comuna", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-22d69211e6d2a1f66ea056149b31955e": [{"Comuna": "San Bernardo", "Regulaci\u00f3n": "Regulado", "Total": 2, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (1,354% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5}, {"Comuna": "San Bernardo", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (1,354% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5}, {"Comuna": "Buin", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (13,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 546.5}, {"Comuna": "Buin", "Regulaci\u00f3n": "Irregular", "Total": 3, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (13,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 546.5}, {"Comuna": "Paine", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (35,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 96.1}, {"Comuna": "Paine", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Metropolitana", "\u00cdndice de Ruralidad por Comuna": "Mixta (35,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 96.1}, {"Comuna": "Mostazal", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 64.6}, {"Comuna": "Mostazal", "Regulaci\u00f3n": "Irregular", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 64.6}, {"Comuna": "Codegua", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Codegua", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Graneros", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (9,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 318.0}, {"Comuna": "Graneros", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (9,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 318.0}, {"Comuna": "Rancagua", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (2,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 990.1}, {"Comuna": "Rancagua", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (2,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 990.1}, {"Comuna": "Olivar", "Regulaci\u00f3n": "Regulado", "Total": 2, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (30,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 308.9}, {"Comuna": "Olivar", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (30,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 308.9}, {"Comuna": "Requ\u00ednoa", "Regulaci\u00f3n": "Regulado", "Total": 13, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 43.8}, {"Comuna": "Requ\u00ednoa", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 43.8}, {"Comuna": "Rengo", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (20,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 84.2}, {"Comuna": "Rengo", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (20,5% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 84.2}, {"Comuna": "Malloa", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (57,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 112.8}, {"Comuna": "Malloa", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (57,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 112.8}, {"Comuna": "San Fernando", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (13% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 30.9}, {"Comuna": "San Fernando", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (13% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 30.9}, {"Comuna": "Chimbarongo", "Regulaci\u00f3n": "Regulado", "Total": 9, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,4% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 74.8}, {"Comuna": "Chimbarongo", "Regulaci\u00f3n": "Irregular", "Total": 6, "Regi\u00f3n": "O\u00b4Higgins", "\u00cdndice de Ruralidad por Comuna": "Mixta (40,4% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 74.8}, {"Comuna": "Teno", "Regulaci\u00f3n": "Regulado", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (65% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Teno", "Regulaci\u00f3n": "Irregular", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (65% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 48.6}, {"Comuna": "Curic\u00f3", "Regulaci\u00f3n": "Regulado", "Total": 8, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (10,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 120.4}, {"Comuna": "Curic\u00f3", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (10,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 120.4}, {"Comuna": "Molina", "Regulaci\u00f3n": "Regulado", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 31.5}, {"Comuna": "Molina", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,6% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 31.5}, {"Comuna": "R\u00edo Claro", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (66,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 33.1}, {"Comuna": "R\u00edo Claro", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (66,3% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 33.1}, {"Comuna": "San Rafael", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 42.6}, {"Comuna": "San Rafael", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (44,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 42.6}, {"Comuna": "Talca", "Regulaci\u00f3n": "Regulado", "Total": 12, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (4,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5}, {"Comuna": "Talca", "Regulaci\u00f3n": "Irregular", "Total": 2, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (4,7% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5}, {"Comuna": "Maule", "Regulaci\u00f3n": "Regulado", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 321.4}, {"Comuna": "Maule", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (16,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 321.4}, {"Comuna": "San Javier", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 37.7}, {"Comuna": "San Javier", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,9% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 37.7}, {"Comuna": "Villa Alegre", "Regulaci\u00f3n": "Regulado", "Total": 3, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (36,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 94.3}, {"Comuna": "Villa Alegre", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (36,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 94.3}, {"Comuna": "Linares", "Regulaci\u00f3n": "Regulado", "Total": 9, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 65.9}, {"Comuna": "Linares", "Regulaci\u00f3n": "Irregular", "Total": 1, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (17,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 65.9}, {"Comuna": "Longav\u00ed", "Regulaci\u00f3n": "Regulado", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (67,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 22.9}, {"Comuna": "Longav\u00ed", "Regulaci\u00f3n": "Irregular", "Total": 6, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (67,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 22.9}, {"Comuna": "Retiro", "Regulaci\u00f3n": "Regulado", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (61,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 26.9}, {"Comuna": "Retiro", "Regulaci\u00f3n": "Irregular", "Total": 0, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (61,1% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 26.9}, {"Comuna": "Parral", "Regulaci\u00f3n": "Regulado", "Total": 4, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}, {"Comuna": "Parral", "Regulaci\u00f3n": "Irregular", "Total": 5, "Regi\u00f3n": "Maule", "\u00cdndice de Ruralidad por Comuna": "Mixta (24,8% de Poblaci\u00f3n Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}]}};
-      var embedOpt = {"mode": "vega-lite"};
+            <!-- GRÁFICOS DERECHA -->
+            <div class="col-derecha">
+                <div class="tarjeta-grafico">
+                    <div class="flourish-embed flourish-cards" data-src="visualisation/26561140">
+                        <script src="https://public.flourish.studio/resources/embed.js"></script>
+                        <noscript>
+                            <img src="https://public.flourish.studio/visualisation/26561140/thumbnail" width="100%" alt="cards visualization" />
+                        </noscript>
+                    </div>
+                </div>
 
-      function showError(el, error){
-          el.innerHTML = ('<div style="color:red;">'
-                          + '<p>JavaScript Error: ' + error.message + '</p>'
-                          + "<p>This usually means there's a typo in your chart specification. "
-                          + "See the javascript console for the full traceback.</p>"
-                          + '</div>');
-          throw error;
-      }
-      const el = document.getElementById('vis');
-      vegaEmbed("#vis", spec, embedOpt)
-        .catch(error => showError(el, error));
-    })(vegaEmbed);
-
-  </script>
-
-    <!-- Leaflet JS para el mapa de San Bernardo -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin="">
-    </script>
-    <script>
-      (function() {
-        var mapEl = document.getElementById("hero-map");
-        if (!mapEl || typeof L === "undefined") return;
-
-        var map = L.map("hero-map", {
-          scrollWheelZoom: false
-        }).setView([-33.5933, -70.6996], 17);
-
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 19,
-          attribution: "&copy; OpenStreetMap contributors"
-        }).addTo(map);
-
-        var sidebar = document.getElementById("hero-sidebar");
-
-        var marker = L.circleMarker([-33.5933, -70.6996], {
-          radius: 10,
-          color: "#D90429",
-          weight: 2,
-          fillColor: "#D90429",
-          fillOpacity: 0.9
-        }).addTo(map);
-
-        marker.on("click", function () {
-          if (!sidebar) return;
-          sidebar.classList.toggle("is-visible");
-        });
-      })();
-    </script>
-</body>
-</html>
-      </div>
-      <div class="section-icon">
-        <svg class="icon icon--right" viewBox="0 0 64 64">
-          <rect x="4" y="28" width="56" height="8" rx="2" fill="#1E3A68"/>
-          <line x1="12" y1="18" x2="52" y2="46" stroke="#F2994A" stroke-width="4"/>
-          <line x1="12" y1="46" x2="52" y2="18" stroke="#F2994A" stroke-width="4"/>
-        </svg>
-      </div>
-     </div>
-  </section>        
+                <div class="tarjeta-grafico">
+                    <h3>Cantidad de cruces ferroviarios por comuna y regulación</h3>
+                    <div id="vis"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- =========================
          CRÓNICA 3 – PATRONES HUMANOS
     ========================== -->
-    <section class="section dark" id="patrones">
-        <div class="section-inner">
+    <section class="section section-verde" id="patrones">
+        <div class="section-visual">
             <h2>3. Puntos ciegos humanos: edades, horarios y vida cotidiana</h2>
 
-            <article class="cronica">
+            <!-- TEXTO IZQUIERDA -->
+            <div class="texto">
                 <p>
                     Los distintos cruces ferroviarios analizados —ubicados de manera dispersa entre Estación Central y el límite con la Región de O'Higgins— operan con niveles heterogéneos de advertencia y control, lo que influye directamente en los patrones de siniestros observados durante la última década. Aunque cada cruce tiene características propias, los datos entre 2014 y 2024 revelan tendencias que se repiten con consistencia y que permanecen fuera de la discusión pública: puntos ciegos donde la infraestructura, el comportamiento humano y la falta de estandarización se combinan para generar riesgo.
                 </p>
@@ -296,23 +264,29 @@
                 <p>
                     La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados. Si bien las decisiones humanas —cruzar sin mirar, evadir barreras, subestimar la velocidad del tren— son un factor relevante, estas conductas se ven amplificadas cuando la señalización no es clara, está dañada o no existe. Allí se forma un punto ciego crítico: el sistema no previene comportamientos esperables en contextos de alta circulación.
                 </p>
-            </article>
+            </div>
 
-            <!-- GRÁFICOS ASOCIADOS CRÓNICA 3 -->
-            <div class="viz-bloque">
-                <h3>¿Quiénes y cuándo se exponen más al riesgo?</h3>
-                <p class="viz-desc">
-                    Estas visualizaciones muestran la concentración de siniestros por grupo etario y por horario del día,
-                    revelando cómo los trayectos cotidianos se cruzan con la falta de protección en las vías.
-                </p>
-                <div class="viz-contenedor">
-                    <iframe src="graficos/edades.html" loading="lazy"></iframe>
+            <!-- GRÁFICOS DERECHA -->
+            <div class="col-derecha">
+                <div class="tarjeta-grafico">
+                    <h3>Distribución de siniestros por grupo etario</h3>
+                    <div class="viz-contenedor">
+                        <iframe src="graficos/edades.html" loading="lazy"></iframe>
+                    </div>
                 </div>
-                <div class="viz-contenedor">
-                    <iframe src="graficos/zona horaria.html" loading="lazy"></iframe>
+
+                <div class="tarjeta-grafico">
+                    <h3>Horarios con mayor concentración de siniestros</h3>
+                    <div class="viz-contenedor">
+                        <iframe src="graficos/zona horaria.html" loading="lazy"></iframe>
+                    </div>
                 </div>
-                <div class="viz-contenedor">
-                    <iframe src="graficos\dia de la semana.html" loading="lazy"></iframe>
+
+                <div class="tarjeta-grafico">
+                    <h3>Días de la semana con mayor riesgo</h3>
+                    <div class="viz-contenedor">
+                        <iframe src="graficos/dia de la semana.html" loading="lazy"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -321,31 +295,41 @@
     <!-- =========================
          METODOLOGÍA
     ========================== -->
-    <section class="section light" id="metodologia">
-        <div class="section-inner">
-            <h2>Metodología y fuentes de datos</h2>
-            <p>
-                Los datos utilizados en esta historia provienen de registros de Carabineros de Chile, Empresa de
-                Ferrocarriles del Estado (EFE), Fesur, CONASET y bases públicas complementarias. Se sistematizaron
-                siniestros ferroviarios del tipo atropello entre 2014 y 2024 en el tramo que conecta Estación Central
-                con la Región de Maule.
-            <p>
-                La depuración y el análisis se realizaron con Python, utilizando librerías de procesamiento de datos
-                y visualización. Las visualizaciones interactivas fueron desarrolladas mediante librerías de
-                Javascript y plataformas de visualización, exportadas como componentes HTML para su integración en la web.
-            </p>
+    <section class="section section-gris" id="metodologia">
+        <div class="section-visual">
 
-            <button class="btn-primario btn-metodologia"
-                    onclick="window.open('https://github.com/josefamar/PROYECTO', '_blank')">
-                Ver repositorio y documentación
-            </button>
+            <h2>Metodología y fuentes de datos</h2>
+
+            <div class="texto">
+                <p>
+                    Los datos utilizados en esta historia provienen de registros de Carabineros de Chile, Empresa de
+                    Ferrocarriles del Estado (EFE), Fesur, CONASET y bases públicas complementarias. Se sistematizaron
+                    siniestros ferroviarios del tipo atropello entre 2014 y 2024 en el tramo que conecta Estación Central
+                    con la Región de Maule.
+                </p>
+                <p>
+                    La depuración y el análisis se realizaron con Python, utilizando librerías de procesamiento de datos
+                    y visualización. Las visualizaciones interactivas fueron desarrolladas mediante librerías de
+                    Javascript y plataformas de visualización, exportadas como componentes HTML para su integración en la web.
+                </p>
+            </div>
+
+            <div class="col-derecha">
+                <div class="tarjeta-grafico tarjeta-repo">
+                    <p>Revisa el código, las bases de datos y la documentación completa del proceso en nuestro repositorio.</p>
+                    <button class="btn-primario btn-metodologia"
+                            onclick="window.open('https://github.com/josefamar/PROYECTO', '_blank')">
+                        Ver repositorio y documentación
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- =========================
          EQUIPO
     ========================== -->
-    <section class="section dark" id="equipo">
+    <section class="section section-azul-suave" id="equipo">
         <div class="section-inner">
             <h2>Equipo</h2>
             <p><strong>Paloma Riquelme</strong> · Reporter&iacute;a, crónicas, diseño de la historia web.</p>
@@ -353,38 +337,155 @@
             <p><strong>Andrés Hernández</strong> · Procesamiento de bases de datos, desarrollo y soporte técnico.</p>
         </div>
     </section>
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin="">
-</script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var mapaEl = document.getElementById("mapa-san-bernardo");
-    if (!mapaEl || typeof L === "undefined") return;
+    <!-- SCRIPTS -->
 
-    // Centro aproximado accidente en San Bernardo (ajusta si quieres)
-    var centro = [-33.5933, -70.6996];
+    <!-- Tren horizontal -->
+    <script src="tren_horizontal.js"></script>
 
-    var mapa = L.map("mapa-san-bernardo", {
-      scrollWheelZoom: false
-    }).setView(centro, 17);
+    <!-- Leaflet JS para el mapa de San Bernardo -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin="">
+    </script>
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "&copy; OpenStreetMap"
-    }).addTo(mapa);
+    <!-- Vega / Vega-Lite / Embed para el gráfico territorial -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-    L.circleMarker(centro, {
-      radius: 10,
-      color: "#D90429",
-      weight: 2,
-      fillColor: "#D90429",
-      fillOpacity: 0.9
-    }).addTo(mapa)
-      .bindPopup("Ubicación del siniestro en San Bernardo");
-  });
-</script>
+    <!-- Inicializar mapa San Bernardo -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var mapaEl = document.getElementById("mapa-san-bernardo");
+        if (!mapaEl || typeof L === "undefined") return;
+
+        var centro = [-33.5933, -70.6996];
+
+        var mapa = L.map("mapa-san-bernardo", {
+          scrollWheelZoom: false
+        }).setView(centro, 17);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap"
+        }).addTo(mapa);
+
+        L.circleMarker(centro, {
+          radius: 10,
+          color: "#D90429",
+          weight: 2,
+          fillColor: "#D90429",
+          fillOpacity: 0.9
+        }).addTo(mapa)
+          .bindPopup("Ubicación del siniestro en San Bernardo");
+      });
+    </script>
+
+    <!-- Vega Embed para #vis -->
+    <script>
+      (function(vegaEmbed) {
+        var spec = {
+          "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+          "data": {"name": "data-22d69211e6d2a1f66ea056149b31955e"},
+          "mark": {"type": "bar"},
+          "encoding": {
+            "color": {
+              "field": "Regulación",
+              "scale": {"domain": ["Regulado", "Irregular"], "range": ["#5A75FA", "#FA945D"]},
+              "title": "Regulación",
+              "type": "nominal"
+            },
+            "tooltip": [
+              {"field": "Regulación", "type": "nominal"},
+              {"field": "Total", "type": "quantitative"},
+              {"field": "Región", "type": "nominal"},
+              {"field": "Índice de Ruralidad por Comuna", "type": "nominal"},
+              {"field": "Densidad Poblacional por KM Cuadrado", "type": "quantitative"}
+            ],
+            "x": {"field": "Total", "type": "quantitative"},
+            "y": {"field": "Comuna", "type": "ordinal"}
+          },
+          "height": 500,
+          "title": "Cantidad de cruces ferroviarios en uso por regulación y comuna",
+          "width": 400,
+          "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+          "datasets": {
+            "data-22d69211e6d2a1f66ea056149b31955e": [
+              {"Comuna": "San Bernardo", "Regulación": "Regulado", "Total": 2, "Región": "Metropolitana", "Índice de Ruralidad por Comuna": "Mixta (1,354% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5},
+              {"Comuna": "San Bernardo", "Regulación": "Irregular", "Total": 2, "Región": "Metropolitana", "Índice de Ruralidad por Comuna": "Mixta (1,354% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 1976.5},
+              {"Comuna": "Buin", "Regulación": "Regulado", "Total": 4, "Región": "Metropolitana", "Índice de Ruralidad por Comuna": "Mixta (13,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 546.5},
+              {"Comuna": "Buin", "Regulación": "Irregular", "Total": 3, "Región": "Metropolitana", "Índice de Ruralidad por Comuna": "Mixta (13,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 546.5},
+              {"Comuna": "Paine", "Regulación": "Regulado", "Total": 4, "Región": "Metropolitana", "Índice de Ruralidad por Comuna": "Mixta (35,9% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 96.1},
+              {"Comuna": "Paine", "Regulación": "Irregular", "Total": 0, "Región": "Metropolitana", "Índice de Ruralidad por Comuna": "Mixta (35,9% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 96.1},
+              {"Comuna": "Mostazal", "Regulación": "Regulado", "Total": 4, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (17,3% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 64.6},
+              {"Comuna": "Mostazal", "Regulación": "Irregular", "Total": 4, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (17,3% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 64.6},
+              {"Comuna": "Codegua", "Regulación": "Regulado", "Total": 1, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (44,5% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 48.6},
+              {"Comuna": "Codegua", "Regulación": "Irregular", "Total": 0, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (44,5% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 48.6},
+              {"Comuna": "Graneros", "Regulación": "Regulado", "Total": 3, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (9,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 318.0},
+              {"Comuna": "Graneros", "Regulación": "Irregular", "Total": 0, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (9,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 318.0},
+              {"Comuna": "Rancagua", "Regulación": "Regulado", "Total": 8, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (2,9% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 990.1},
+              {"Comuna": "Rancagua", "Regulación": "Irregular", "Total": 0, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (2,9% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 990.1},
+              {"Comuna": "Olivar", "Regulación": "Regulado", "Total": 2, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (30,6% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 308.9},
+              {"Comuna": "Olivar", "Regulación": "Irregular", "Total": 1, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (30,6% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 308.9},
+              {"Comuna": "Requínoa", "Regulación": "Regulado", "Total": 13, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (40,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 43.8},
+              {"Comuna": "Requínoa", "Regulación": "Irregular", "Total": 1, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (40,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 43.8},
+              {"Comuna": "Rengo", "Regulación": "Regulado", "Total": 8, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (20,5% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 84.2},
+              {"Comuna": "Rengo", "Regulación": "Irregular", "Total": 0, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (20,5% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 84.2},
+              {"Comuna": "Malloa", "Regulación": "Regulado", "Total": 3, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (57,6% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 112.8},
+              {"Comuna": "Malloa", "Regulación": "Irregular", "Total": 0, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (57,6% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 112.8},
+              {"Comuna": "San Fernando", "Regulación": "Regulado", "Total": 4, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (13% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 30.9},
+              {"Comuna": "San Fernando", "Regulación": "Irregular", "Total": 2, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (13% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 30.9},
+              {"Comuna": "Chimbarongo", "Regulación": "Regulado", "Total": 9, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (40,4% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 74.8},
+              {"Comuna": "Chimbarongo", "Regulación": "Irregular", "Total": 6, "Región": "O´Higgins", "Índice de Ruralidad por Comuna": "Mixta (40,4% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 74.8},
+              {"Comuna": "Teno", "Regulación": "Regulado", "Total": 5, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (65% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 48.6},
+              {"Comuna": "Teno", "Regulación": "Irregular", "Total": 3, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (65% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 48.6},
+              {"Comuna": "Curicó", "Regulación": "Regulado", "Total": 8, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (10,3% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 120.4},
+              {"Comuna": "Curicó", "Regulación": "Irregular", "Total": 2, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (10,3% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 120.4},
+              {"Comuna": "Molina", "Regulación": "Regulado", "Total": 6, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (16,6% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 31.5},
+              {"Comuna": "Molina", "Regulación": "Irregular", "Total": 1, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (16,6% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 31.5},
+              {"Comuna": "Río Claro", "Regulación": "Regulado", "Total": 1, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (66,3% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 33.1},
+              {"Comuna": "Río Claro", "Regulación": "Irregular", "Total": 1, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (66,3% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 33.1},
+              {"Comuna": "San Rafael", "Regulación": "Regulado", "Total": 4, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (44,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 42.6},
+              {"Comuna": "San Rafael", "Regulación": "Irregular", "Total": 0, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (44,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 42.6},
+              {"Comuna": "Talca", "Regulación": "Regulado", "Total": 12, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (4,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5},
+              {"Comuna": "Talca", "Regulación": "Irregular", "Total": 2, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (4,7% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 1000.5},
+              {"Comuna": "Maule", "Regulación": "Regulado", "Total": 1, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (16,8% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 321.4},
+              {"Comuna": "Maule", "Regulación": "Irregular", "Total": 1, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (16,8% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 321.4},
+              {"Comuna": "San Javier", "Regulación": "Regulado", "Total": 3, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (24,9% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 37.7},
+              {"Comuna": "San Javier", "Regulación": "Irregular", "Total": 0, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (24,9% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 37.7},
+              {"Comuna": "Villa Alegre", "Regulación": "Regulado", "Total": 3, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (36,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 94.3},
+              {"Comuna": "Villa Alegre", "Regulación": "Irregular", "Total": 0, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (36,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 94.3},
+              {"Comuna": "Linares", "Regulación": "Regulado", "Total": 9, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (17,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 65.9},
+              {"Comuna": "Linares", "Regulación": "Irregular", "Total": 1, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (17,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 65.9},
+              {"Comuna": "Longaví", "Regulación": "Regulado", "Total": 6, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (67,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 22.9},
+              {"Comuna": "Longaví", "Regulación": "Irregular", "Total": 6, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (67,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 22.9},
+              {"Comuna": "Retiro", "Regulación": "Regulado", "Total": 5, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (61,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 26.9},
+              {"Comuna": "Retiro", "Regulación": "Irregular", "Total": 0, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (61,1% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 26.9},
+              {"Comuna": "Parral", "Regulación": "Regulado", "Total": 4, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (24,8% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 27.6},
+              {"Comuna": "Parral", "Regulación": "Irregular", "Total": 5, "Región": "Maule", "Índice de Ruralidad por Comuna": "Mixta (24,8% de Población Rural)", "Densidad Poblacional por KM Cuadrado": 27.6}
+            ]
+          }
+        };
+        var embedOpt = {"mode": "vega-lite"};
+
+        function showError(el, error){
+            el.innerHTML = (
+              '<div style="color:red;">'
+              + '<p>JavaScript Error: ' + error.message + '</p>'
+              + "<p>Revisa la especificación del gráfico en el código.</p>"
+              + '</div>'
+            );
+            throw error;
+        }
+        const el = document.getElementById('vis');
+        if (el) {
+          vegaEmbed("#vis", spec, embedOpt)
+            .catch(error => showError(el, error));
+        }
+      })(vegaEmbed);
+    </script>
+
 </body>
 </html>
