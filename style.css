@@ -333,7 +333,7 @@ iframe {
     transition: left 0.7s ease, color 0.4s ease;
 }
 #mapa-san-bernardo {
-    width: 100%;
+    width: 60%;
     height: 420px;   /* ALTURA REAL, SIN ESTO NO SE VE */
     border-radius: 12px;
     overflow: hidden;
