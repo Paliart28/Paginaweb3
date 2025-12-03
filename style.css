@@ -42,7 +42,7 @@ body {
 ========================================= */
 
 .landing-body {
-    min-height: 100vh;
+    min-height: 80vh;
     background: radial-gradient(circle at top left, #2f4b86, #0b1020);
     color: #140000;
 }
