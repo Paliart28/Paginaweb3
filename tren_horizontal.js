@@ -1,67 +1,71 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const headerHeight = 80; // altura del header fijo
-  const stations = Array.from(document.querySelectorAll(".tren-station"));
-  const trenIcon = document.querySelector(".tren-icon");
+document.addEventListener("DOMContentLoaded", function () {
+  const sectionIds = [
+    "inicio",
+    "san-bernardo",
+    "senializacion",
+    "territorio",
+    "patrones",
+    "metodologia",
+    "equipo"
+  ];
 
-  if (!stations.length || !trenIcon) return;
-
-  const sectionIds = stations.map(btn => btn.dataset.target);
   const sections = sectionIds
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
-  // Posiciona el tren sobre la estación activa
-  function updateTrainPosition(activeIndex) {
-    const station = stations[activeIndex];
-    const rect = station.getBoundingClientRect();
-    const trackRect = station.parentElement.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const relativeX = centerX - trackRect.left;
-    trenIcon.style.left = `${relativeX}px`;
-  }
+  const stations = Array.from(document.querySelectorAll(".station"));
+  const train = document.getElementById("train-sprite");
+  const track = document.querySelector(".train-track");
 
-  // Marca estación activa según el scroll
-  function onScroll() {
-    const scrollY = window.scrollY;
-    let activeIndex = 0;
+  if (!train || !track || stations.length === 0 || sections.length === 0) return;
 
-    sections.forEach((sec, idx) => {
-      const top = sec.offsetTop - headerHeight - 120;
-      if (scrollY >= top) {
-        activeIndex = idx;
+  // Scroll suave al hacer clic en estaciones
+  stations.forEach((btn, idx) => {
+    btn.addEventListener("click", () => {
+      const targetId = sectionIds[idx];
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  function getActiveIndex() {
+    let active = 0;
+    const viewportThreshold = window.innerHeight * 0.3;
+
+    sections.forEach((sec, index) => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top <= viewportThreshold) {
+        active = index;
       }
     });
 
-    stations.forEach((btn, idx) => {
-      btn.classList.toggle("active", idx === activeIndex);
-    });
-
-    updateTrainPosition(activeIndex);
+    return active;
   }
 
-  // Click en estaciones → scroll suave
-  stations.forEach((btn, idx) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = btn.dataset.target;
-      const sec = document.getElementById(targetId);
-      if (!sec) return;
+  function updateTrain() {
+    const activeIndex = getActiveIndex();
 
-      const top = sec.offsetTop - headerHeight - 40;
-      window.scrollTo({
-        top,
-        behavior: "smooth"
-      });
+    stations.forEach((btn, idx) => {
+      btn.classList.toggle("is-active", idx === activeIndex);
     });
-  });
 
-  // Inicial
-  window.addEventListener("scroll", onScroll);
-  window.addEventListener("resize", () => {
-    // Recalcular posición al cambiar ancho
-    onScroll();
-  });
+    // Posición del tren: entre el primer y último botón
+    const first = stations[0];
+    const last = stations[stations.length - 1];
 
-  // Primer ajuste después de pintar
-  setTimeout(onScroll, 200);
+    const firstCenter = first.offsetLeft + first.offsetWidth / 2;
+    const lastCenter = last.offsetLeft + last.offsetWidth / 2;
+
+    const t = stations.length > 1 ? activeIndex / (stations.length - 1) : 0;
+    const posX = firstCenter + (lastCenter - firstCenter) * t;
+
+    train.style.transform = `translateX(${posX}px)`;
+  }
+
+  window.addEventListener("scroll", updateTrain);
+  window.addEventListener("resize", updateTrain);
+
+  // Primera posición
+  setTimeout(updateTrain, 150);
 });

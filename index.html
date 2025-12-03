@@ -1,105 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rieles en riesgo · Inicio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</title>
 
-  <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Estilos generales -->
-  <link href="style.css" rel="stylesheet" />
-  <link href="tren_horizontal.css" rel="stylesheet" />
-
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #1E3A68 0%, #020617 55%);
-      color: #F9FAFB;
-      font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-
-    .landing-wrap {
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .landing-title {
-      font-family: "Bebas Neue", sans-serif;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 2.8rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .landing-sub {
-      font-size: 1rem;
-      opacity: 0.85;
-      margin-bottom: 1.5rem;
-    }
-
-    .start-btn {
-      margin-top: 1rem;
-      background: #F6E05E;
-      color: #111827;
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .start-btn:hover {
-      background: #fde68a;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-  </style>
-
-    <!-- HEADER SIMPLE CON LOGO -->
-    <header class="landing-header">
-        <div class="landing-logo">
-            <img src="foto logo.png" alt="Logo Punto Ciego">
-        </div>
-    </header>
-
-    <!-- HERO CON TREN -->
-    <main class="landing-main">
-        <section class="landing-hero">
-            <div class="landing-text">
-                <h1>Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</h1>
-                <p>
-                    Una historia web sobre los puntos ciegos de la seguridad ferroviaria
-                    entre Estación Central y Maule.
-                </p>
-            </div>
-            <div class="landing-tren-wrapper">
-                <div class="vias"></div>
-                <div class="tren" id="tren-animado">
-                    <div class="tren-cabina"></div>
-                    <div class="tren-cuerpo"></div>
-                    <div class="tren-ventanas">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <div class="tren-ruedas">
-                        <span></span><span></span><span></span>
-                    </div>
-        </section>
-    </main>
-  <!-- Botón para pasar al sitio real -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="landing-wrap">
-    <button class="start-btn" onclick="window.location.href='index2.html'">
-      Iniciar viaje
-    </button>
-  </div>
+<body class="landing-body">
+  <header class="landing-header">
+    <div class="header-logo">
+      <img src="foto logo.png" alt="Logo Punto Ciego" />
+      <span class="brand-text">Punto Ciego</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="landing-hero">
+      <div class="landing-inner">
+        <p class="hero-eyebrow">Webstory · Periodismo de datos</p>
+        <h1 class="landing-title">
+          Rieles en riesgo: 10 años de atropellos invisibles
+        </h1>
+        <p class="landing-bajada">
+          Entre 2014 y 2024, los siniestros ferroviarios del tipo atropello entre Estación Central
+          y la Región de Maule revelan patrones que se repiten en silencio: fallas estructurales
+          del sistema ferroviario, desigualdad territorial y puntos ciegos en la vida cotidiana
+          de quienes cruzan las vías.
+        </p>
+
+        <button class="btn-primario btn-iniciar" onclick="window.location.href='index2.html'">
+          Iniciar viaje
+        </button>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
