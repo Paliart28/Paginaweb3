@@ -26,27 +26,31 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-<header class="train-header">
-  <div class="header-logo">
-      <img src="foto logo.png" alt="Logo Punto Ciego">
-      <span class="brand-text">Punto Ciego</span>
+<header class="train-header" style="margin:0;padding:0;">
+  <div class="header-logo" style="margin:0;padding:12px 40px;background:#111827;display:flex;align-items:center;gap:12px;">
+      <img src="foto logo.png" alt="Logo Punto Ciego" style="height:28px;">
+      <span class="brand-text" style="font-family:'Bebas Neue';font-size:28px;color:white;letter-spacing:1px;">Punto Ciego</span>
   </div>
 
-  <div class="train-wrapper">
-      <div class="train-track">
-          <div class="track-line"></div>
+  <div class="train-wrapper" style="margin:0;padding:0;background:#020617;">
+      <div class="train-track" style="width:90%;margin:auto;padding:14px 0;position:relative;">
+          
+          <div class="track-line" style="height:2px;background:#94a3b8;width:100%;position:relative;"></div>
 
-          <div class="stations">
-              <button class="station is-active" data-target="inicio">Inicio</button>
-              <button class="station" data-target="san-bernardo">San Bernardo</button>
-              <button class="station" data-target="senializacion">Señalización</button>
-              <button class="station" data-target="territorio">Territorio</button>
-              <button class="station" data-target="patrones">Patrones</button>
-              <button class="station" data-target="metodologia">Metodología</button>
-              <button class="station" data-target="equipo">Equipo</button>
+          <div class="stations" style="display:flex;justify-content:space-between;margin-top:18px;font-size:13px;color:white;font-family:Poppins;">
+              <button class="station is-active" data-step="0" data-target="inicio">Inicio</button>
+              <button class="station" data-step="1" data-target="san-bernardo">San Bernardo</button>
+              <button class="station" data-step="2" data-target="senializacion">Señalización</button>
+              <button class="station" data-step="3" data-target="territorio">Territorio</button>
+              <button class="station" data-step="4" data-target="patrones">Patrones</button>
+              <button class="station" data-step="5" data-target="metodologia">Metodología</button>
+              <button class="station" data-step="6" data-target="equipo">Equipo</button>
           </div>
 
-          <div class="train-sprite" id="train-sprite">🚆</div>
+          <div class="train-sprite" id="train-sprite" 
+               style="position:absolute;top:-14px;left:0%;transition:all .5s ease;font-size:24px;">
+               🚆
+          </div>
       </div>
   </div>
 </header>
@@ -438,5 +442,27 @@
         .catch(error => showError(el, error));
     })(vegaEmbed);
   </script>
+  <script>
+document.querySelectorAll(".station").forEach(btn => {
+    btn.addEventListener("click", () => {
+        
+        // Marcar estación activa
+        document.querySelectorAll(".station").forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        // Mover tren
+        const step = parseInt(btn.dataset.step);
+        const total = 6; // 7 estaciones → 0–6
+        const porcentaje = (step / total) * 100;
+        document.getElementById("train-sprite").style.left = porcentaje + "%";
+
+        // Scroll suave a la sección correspondiente
+        const target = btn.dataset.target;
+        document.getElementById(target).scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
+</script>
 </body>
 </html>

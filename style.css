@@ -549,97 +549,24 @@ body {
     height: 220px;
   }
 }
-.train-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(15, 23, 42, 0.94);
-  backdrop-filter: blur(8px);
-  padding: 0.7rem 2rem 0.3rem;
-  z-index: 2000;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+header, .tren-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.train-header .header-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+#top-bar,
+#train-nav {
+    margin: 0 !important;
+}
+.train-progress {
+    width: 100%;
+}
+.train-header, .header-logo, .train-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.train-header img {
-  height: 32px;
-}
-
-.train-header .brand-text {
-  font-family: "Bebas Neue";
-  font-size: 1.4rem;
-  letter-spacing: 0.1em;
-  color: white;
-}
-
-.train-wrapper {
-  margin-top: 0.3rem;
-  display: flex;
-  justify-content: center;
-}
-
-.train-track {
-  width: min(950px, 100%);
-  position: relative;
-  padding-top: 1rem;
-}
-
-.track-line {
-  position: absolute;
-  top: 1.45rem;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #9ca3af 0%, #e5e7eb 50%, #9ca3af 100%);
-  border-radius: 99px;
-}
-
-.stations {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.station {
-  background: none;
-  border: none;
-  color: #d1d5db;
-  font-size: 0.8rem;
-  cursor: pointer;
-  text-align: center;
-}
-
-.station::before {
-  content: "";
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid #d1d5db;
-  margin: 0 auto 0.2rem;
-}
-
-.station.is-active {
-  color: #f6e05e;
-  font-weight: bold;
-}
-
-.station.is-active::before {
-  border-color: #f6e05e;
-  background: #f6e05e;
-}
-
-.train-sprite {
-  position: absolute;
-  top: 0.3rem;
-  font-size: 1.5rem;
-  transition: transform 0.4s ease-out;
+body, html {
+    margin: 0 !important;
+    padding: 0 !important;
 }

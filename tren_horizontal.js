@@ -55,3 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(updateTrain, 200);
 });
+function moverTren(index) {
+    const total = estaciones.length - 1;
+    const porcentaje = (index / total) * 100;
+    document.querySelector(".train-icon").style.left = porcentaje + "%";
+}
