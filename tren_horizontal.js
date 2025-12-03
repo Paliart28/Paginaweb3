@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const sectionIds = [
+document.addEventListener("DOMContentLoaded", () => {
+  const ids = [
     "inicio",
     "san-bernardo",
     "senializacion",
@@ -9,63 +9,49 @@ document.addEventListener("DOMContentLoaded", function () {
     "equipo"
   ];
 
-  const sections = sectionIds
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  const stations = Array.from(document.querySelectorAll(".station"));
+  const sections = ids.map(id => document.getElementById(id));
+  const stations = [...document.querySelectorAll(".station")];
   const train = document.getElementById("train-sprite");
-  const track = document.querySelector(".train-track");
 
-  if (!train || !track || stations.length === 0 || sections.length === 0) return;
+  function activeIndex() {
+    let idx = 0;
+    const threshold = window.innerHeight * 0.35;
 
-  // Scroll suave al hacer clic en estaciones
-  stations.forEach((btn, idx) => {
-    btn.addEventListener("click", () => {
-      const targetId = sectionIds[idx];
-      const targetEl = document.getElementById(targetId);
-      if (!targetEl) return;
-      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-
-  function getActiveIndex() {
-    let active = 0;
-    const viewportThreshold = window.innerHeight * 0.3;
-
-    sections.forEach((sec, index) => {
+    sections.forEach((sec, i) => {
       const rect = sec.getBoundingClientRect();
-      if (rect.top <= viewportThreshold) {
-        active = index;
-      }
+      if (rect.top <= threshold) idx = i;
     });
 
-    return active;
+    return idx;
   }
 
   function updateTrain() {
-    const activeIndex = getActiveIndex();
+    const idx = activeIndex();
 
-    stations.forEach((btn, idx) => {
-      btn.classList.toggle("is-active", idx === activeIndex);
+    stations.forEach((s, i) => {
+      s.classList.toggle("is-active", i === idx);
     });
 
-    // Posición del tren: entre el primer y último botón
     const first = stations[0];
     const last = stations[stations.length - 1];
 
-    const firstCenter = first.offsetLeft + first.offsetWidth / 2;
-    const lastCenter = last.offsetLeft + last.offsetWidth / 2;
+    const start = first.offsetLeft + first.offsetWidth / 2;
+    const end = last.offsetLeft + last.offsetWidth / 2;
 
-    const t = stations.length > 1 ? activeIndex / (stations.length - 1) : 0;
-    const posX = firstCenter + (lastCenter - firstCenter) * t;
+    const t = idx / (stations.length - 1);
+    const x = start + (end - start) * t;
 
-    train.style.transform = `translateX(${posX}px)`;
+    train.style.transform = `translateX(${x}px)`;
   }
+
+  stations.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      sections[i].scrollIntoView({ behavior: "smooth" });
+    });
+  });
 
   window.addEventListener("scroll", updateTrain);
   window.addEventListener("resize", updateTrain);
 
-  // Primera posición
-  setTimeout(updateTrain, 150);
+  setTimeout(updateTrain, 200);
 });

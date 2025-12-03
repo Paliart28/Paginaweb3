@@ -26,42 +26,30 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-
-  <!-- HEADER FIJO CON LOGO + MENÚ -->
-  <header class="main-header">
-    <div class="header-logo">
-      <img src="foto logo.png" alt="Logo Punto Ciego" />
+<header class="train-header">
+  <div class="header-logo">
+      <img src="foto logo.png" alt="Logo Punto Ciego">
       <span class="brand-text">Punto Ciego</span>
-    </div>
-
-    <nav class="main-nav">
-      <a href="#inicio">Inicio</a>
-      <a href="#san-bernardo">Caso San Bernardo</a>
-      <a href="#senializacion">Señalización</a>
-      <a href="#territorio">Territorio</a>
-      <a href="#patrones">Patrones humanos</a>
-      <a href="#metodologia">Metodología</a>
-      <a href="#equipo">Equipo</a>
-    </nav>
-  </header>
-
-  <!-- BARRA DEL TREN (FIJA BAJO EL MENÚ) -->
-  <div class="train-wrapper">
-    <div class="train-track">
-      <div class="track-line"></div>
-      <div class="stations">
-        <button class="station is-active" data-target="inicio">Inicio</button>
-        <button class="station" data-target="san-bernardo">San&nbsp;Bernardo</button>
-        <button class="station" data-target="senializacion">Señalización</button>
-        <button class="station" data-target="territorio">Territorio</button>
-        <button class="station" data-target="patrones">Patrones</button>
-        <button class="station" data-target="metodologia">Metodología</button>
-        <button class="station" data-target="equipo">Equipo</button>
-      </div>
-      <div class="train-sprite" id="train-sprite">🚆</div>
-    </div>
   </div>
 
+  <div class="train-wrapper">
+      <div class="train-track">
+          <div class="track-line"></div>
+
+          <div class="stations">
+              <button class="station is-active" data-target="inicio">Inicio</button>
+              <button class="station" data-target="san-bernardo">San Bernardo</button>
+              <button class="station" data-target="senializacion">Señalización</button>
+              <button class="station" data-target="territorio">Territorio</button>
+              <button class="station" data-target="patrones">Patrones</button>
+              <button class="station" data-target="metodologia">Metodología</button>
+              <button class="station" data-target="equipo">Equipo</button>
+          </div>
+
+          <div class="train-sprite" id="train-sprite">🚆</div>
+      </div>
+  </div>
+</header>
   <main class="story-main">
 
     <!-- =========================
