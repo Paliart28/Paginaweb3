@@ -722,4 +722,132 @@ body {
         margin-top: 28px;
     }
 }
+/* ===================================================================
+   LAYOUT GENERAL TIPO PAGINAWEB3 (texto izquierda + gráficos derecha)
+   Se aplica a: señalización, territorio, patrones, San Bernardo,
+   metodología y equipo.
+=================================================================== */
+
+.section-visual {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr; /* texto : gráficos */
+    gap: 40px 50px;
+    align-items: flex-start;
+}
+
+/* Columna de texto (izquierda) */
+.section-visual .texto {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Columna derecha contendrá las tarjetas de gráficos o mapa */
+.section-visual .col-derecha {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Título de las secciones */
+.section-visual h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 18px 0;
+    font-size: 2rem;
+}
+
+/* ================= TARJETAS BLANCAS PARA GRÁFICOS ================= */
+
+.tarjeta-grafico {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+}
+
+.tarjeta-grafico iframe {
+    width: 100%;
+    height: 430px;   /* altura uniforme como Paginaweb3 */
+    border: none;
+    display: block;
+}
+
+/* ======================= MAPA SAN BERNARDO ======================== */
+
+.tarjeta-mapa {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+}
+
+#mapa-san-bernardo {
+    width: 100%;
+    height: 380px;   /* fijo para que SIEMPRE se vea */
+    border-radius: 12px;
+}
+
+/* Tarjeta de foto del accidente */
+.tarjeta-accidente img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.tarjeta-accidente h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 10px 0 8px 0;
+    color: #d90429;
+}
+
+/* ================= COLORES POR SECCIÓN ================= */
+
+#senializacion {
+    background: #020617;   /* azul muy oscuro */
+    color: #f9fafb;
+}
+
+#territorio {
+    background: #020617;
+    color: #f9fafb;
+}
+
+#patrones {
+    background: #020617;
+    color: #f9fafb;
+}
+
+#san-bernardo {
+    background: #020617;
+    color: #f9fafb;
+}
+
+#metodologia {
+    background: #020617;
+    color: #f9fafb;
+}
+
+#equipo {
+    background: #020617;
+    color: #f9fafb;
+}
+
+/* ===================== RESPONSIVO CELULAR ===================== */
+
+@media (max-width: 900px) {
+    .section-visual {
+        display: block;
+        padding: 40px 18px;
+    }
+    .section-visual h2 {
+        margin-bottom: 16px;
+    }
+    .section-visual .col-derecha {
+        margin-top: 24px;
+    }
+}
 

@@ -10,7 +10,6 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
-    <!-- Leaflet para el mapa de San Bernardo -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -66,61 +65,58 @@
     <!-- =========================
          CASO SAN BERNARDO
     ========================== -->
-    <section class="section highlight" id="san-bernardo">
-        <div class="section-inner">
-            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
-            <p>
-                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
-                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
-                los patrones descritos en las secciones anteriores.
-            </p>
+    <section id="san-bernardo">
+  <div class="section-visual">
 
-            <div class="viz-bloque">
-                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
-                <p class="viz-desc">
-                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
-                    junto con el contexto urbano que rodea la línea férrea.
-                </p>
-                <div class="viz-contenedor">
-<aside class="hero-aside">
+    <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
 
-  <!-- CONTENEDOR DEL MAPA -->
-  <div id="hero-map"></div>
+    <!-- COLUMNA IZQUIERDA: TEXTO -->
+    <div class="texto">
+      <p>
+        San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen alta
+        circulación peatonal, cruces irregulares y fallas en la señalización que reflejan los patrones
+        descritos en las secciones anteriores.
+      </p>
+      <p>
+        El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
+        junto con el contexto urbano que rodea la línea férrea. El caso evidencia cómo se cruzan las
+        dimensiones humanas, territoriales y de infraestructura en un mismo punto crítico.
+      </p>
+      <p>
+        A partir de este accidente, se vuelve evidente la necesidad de fortalecer la protección en cruces
+        a nivel, mejorar la señalización y revisar la planificación urbana en torno a la vía férrea para
+        evitar que estos patrones se repitan en otros puntos del país.
+      </p>
+    </div>
 
-  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
-  <div id="hero-sidebar" class="hero-sidebar">
-    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
-    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
-    <p class="hero-sidebar-text">
-      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
-      cómo la combinación de cruces a nivel, señalización vulnerable y
-      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
-      no logra anticipar el error humano: lo espera, y lo repite.
-    </p>
-    <p class="hero-sidebar-note">
-      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
-    </p>
+    <!-- COLUMNA DERECHA: MAPA + FOTO EN TARJETAS -->
+    <div class="col-derecha">
+
+      <!-- TARJETA MAPA -->
+      <div class="tarjeta-mapa">
+        <h3>Mapa interactivo del siniestro en San Bernardo</h3>
+        <div id="mapa-san-bernardo"></div>
+      </div>
+
+      <!-- TARJETA FOTO ACCIDENTE (CAMBIA LA RUTA DE LA IMAGEN) -->
+      <div class="tarjeta-grafico tarjeta-accidente">
+        <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario en San Bernardo">
+        <h3>Accidente ferroviario San Bernardo (2024)</h3>
+        <p>
+          El jueves 29 de junio de 2023, un tren de pasajeros colisionó con un convoy de carga en la comuna
+          de San Bernardo, dejando heridos y daños importantes en la infraestructura ferroviaria.
+        </p>
+        <p>
+          Este hecho volvió a poner en la discusión pública las debilidades en la seguridad de los cruces
+          ferroviarios, la falta de medidas preventivas y la necesidad de revisar los protocolos de
+          operación en tramos con alta circulación peatonal.
+        </p>
+      </div>
+
+    </div>
   </div>
-<div class="accidente-card">
+</section>
 
-    <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" alt="Accidente ferroviario San Bernardo 2023">
-
-    <h3>Accidente ferroviario San Bernardo (2023)</h3>
-
-    <p>
-    El jueves 29 de junio de 2023, un tren de pasajeros modelo DT-115 colisionó de frente con un convoy de carga.
-    Pequeñas naves del tramo hicieron contacto en la vía Freire–Nos, en la comuna de San Bernardo.
-    La violencia del impacto provocó daños estructurales, heridos graves y lamentablemente fallecidos.
-    </p>
-
-    <p>
-    Este hecho abrió una discusión nacional respecto a las fallas en la señalización,
-    los cruces no regulados y la falta de monitoreo oportuno que afecta al sistema ferroviario chileno.
-    </p>
-
-</div>
-</aside>
-  </section>
     <!-- =========================
          CRÓNICA 1 – SISTEMA Y SEÑALIZACIÓN
     ========================== -->
@@ -357,44 +353,38 @@
             <p><strong>Andrés Hernández</strong> · Procesamiento de bases de datos, desarrollo y soporte técnico.</p>
         </div>
     </section>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin="">
+</script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var mapaEl = document.getElementById("mapa-san-bernardo");
+    if (!mapaEl || typeof L === "undefined") return;
 
-    <!-- Leaflet JS para el mapa de San Bernardo -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin="">
-    </script>
-    
-    <script>
-      (function() {
-        var mapEl = document.getElementById("hero-map");
-        if (!mapEl || typeof L === "undefined") return;
+    // Centro aproximado accidente en San Bernardo (ajusta si quieres)
+    var centro = [-33.5933, -70.6996];
 
-        var map = L.map("hero-map", {
-          scrollWheelZoom: false
-        }).setView([-33.5933, -70.6996], 17);
+    var mapa = L.map("mapa-san-bernardo", {
+      scrollWheelZoom: false
+    }).setView(centro, 17);
 
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 19,
-          attribution: "&copy; OpenStreetMap contributors"
-        }).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap"
+    }).addTo(mapa);
 
-        var sidebar = document.getElementById("hero-sidebar");
-
-        var marker = L.circleMarker([-33.5933, -70.6996], {
-          radius: 10,
-          color: "#D90429",
-          weight: 2,
-          fillColor: "#D90429",
-          fillOpacity: 0.9
-        }).addTo(map);
-
-        marker.on("click", function () {
-          if (!sidebar) return;
-          sidebar.classList.toggle("is-visible");
-        });
-      })();
-    </script>
+    L.circleMarker(centro, {
+      radius: 10,
+      color: "#D90429",
+      weight: 2,
+      fillColor: "#D90429",
+      fillOpacity: 0.9
+    }).addTo(mapa)
+      .bindPopup("Ubicación del siniestro en San Bernardo");
+  });
+</script>
 </body>
 </html>
