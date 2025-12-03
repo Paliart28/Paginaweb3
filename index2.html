@@ -27,32 +27,29 @@
      HEADER + TREN
 ========================================================= -->
 <header class="pc-header">
-    <div class="pc-topbar">
-        <img src="foto logo.png" class="pc-logo" alt="Logo Punto Ciego">
-        <span class="pc-title">Punto Ciego</span>
+<div class="railway">
 
-        <div class="train-wrapper"> 
-        <div class="train-track">
-        </div> <div class="track-line">
-        </div>
-    <nav class="pc-trainbar">
-        <div class="pc-track">
-            <div class="pc-line"></div>
-            <div class="pc-stations">
-                <button class="station is-active" data-step="0" data-target="inicio">Inicio</button>
-                <button class="station" data-step="1" data-target="san-bernardo">San Bernardo</button>
-                <button class="station" data-step="2" data-target="senializacion">Señalización</button>
-                <button class="station" data-step="3" data-target="territorio">Territorio</button>
-                <button class="station" data-step="4" data-target="patrones">Patrones</button>
-                <button class="station" data-step="5" data-target="metodologia">Metodología</button>
-                <button class="station" data-step="6" data-target="equipo">Equipo</button>
-            </div>
-            <div class="train-sprite" id="train-sprite">🚆</div>
-         </div> </div> </header>
-             <main class="story-main"></main>
-        </div>
-    </nav>
-</header>
+    <div class="railway__track">
+
+        <!-- Línea gris -->
+        <div class="railway__line"></div>
+
+        <!-- Línea de progreso -->
+        <div id="rail-progress" class="railway__progress"></div>
+
+        <!-- Tren (PNG original) -->
+        <div id="rail-train" class="railway__train"></div>
+
+        <!-- Estaciones -->
+        <div class="railway__station is-active" data-target="inicio"></div>
+        <div class="railway__station" data-target="san-bernardo"></div>
+        <div class="railway__station" data-target="senializacion"></div>
+        <div class="railway__station" data-target="territorio"></div>
+        <div class="railway__station" data-target="patrones"></div>
+        <div class="railway__station" data-target="metodologia"></div>
+        <div class="railway__station" data-target="equipo"></div>
+
+    </div>
 <!-- =========================================================
      INICIO
 ========================================================= -->
