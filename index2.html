@@ -17,24 +17,23 @@
       integrity="sha256-p4NxAoJBhI0C4JwZJzv+VQ+3ZkS3jH0zYhCti0p0h+0="
       crossorigin=""
     />
-    <!-- Si tienes estilos específicos para San Bernardo, puedes mantener este -->
-    <!-- <link rel="stylesheet" href="estilo_mapasanbernardo.css"> -->
+    <link rel="stylesheet" href="style_mapasanbernardo.css">
 </head>
 <body>
 
     <!-- HEADER FIJO CON LOGO + MENÚ -->
     <header class="main-header">
         <div class="header-logo">
-            <img src="logo_punto_ciego.png" alt="Logo Punto Ciego">
+            <img src="foto logo.png" alt="Logo Punto Ciego">
             <span class="brand-text">Punto Ciego</span>
         </div>
 
         <nav class="main-nav">
             <a href="#inicio">Inicio</a>
+            <a href="#san-bernardo">Caso San Bernardo</a>
             <a href="#senializacion">Señalización</a>
             <a href="#territorio">Territorio</a>
             <a href="#patrones">Patrones humanos</a>
-            <a href="#san-bernardo">Caso San Bernardo</a>
             <a href="#metodologia">Metodología</a>
             <a href="#equipo">Equipo</a>
         </nav>
@@ -58,33 +57,55 @@
         <div class="cita-contenido">
             <span class="cita-comillas">“</span>
             <blockquote>
-                <strong>La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados.</strong>
+                <strong> La combinación de imprudencia individual con infraestructura defectuosa aparece de manera transversal en todos los cruces analizados.</strong>
             </blockquote>
             <span class="cita-comillas cierre">”</span>
         </div>
     </section>
-
-    <!-- SIMBOLOGÍA DE LAS VISUALIZACIONES -->
-    <section class="section light" id="simbolos">
+    
+    <!-- =========================
+         CASO SAN BERNARDO
+    ========================== -->
+    <section class="section highlight" id="san-bernardo">
         <div class="section-inner">
-            <h2>Cómo leer las visualizaciones</h2>
+            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
             <p>
-                Los gráficos de esta historia utilizan una simbología consistente con la identidad visual ferroviaria
-                definida para <strong>Punto Ciego</strong>. Cada color y forma aporta información sobre el nivel
-                de advertencia, el tipo de cruce o la gravedad de los siniestros.
+                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
+                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
+                los patrones descritos en las secciones anteriores.
             </p>
 
-            <ul class="simbolo-lista">
-                <li><span class="dot azul"></span> <strong>Azul acero:</strong> tramos y cruces con señalización formal o control centralizado.</li>
-                <li><span class="dot oxido"></span> <strong>Naranja óxido:</strong> zonas de advertencia baja o infraestructura degradada.</li>
-                <li><span class="dot amarillo"></span> <strong>Amarillo señalética:</strong> advertencias intermedias o parcialidad en la protección.</li>
-                <li><span class="dot rojo"></span> <strong>Rojo:</strong> puntos de atropellos, siniestros graves o cruces críticos.</li>
-                <li><span class="icono-linea"></span> <strong>Líneas continuas:</strong> tramos formales de vía con control definido.</li>
-                <li><span class="icono-punteado"></span> <strong>Líneas punteadas:</strong> cruces irregulares o trazados abiertos por uso cotidiano.</li>
-            </ul>
-        </div>
-    </section>
+            <div class="viz-bloque">
+                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
+                <p class="viz-desc">
+                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
+                    junto con el contexto urbano que rodea la línea férrea.
+                </p>
+                <div class="viz-contenedor">
 
+                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
+<aside class="hero-aside">
+
+  <!-- CONTENEDOR DEL MAPA -->
+  <div id="hero-map"></div>
+
+  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
+  <div id="hero-sidebar" class="hero-sidebar">
+    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
+    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+    <p class="hero-sidebar-text">
+      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
+      cómo la combinación de cruces a nivel, señalización vulnerable y
+      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
+      no logra anticipar el error humano: lo espera, y lo repite.
+    </p>
+    <p class="hero-sidebar-note">
+      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
+    </p>
+  </div>
+
+</aside>
+  </section>
     <!-- =========================
          CRÓNICA 1 – SISTEMA Y SEÑALIZACIÓN
     ========================== -->
@@ -286,10 +307,10 @@
                     revelando cómo los trayectos cotidianos se cruzan con la falta de protección en las vías.
                 </p>
                 <div class="viz-contenedor">
-                    <iframe src="gráficos/edades.html" loading="lazy"></iframe>
+                    <iframe src="graficos/edades.html" loading="lazy"></iframe>
                 </div>
                 <div class="viz-contenedor">
-                    <iframe src="gráficos/zona horaria.html" loading="lazy"></iframe>
+                    <iframe src="graficos/zona horaria.html" loading="lazy"></iframe>
                 </div>
                 <div class="viz-contenedor">
                     <iframe src="graficos\dia de la semana.html" loading="lazy"></iframe>
@@ -298,48 +319,6 @@
         </div>
     </section>
 
-    <!-- =========================
-         CASO SAN BERNARDO
-    ========================== -->
-    <section class="section highlight" id="san-bernardo">
-        <div class="section-inner">
-            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
-            <p>
-                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
-                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
-                los patrones descritos en las secciones anteriores.
-            </p>
-
-            <div class="viz-bloque">
-                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
-                <p class="viz-desc">
-                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
-                    junto con el contexto urbano que rodea la línea férrea.
-                </p>
-                <div class="viz-contenedor">
-                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
-<aside class="hero-aside">
-
-  <!-- CONTENEDOR DEL MAPA -->
-  <div id="hero-map"></div>
-
-  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
-  <div id="hero-sidebar" class="hero-sidebar">
-    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
-    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
-    <p class="hero-sidebar-text">
-      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
-      cómo la combinación de cruces a nivel, señalización vulnerable y
-      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
-      no logra anticipar el error humano: lo espera, y lo repite.
-    </p>
-    <p class="hero-sidebar-note">
-      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
-    </p>
-  </div>
-
-</aside>
-  </section>
     <!-- =========================
          METODOLOGÍA
     ========================== -->
