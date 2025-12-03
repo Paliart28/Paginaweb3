@@ -354,46 +354,6 @@ body {
 }
 
 /* =========================================
-   SIMBOLOGÍA
-========================================= */
-
-.simbolo-lista {
-    list-style: none;
-    margin-top: 18px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 12px 24px;
-    font-size: 0.98rem;
-}
-
-.dot {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border-radius: 999px;
-    margin-right: 8px;
-}
-
-.dot.azul { background: var(--azul-acero); }
-.dot.oxido { background: var(--oxido); }
-.dot.amarillo { background: var(--senial); }
-.dot.rojo { background: var(--rojo); }
-
-.icono-linea,
-.icono-punteado {
-    display: inline-block;
-    width: 36px;
-    height: 4px;
-    margin-right: 8px;
-    background: var(--azul-acero);
-}
-
-.icono-punteado {
-    background-image: linear-gradient(90deg, var(--azul-acero) 40%, transparent 40%);
-    background-size: 10px 4px;
-}
-
-/* =========================================
    CRÓNICAS
 ========================================= */
 
