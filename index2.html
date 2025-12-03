@@ -26,18 +26,19 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-<header class="train-header" style="margin:0;padding:0;">
-  <div class="header-logo" style="margin:0;padding:12px 40px;background:#111827;display:flex;align-items:center;gap:12px;">
-      <img src="foto logo.png" alt="Logo Punto Ciego" style="height:28px;">
-      <span class="brand-text" style="font-family:'Bebas Neue';font-size:28px;color:white;letter-spacing:1px;">Punto Ciego</span>
+<header class="top-header">
+  <div class="header-bar">
+      <img src="foto logo.png" class="logo-img" alt="Logo">
+      <span class="brand-text">PUNTO CIEGO</span>
   </div>
 
-  <div class="train-wrapper" style="margin:0;padding:0;background:#020617;">
-      <div class="train-track" style="width:90%;margin:auto;padding:14px 0;position:relative;">
-          
-          <div class="track-line" style="height:2px;background:#94a3b8;width:100%;position:relative;"></div>
+  <div class="train-bar">
+      <div class="train-track">
+          <div class="track-line"></div>
 
-          <div class="stations" style="display:flex;justify-content:space-between;margin-top:18px;font-size:13px;color:white;font-family:Poppins;">
+          <img src="tren.png" id="train-sprite" class="train-sprite">
+
+          <div class="stations">
               <button class="station is-active" data-step="0" data-target="inicio">Inicio</button>
               <button class="station" data-step="1" data-target="san-bernardo">San Bernardo</button>
               <button class="station" data-step="2" data-target="senializacion">Señalización</button>
@@ -46,16 +47,9 @@
               <button class="station" data-step="5" data-target="metodologia">Metodología</button>
               <button class="station" data-step="6" data-target="equipo">Equipo</button>
           </div>
-
-          <div class="train-sprite" id="train-sprite" 
-               style="position:absolute;top:-14px;left:0%;transition:all .5s ease;font-size:24px;">
-               🚆
-          </div>
       </div>
   </div>
 </header>
-  <main class="story-main">
-
     <!-- =========================
          0. INICIO (INTRO BREVE)
     ========================== -->
@@ -461,6 +455,26 @@ document.querySelectorAll(".station").forEach(btn => {
         document.getElementById(target).scrollIntoView({
             behavior: "smooth"
         });
+    });
+});
+</script>
+<script>
+document.querySelectorAll(".station").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        // Activar estación
+        document.querySelectorAll(".station").forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        // Mover tren
+        let step = parseInt(btn.dataset.step);
+        let total = 6;
+        let percent = (step / total) * 100;
+        document.getElementById("train-sprite").style.left = percent + "%";
+
+        // Scroll a sección
+        const target = btn.dataset.target;
+        document.getElementById(target).scrollIntoView({ behavior: "smooth" });
     });
 });
 </script>

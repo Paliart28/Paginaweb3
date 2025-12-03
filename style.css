@@ -570,3 +570,75 @@ body, html {
     margin: 0 !important;
     padding: 0 !important;
 }
+/* Barra superior */
+.top-header {
+    margin: 0;
+    padding: 0;
+}
+
+.header-bar {
+    background: #0b1628;
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 30px;
+}
+
+.brand-text {
+    font-family: 'Bebas Neue';
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+/* Barra del tren */
+.train-bar {
+    background: #000618;
+    padding: 0;
+}
+
+.train-track {
+    width: 90%;
+    margin: auto;
+    padding: 14px 0 30px 0;
+    position: relative;
+}
+
+.track-line {
+    height: 2px;
+    background: #94a3b8;
+    margin-top: 20px;
+}
+
+.train-sprite {
+    width: 38px;
+    position: absolute;
+    top: 8px; /* LO CENTRA SOBRE LA LÍNEA */
+    left: 0%;
+    transition: left 0.6s ease;
+}
+
+/* Estaciones */
+.stations {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    font-family: Poppins;
+    color: white;
+}
+
+.station {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.station.is-active {
+    color: #facc15;
+    font-weight: bold;
+}
