@@ -310,6 +310,52 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const contenedor = document.getElementById("mapa-san-bernardo");
+    if (!contenedor) {
+        console.error("⚠ No existe el div del mapa");
+        return;
+    }
+
+    // Crear mapa centrado en San Bernardo
+    const accidente = [-33.5933, -70.6996];
+    const mapa = L.map("mapa-san-bernardo").setView(accidente, 16);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(mapa);
+
+    // Línea del tramo
+    const tramo = [
+        [-33.5850, -70.7050],
+        [-33.5890, -70.7020],
+        accidente,
+        [-33.5980, -70.6960]
+    ];
+
+    L.polyline(tramo, {
+        color: "#1E3A68",
+        weight: 6,
+        opacity: 0.9
+    }).addTo(mapa);
+
+    // Marcador
+    const marker = L.circleMarker(accidente, {
+        radius: 12,
+        fillColor: "#D90429",
+        color: "#ffffff",
+        weight: 3,
+        fillOpacity: 1
+    }).addTo(mapa);
+
+    marker.bindPopup(`
+        <h4 style="margin:0; font-family:Poppins;">Accidente San Bernardo</h4>
+        <p style="margin-top:4px;">Colisión entre convoy de pasajeros y carga.</p>
+    `);
+});
+</script>
 </body>
 </html>
