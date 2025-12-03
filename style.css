@@ -78,7 +78,7 @@ html, body {
 }
 
 .pc-track {
-    width: 80%;
+    width: 100%;
     margin: auto;
     padding-top: 12px;
     padding-bottom: 25px;
@@ -87,7 +87,7 @@ html, body {
 
 .pc-line {
     height: 2px;
-    width: 80%;
+    width: 90%;
     background: var(--gris);
     opacity: .6;
     margin-top: 10px;
@@ -97,7 +97,7 @@ html, body {
     width: 36px;
     position: absolute;
     top: -12px;
-    left: 100%;
+    left: 0%;
     transition: left .6s ease;
 }
 
