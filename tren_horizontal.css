@@ -110,7 +110,7 @@ body {
   }
 
   .railway__track {
-    width: min(100%, 100% - 2rem);
+    width: min(100%, 80px - 2rem);
   }
 
   .railway__train {
