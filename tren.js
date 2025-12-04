@@ -1,4 +1,7 @@
-<script>
+/* ============================================================
+   CONFIGURACIÓN GENERAL
+============================================================ */
+
 const secciones = [
     "inicio",
     "san-bernardo",
@@ -9,11 +12,13 @@ const secciones = [
     "equipo"
 ];
 
-const tren = document.getElementById("train-sprite");
+const tren = document.getElementById("train-icon"); // FIX ✔
 const line = document.querySelector(".pc-line");
 const estaciones = document.querySelectorAll(".station");
 
-// MOVER TREN POR CLIC
+/* ============================================================
+   MOVER TREN POR CLIC
+============================================================ */
 estaciones.forEach(btn => {
     btn.addEventListener("click", () => {
 
@@ -33,7 +38,9 @@ estaciones.forEach(btn => {
     });
 });
 
-// MOVER TREN POR SCROLL
+/* ============================================================
+   MOVER TREN POR SCROLL
+============================================================ */
 window.addEventListener("scroll", () => {
     let indexActivo = 0;
 
@@ -50,26 +57,8 @@ window.addEventListener("scroll", () => {
 
     estaciones.forEach(b => {
         b.classList.remove("is-active");
-        if (b.dataset.step == indexActivo) {
+        if (parseInt(b.dataset.step) === indexActivo) {
             b.classList.add("is-active");
         }
     });
 });
-</script>
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".nav-item");
-
-function activarSeccionActual() {
-    let index = sections.length;
-
-    while (--index && window.scrollY + 150 < sections[index].offsetTop) {}
-
-    navItems.forEach(item => item.classList.remove("active"));
-    sections.forEach(sec => sec.classList.remove("active"));
-
-    navItems[index].classList.add("active");
-    sections[index].classList.add("active");
-}
-
-activarSeccionActual();
-window.addEventListener("scroll", activarSeccionActual);
