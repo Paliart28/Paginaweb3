@@ -1,64 +1,48 @@
-/* ============================================================
-   CONFIGURACIÓN GENERAL
-============================================================ */
-
-const secciones = [
-    "inicio",
-    "san-bernardo",
-    "senializacion",
-    "territorio",
-    "patrones",
-    "metodologia",
-    "equipo"
+const sections = [
+    "inicio","sanb","senial","territorio","patrones","metodologia","equipo"
 ];
 
-const tren = document.getElementById("train-icon"); // FIX ✔
-const line = document.querySelector(".pc-line");
-const estaciones = document.querySelectorAll(".station");
+const train = document.getElementById("train");
+const stations = document.querySelectorAll(".station");
+const rail = document.querySelector(".rail-line");
 
-/* ============================================================
-   MOVER TREN POR CLIC
-============================================================ */
-estaciones.forEach(btn => {
-    btn.addEventListener("click", () => {
-
+/* Mover tren por clic */
+stations.forEach(btn=>{
+    btn.addEventListener("click",()=>{
         const step = parseInt(btn.dataset.step);
-        const ancho = line.offsetWidth;
+        const width = rail.offsetWidth;
+        const x = (step/(sections.length-1))*width;
 
-        const x = (step / (secciones.length - 1)) * ancho;
+        train.style.transform = `translateX(${x}px)`;
 
-        tren.style.transform = `translateX(${x}px)`;
-
-        estaciones.forEach(b => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
+        stations.forEach(b=>b.classList.remove("active"));
+        btn.classList.add("active");
 
         document.getElementById(btn.dataset.target).scrollIntoView({
-            behavior: "smooth"
+            behavior:"smooth"
         });
     });
 });
 
-/* ============================================================
-   MOVER TREN POR SCROLL
-============================================================ */
-window.addEventListener("scroll", () => {
-    let indexActivo = 0;
+/* Mover tren por scroll */
+window.addEventListener("scroll",()=>{
+    let active = 0;
 
-    secciones.forEach((id, i) => {
-        const top = document.getElementById(id).offsetTop;
-        if (window.scrollY >= top - window.innerHeight * 0.3) {
-            indexActivo = i;
+    sections.forEach((id,i)=>{
+        const secTop = document.getElementById(id).offsetTop;
+        if(window.scrollY >= secTop - window.innerHeight*0.35){
+            active = i;
         }
     });
 
-    const ancho = line.offsetWidth;
-    const x = (indexActivo / (secciones.length - 1)) * ancho;
-    tren.style.transform = `translateX(${x}px)`;
+    const width = rail.offsetWidth;
+    const x = (active/(sections.length-1))*width;
+    train.style.transform = `translateX(${x}px)`;
 
-    estaciones.forEach(b => {
-        b.classList.remove("is-active");
-        if (parseInt(b.dataset.step) === indexActivo) {
-            b.classList.add("is-active");
+    stations.forEach(b=>{
+        b.classList.remove("active");
+        if(parseInt(b.dataset.step)===active){
+            b.classList.add("active");
         }
     });
 });
