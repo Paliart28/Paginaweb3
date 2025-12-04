@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style_mapasanbernardo.css">
 
     <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
@@ -59,24 +59,14 @@
 </div>
 
 <!-- =========================================================
-     HERO (PORTADA VISUAL)
+     INICIO
 ========================================================= -->
-<section id="inicio" class="section inicio">
-    <div class="hero-container">
-        <div class="hero-overlay"></div>
-
-        <div class="hero-text">
-            <h1>MÁS ALLÁ DE LA IMPRUDENCIA</h1>
-            <p class="bajada">Las fallas estructurales detrás de los atropellos ferroviarios</p>
-        </div>
-    </div>
-
-    <div class="intro-text fade">
+<section id="inicio" class="section inicio fade">
+    <div class="section-inner">
+        <h1>MÁS ALLÁ DE LA IMPRUDENCIA</h1>
         <p>
             Esta historia web explora una década de siniestros ferroviarios del tipo atropello entre Estación Central
-            y la Región de Maule. A partir de registros oficiales, mapas y visualizaciones de datos, reconstruimos
-            los puntos ciegos donde la infraestructura, la planificación territorial y la vida cotidiana se cruzan
-            con consecuencias fatales.
+            y la Región de Maule. A partir de registros oficiales, mapas y visualizaciones de datos...
         </p>
     </div>
 </section>
@@ -108,21 +98,15 @@
         <div class="section-texto">
             <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
 
-            <p>San Bernardo concentra uno de los casos emblemáticos del tramo estudiado...</p>
-
+            <p>San Bernardo concentra uno de los casos emblemáticos...</p>
             <p>El mapa permite explorar la ubicación del siniestro...</p>
-
-            <p>A partir de este accidente, se vuelve evidente la necesidad...</p>
+            <p>A partir de este accidente, se vuelve evidente...</p>
         </div>
 
         <div class="section-visual">
             <div class="tarjeta-mapa">
                 <h3>Mapa interactivo del siniestro (2024)</h3>
                 <div id="mapa-san-bernardo" class="mapa-sb"></div>
-            </div>
-
-            <div class="tarjeta-grafico">
-                <p>El jueves 20 de junio de 2024 un tren de pruebas de EFE colisionó...</p>
             </div>
         </div>
     </div>
@@ -135,7 +119,7 @@
 ========================================================= -->
 <section id="senializacion" class="section senial fade">
     <div class="section-inner">
-        <h2>Fallas estructurales: señalización que no previene atropellos</h2>
+        <h2>Señalización: fallas estructurales</h2>
 
         <article class="cronica">
             <p>Todos los años mueren personas atropelladas en las vías férreas...</p>
@@ -155,18 +139,15 @@
 ========================================================= -->
 <section id="territorio" class="section territorio fade">
     <div class="section-inner">
-        <h2>Territorios en riesgo: cruces irregulares y desigualdad</h2>
+        <h2>Territorios en riesgo</h2>
 
         <article class="cronica">
             <p>Cada año, decenas de personas mueren o resultan heridas...</p>
         </article>
 
         <h3>Santiago y los cruces que se repiten</h3>
-
-        <div class="viz-bloque">
-            <div class="flourish-embed flourish-cards" data-src="visualisation/26561140">
-                <script src="https://public.flourish.studio/resources/embed.js"></script>
-            </div>
+        <div class="flourish-embed flourish-cards" data-src="visualisation/26561140">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
         </div>
 
         <h3>Cruces ferroviarios por comuna</h3>
@@ -181,7 +162,7 @@
 ========================================================= -->
 <section id="patrones" class="section patrones fade">
     <div class="section-inner">
-        <h2>Puntos ciegos humanos: edades, horarios y vida cotidiana</h2>
+        <h2>Patrones humanos y temporales</h2>
 
         <article class="cronica">
             <p>Los distintos cruces ferroviarios analizados...</p>
@@ -191,13 +172,11 @@
             <iframe src="graficos/edades.html"></iframe>
         </div>
 
-        <p>Un segundo punto ciego aparece en la dimensión temporal...</p>
-
         <iframe src="graficos/zona horaria.html"></iframe>
         <iframe src="graficos/dia de la semana.html"></iframe>
 
         <article class="cronica">
-            <p>Estos patrones se explican en parte por el funcionamiento...</p>
+            <p>Estos patrones se explican por vulnerabilidades...</p>
         </article>
     </div>
 </section>
@@ -209,11 +188,12 @@
 ========================================================= -->
 <section id="metodologia" class="section metodo fade">
     <div class="section-inner">
-        <h2>Metodología y fuentes de datos</h2>
+        <h2>Metodología y fuentes</h2>
 
-        <p>Este proyecto cruza bases de datos de siniestros ferroviarios...</p>
+        <p>Este proyecto cruza bases de datos...</p>
 
-        <button class="btn-primario" onclick="window.open('https://github.com/josefamar/PROYECTO')">Ver repositorio</button>
+        <button class="btn-primario"
+            onclick="window.open('https://github.com/josefamar/PROYECTO')">Ver repositorio</button>
     </div>
 </section>
 
@@ -232,9 +212,6 @@
     </div>
 </section>
 
-<!-- =========================================================
-     FOOTER FINAL
-========================================================= -->
 <footer class="footer">
     <div class="riel-deco"></div>
     <p>Gracias por viajar con nosotros 🚆</p>

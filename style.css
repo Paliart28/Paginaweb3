@@ -1,88 +1,122 @@
 /* =========================================================
-   IDENTIDAD VISUAL
+   VARIABLES — PALETA FERROVIARIA
 ========================================================= */
 :root {
     --acero:#1E3A68;
     --azul-oscuro:#0A1320;
-    --oxido:#F2994A;
     --senial:#F6E05E;
+    --oxido:#F2994A;
     --verde:#2E7D5B;
-    --beige:#F9F6EF;
+    --beige:#F6F3E8;
     --gris:#E5EAF1;
-    --noche:#020617;
-    --blanco:#ffffff;
 
-    --radius:18px;
-    --shadow:0 6px 20px rgba(0,0,0,0.15);
-    --shadow-soft:0 3px 10px rgba(0,0,0,0.10);
+    --radius:16px;
+    --shadow:0 4px 16px rgba(0,0,0,0.15);
 }
 
 /* =========================================================
    RESET
 ========================================================= */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-    font-family:"Poppins",sans-serif;
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    font-family:"Poppins", sans-serif;
     background:white;
-    color:#222;
+    color:#111;
     line-height:1.7;
 }
 
 /* =========================================================
-   HERO PROFESIONAL
+   HEADER
 ========================================================= */
-#inicio{
-    padding:0;
-}
-
-.hero-container{
-    position:relative;
-    height:80vh;
-    background:url('tren_hero.jpg') center/cover no-repeat;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.hero-overlay{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.4));
-}
-
-.hero-text{
-    position:relative;
+.pc-header{
+    background:var(--acero);
     color:white;
-    text-align:center;
-    max-width:900px;
-    padding:20px;
-    animation:fadeIn 1.6s ease;
+    border-bottom:4px solid var(--azul-oscuro);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.hero-text h1{
+.pc-topbar{
+    display:flex;
+    align-items:center;
+    padding:14px 28px;
+    gap:12px;
+}
+
+.pc-logo{ height:55px; }
+
+.pc-title{
     font-family:"Bebas Neue";
-    font-size:64px;
-    line-height:1.1;
+    font-size:40px;
     letter-spacing:1px;
 }
 
-.hero-text .bajada{
-    font-size:20px;
-    margin-top:16px;
-    opacity:0.9;
+/* =========================================================
+   TREN
+========================================================= */
+.pc-trainbar{
+    background:var(--azul-oscuro);
+    padding:18px 0;
+}
+
+.pc-track{
+    width:80%;
+    margin:auto;
+    position:relative;
+}
+
+.pc-line{
+    width:100%;
+    height:6px;
+    background:#ddd;
+    border-radius:20px;
+}
+
+.train-icon{
+    position:absolute;
+    top:-22px;
+    left:0;
+    font-size:32px;
+    transition:transform .8s ease;
+}
+
+.pc-stations{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+}
+
+.station{
+    background:none;
+    border:none;
+    color:#ccc;
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.station:hover{ color:white; }
+
+.station.is-active{
+    color:var(--senial);
+    font-weight:600;
 }
 
 /* =========================================================
-   APARICIÓN SUAVE
+   LEYENDA
 ========================================================= */
-@keyframes fadeIn{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-}
-
-.fade{
-    animation:fadeIn 1.2s ease;
+.color-legend{
+    position:fixed;
+    right:20px;
+    top:110px;
+    width:220px;
+    background:white;
+    padding:14px 18px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+    z-index:900;
 }
 
 /* =========================================================
@@ -90,74 +124,58 @@ body{
 ========================================================= */
 .section{
     padding:100px 10%;
-    position:relative;
 }
 
-.section-inner{
-    max-width:1150px;
-    margin:auto;
-    animation:fadeIn 1s ease;
-}
-
-.inicio{background:var(--beige);}
-.sanbernardo{background:white;}
-.senial{background:var(--senial);}
-.territorio{background:var(--oxido);}
-.patrones{background:var(--verde);color:white;}
-.metodo{background:var(--gris);}
-.equipo{background:var(--azul-oscuro);color:white;}
+.inicio{ background:var(--beige); }
+.sanbernardo{ background:white; }
+.senial{ background:var(--senial); }
+.territorio{ background:var(--oxido); }
+.patrones{ background:var(--verde); color:white; }
+.metodo{ background:var(--gris); }
+.equipo{ background:var(--azul-oscuro); color:white; }
 
 /* =========================================================
-   DROP CAP – capitular
+   TITULOS
 ========================================================= */
-.cronica p:first-letter{
-    float:left;
-    font-size:46px;
-    font-weight:bold;
-    margin-right:10px;
-    line-height:0.8;
-    color:var(--acero);
+h1,h2,h3{
+    font-family:"Bebas Neue";
+    letter-spacing:1px;
 }
 
-/* =========================================================
-   TITULOS CON ICONOS
-========================================================= */
-h2::before{
-    content:"🛤 ";
-    font-size:32px;
-    vertical-align:middle;
-    margin-right:10px;
-}
-
-#senializacion h2::before{content:"🚦 ";}
-#territorio h2::before{content:"🛤 ";}
-#patrones h2::before{content:"🚧 ";}
-#metodologia h2::before{content:"📊 ";}
-#equipo h2::before{content:"👥 ";}
+h1{ font-size:54px; margin-bottom:20px; }
+h2{ font-size:40px; margin-bottom:14px; }
+h3{ font-size:30px; margin:12px 0; }
 
 /* =========================================================
-   CARDS EDITORIALES
+   CITA
 ========================================================= */
-.tarjeta-mapa, .tarjeta-grafico, .tarjeta-contexto{
+.cita-destacada{
     background:white;
-    padding:24px;
+    text-align:center;
+    padding:80px 0;
+}
+
+.cita-comillas{
+    font-family:"Bebas Neue";
+    font-size:120px;
+    color:var(--acero);
+    opacity:.7;
+}
+
+blockquote{
+    max-width:800px;
+    margin:auto;
+    font-size:26px;
+}
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+.tarjeta-mapa{
+    background:white;
+    padding:18px;
     border-radius:var(--radius);
     box-shadow:var(--shadow);
-    margin-bottom:30px;
-}
-
-.tarjeta-contexto{
-    border-left:10px solid var(--acero);
-}
-
-/* =========================================================
-   MAPA
-========================================================= */
-.mapa-sb{
-    width:100%;
-    height:520px;
-    border-radius:var(--radius);
-    overflow:hidden;
 }
 
 /* =========================================================
@@ -170,81 +188,65 @@ h2::before{
 }
 
 /* =========================================================
+   MAPA
+========================================================= */
+.mapa-sb{
+    width:100%;
+    height:520px;
+    border-radius:var(--radius);
+}
+
+/* =========================================================
    IFRAMES
 ========================================================= */
 iframe{
     width:100%;
-    height:430px;
+    height:420px;
     border:none;
     border-radius:var(--radius);
-    margin:24px 0;
-    box-shadow:var(--shadow-soft);
+    margin:14px 0;
+    box-shadow:var(--shadow);
 }
 
 /* =========================================================
-   CITA GRANDE
-========================================================= */
-.cita-destacada{
-    padding:90px 0;
-    background:white;
-    text-align:center;
-}
-
-.cita-comillas{
-    font-family:"Bebas Neue";
-    font-size:120px;
-    color:var(--acero);
-    opacity:0.7;
-}
-
-blockquote{
-    font-size:32px;
-    font-weight:300;
-    max-width:800px;
-    margin:auto;
-}
-
-/* =========================================================
-   RIEL DECORATIVO
+   DECORACIÓN
 ========================================================= */
 .riel-deco{
-    width:120px;
+    width:140px;
     height:6px;
     background:var(--acero);
     margin:40px auto;
-    border-radius:20px;
+    border-radius:12px;
 }
 
 /* =========================================================
-   BOTÓN
+   BOTONES
 ========================================================= */
 .btn-primario{
     background:var(--acero);
     color:white;
-    padding:14px 26px;
     border:none;
-    border-radius:12px;
-    font-size:18px;
+    padding:12px 24px;
+    border-radius:10px;
     cursor:pointer;
-    margin-top:20px;
-    box-shadow:var(--shadow-soft);
-    transition:0.3s;
 }
 
-.btn-primario:hover{
-    background:#162a52;
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:40px 0;
+    font-size:14px;
 }
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 @media(max-width:900px){
-
     .section-grid{
         grid-template-columns:1fr;
-    }
-
-    h1{
-        font-size:42px;
     }
 }

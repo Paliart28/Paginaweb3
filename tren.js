@@ -1,7 +1,3 @@
-/* =========================================================
-   CONFIGURACIÓN DEL TREN
-========================================================= */
-
 const sections = [
     "inicio",
     "san-bernardo",
@@ -16,9 +12,6 @@ const train = document.getElementById("train-icon");
 const stations = document.querySelectorAll(".station");
 const rail = document.querySelector(".pc-line");
 
-/* =========================================================
-   MOVER TREN AL HACER CLIC
-========================================================= */
 stations.forEach(btn => {
     btn.addEventListener("click", () => {
 
@@ -38,9 +31,6 @@ stations.forEach(btn => {
     });
 });
 
-/* =========================================================
-   MOVER TREN POR SCROLL
-========================================================= */
 window.addEventListener("scroll", () => {
 
     let activeIndex = 0;
@@ -57,7 +47,6 @@ window.addEventListener("scroll", () => {
 
     const width = rail.offsetWidth;
     const x = (activeIndex / (sections.length - 1)) * width;
-
     train.style.transform = `translateX(${x}px)`;
 
     stations.forEach(s => s.classList.remove("is-active"));
