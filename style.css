@@ -1,252 +1,512 @@
-/* =========================================================
-   VARIABLES — PALETA FERROVIARIA
-========================================================= */
-:root {
-    --acero:#1E3A68;
-    --azul-oscuro:#0A1320;
-    --senial:#F6E05E;
-    --oxido:#F2994A;
-    --verde:#2E7D5B;
-    --beige:#F6F3E8;
-    --gris:#E5EAF1;
+/* ============================================================
+   IDENTIDAD VISUAL — PUNTO CIEGO
+   Paleta ferroviaria, estilo serio y limpio
+============================================================ */
 
-    --radius:16px;
-    --shadow:0 4px 16px rgba(0,0,0,0.15);
+:root {
+    --acero: #1E3A68;       /* azul acero principal */
+    --azul-oscuro: #0B1628; /* header y fondo profundo */
+    --oxido: #F2994A;       /* acento editorial */
+    --senial: #F6E05E;      /* señalética / énfasis */
+    --verde: #2E7D5B;       /* sección patrones */
+    --beige: #F5F1E6;       /* fondo suave inicio */
+    --gris: #E5EAF1;        /* secciones técnicas */
+    --texto: #111827;
+    --texto-claro: #F9FAFB;
+    --radius: 16px;
+    --shadow-soft: 0 6px 18px rgba(15, 23, 42, 0.12);
 }
 
-/* =========================================================
-   RESET
-========================================================= */
-* { margin:0; padding:0; box-sizing:border-box; }
+/* ============================================================
+   RESET BÁSICO
+============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    font-family:"Poppins", sans-serif;
-    background:white;
-    color:#111;
-    line-height:1.7;
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f3f4f6;
+    color: var(--texto);
+    line-height: 1.7;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
-.pc-header{
-    background:var(--acero);
-    color:white;
-    border-bottom:4px solid var(--azul-oscuro);
-    position:sticky;
-    top:0;
-    z-index:1000;
+/* ============================================================
+   HEADER + NAV TREN
+============================================================ */
+
+.pc-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--azul-oscuro);
+    color: var(--texto-claro);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.5);
 }
 
-.pc-topbar{
-    display:flex;
-    align-items:center;
-    padding:14px 28px;
-    gap:12px;
+.pc-topbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 7%;
 }
 
-.pc-logo{ height:55px; }
-
-.pc-title{
-    font-family:"Bebas Neue";
-    font-size:40px;
-    letter-spacing:1px;
+.pc-logo {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
 }
 
-/* =========================================================
-   TREN
-========================================================= */
-.pc-trainbar{
-    background:var(--azul-oscuro);
-    padding:18px 0;
+.pc-title {
+    font-family: "Bebas Neue", system-ui;
+    font-size: 38px;
+    letter-spacing: 1.5px;
 }
 
-.pc-track{
-    width:80%;
-    margin:auto;
-    position:relative;
+/* Barra del tren */
+
+.pc-trainbar {
+    background: #020617;
+    padding: 14px 0 18px;
 }
 
-.pc-line{
-    width:100%;
-    height:6px;
-    background:#ddd;
-    border-radius:20px;
+.pc-track {
+    width: min(980px, 90%);
+    margin: 0 auto;
+    position: relative;
 }
 
-.train-icon{
-    position:absolute;
-    top:-22px;
-    left:0;
-    font-size:32px;
-    transition:transform .8s ease;
+.pc-line {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #e5e7eb, #cbd5f5);
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
 }
 
-.pc-stations{
-    display:flex;
-    justify-content:space-between;
-    margin-top:12px;
+.train-icon {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 30px;
+    transition: transform 0.6s ease;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.5));
 }
 
-.station{
-    background:none;
-    border:none;
-    color:#ccc;
-    cursor:pointer;
-    font-size:14px;
-    transition:.3s;
+.pc-stations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.station:hover{ color:white; }
-
-.station.is-active{
-    color:var(--senial);
-    font-weight:600;
+.station {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 4px;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-/* =========================================================
-   LEYENDA
-========================================================= */
-.color-legend{
-    position:fixed;
-    right:20px;
-    top:110px;
-    width:220px;
-    background:white;
-    padding:14px 18px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-    z-index:900;
+.station:hover {
+    color: #e5e7eb;
+    transform: translateY(-1px);
 }
 
-/* =========================================================
-   SECCIONES
-========================================================= */
-.section{
-    padding:100px 10%;
+.station.is-active {
+    color: var(--senial);
+    font-weight: 600;
 }
 
-.inicio{ background:var(--beige); }
-.sanbernardo{ background:white; }
-.senial{ background:var(--senial); }
-.territorio{ background:var(--oxido); }
-.patrones{ background:var(--verde); color:white; }
-.metodo{ background:var(--gris); }
-.equipo{ background:var(--azul-oscuro); color:white; }
+/* ============================================================
+   SECCIONES GENERALES
+============================================================ */
 
-/* =========================================================
-   TITULOS
-========================================================= */
-h1,h2,h3{
-    font-family:"Bebas Neue";
-    letter-spacing:1px;
+.section {
+    padding: 72px 7% 80px;
 }
 
-h1{ font-size:54px; margin-bottom:20px; }
-h2{ font-size:40px; margin-bottom:14px; }
-h3{ font-size:30px; margin:12px 0; }
-
-/* =========================================================
-   CITA
-========================================================= */
-.cita-destacada{
-    background:white;
-    text-align:center;
-    padding:80px 0;
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 36px 40px;
 }
 
-.cita-comillas{
-    font-family:"Bebas Neue";
-    font-size:120px;
-    color:var(--acero);
-    opacity:.7;
+/* Colores por sección (sin saturar) */
+
+.section.inicio {
+    background: var(--beige);
 }
 
-blockquote{
-    max-width:800px;
-    margin:auto;
-    font-size:26px;
+.section.inicio .section-inner {
+    background: transparent;
+    box-shadow: none;
+    padding-inline: 0;
 }
 
-/* =========================================================
-   TARJETAS
-========================================================= */
-.tarjeta-mapa{
-    background:white;
-    padding:18px;
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
+.section.sanbernardo {
+    background: #eef2ff;
 }
 
-/* =========================================================
-   GRID
-========================================================= */
-.section-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
+.section.sanbernardo .section-inner {
+    border-top: 4px solid var(--acero);
 }
 
-/* =========================================================
-   MAPA
-========================================================= */
-.mapa-sb{
-    width:100%;
-    height:520px;
-    border-radius:var(--radius);
+.section.senial {
+    background: #fffbeb;
 }
 
-/* =========================================================
-   IFRAMES
-========================================================= */
-iframe{
-    width:100%;
-    height:420px;
-    border:none;
-    border-radius:var(--radius);
-    margin:14px 0;
-    box-shadow:var(--shadow);
+.section.senial .section-inner {
+    border-top: 4px solid var(--senial);
 }
 
-/* =========================================================
-   DECORACIÓN
-========================================================= */
-.riel-deco{
-    width:140px;
-    height:6px;
-    background:var(--acero);
-    margin:40px auto;
-    border-radius:12px;
+.section.territorio {
+    background: #fff7ed;
 }
 
-/* =========================================================
-   BOTONES
-========================================================= */
-.btn-primario{
-    background:var(--acero);
-    color:white;
-    border:none;
-    padding:12px 24px;
-    border-radius:10px;
-    cursor:pointer;
+.section.territorio .section-inner {
+    border-top: 4px solid var(--oxido);
 }
 
-/* =========================================================
+.section.patrones {
+    background: #ecfdf3;
+}
+
+.section.patrones .section-inner {
+    border-top: 4px solid var(--verde);
+}
+
+.section.metodo {
+    background: #e5eaf1;
+}
+
+.section.metodo .section-inner {
+    border-top: 4px solid #64748b;
+}
+
+.section.equipo {
+    background: #020617;
+}
+
+.section.equipo .section-inner {
+    background: #020617;
+    color: var(--texto-claro);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+/* ============================================================
+   TIPOGRAFÍA
+============================================================ */
+
+h1,
+h2,
+h3 {
+    font-family: "Bebas Neue", system-ui;
+    letter-spacing: 0.03em;
+}
+
+h1 {
+    font-size: clamp(36px, 5vw, 52px);
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: clamp(30px, 4vw, 42px);
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 26px;
+    margin: 18px 0 10px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+/* ============================================================
+   INICIO — TEXTO + HIGHLIGHTS
+============================================================ */
+
+#inicio .section-inner {
+    margin-bottom: 26px;
+}
+
+.hero-highlights {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.highlight {
+    background: #0b1220;
+    color: var(--texto-claro);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.highlight-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+}
+
+.highlight-value {
+    display: block;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   CITA DESTACADA
+============================================================ */
+
+.cita-destacada {
+    padding: 60px 7% 70px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: var(--texto-claro);
+}
+
+.cita-contenido {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.cita-comillas {
+    font-family: "Bebas Neue";
+    font-size: 120px;
+    line-height: 0.5;
+    color: rgba(148, 163, 184, 0.7);
+}
+
+.cita-comillas.cierre {
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+blockquote {
+    font-size: 22px;
+    margin: -20px auto 0;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   SAN BERNARDO — GRID TEXTO + MAPA
+============================================================ */
+
+.section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.section-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.section-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.tarjeta-mapa,
+.tarjeta-grafico {
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 16px 18px 20px;
+}
+
+/* El contenedor del mapa (div.mapa-sb viene desde style_mapasanbernardo.css) */
+.mapa-sb {
+    width: 100%;
+    height: 420px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/* ============================================================
+   CRÓNICAS Y BLOQUES DE TEXTO
+============================================================ */
+
+.cronica {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cronica p + p {
+    margin-top: 12px;
+}
+
+/* Separadores tipo riel */
+
+.riel,
+.riel-deco {
+    width: 140px;
+    height: 8px;
+    margin: 40px auto;
+    border-radius: 20px;
+    background-image: linear-gradient(
+        90deg,
+        #020617 0,
+        #020617 25%,
+        #e5e7eb 25%,
+        #e5e7eb 50%,
+        #020617 50%,
+        #020617 75%,
+        #e5e7eb 75%,
+        #e5e7eb 100%
+    );
+    background-size: 40px 8px;
+}
+
+/* ============================================================
+   VISUALIZACIONES (IFRAMES / FLOURISH)
+============================================================ */
+
+.viz-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.viz-bloque {
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+/* Todos los iframes de gráficos */
+
+iframe {
+    width: 100%;
+    height: 430px; /* se agrandan los gráficos */
+    border: none;
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    background: #ffffff;
+}
+
+/* Flourish embebido */
+
+.flourish-embed {
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+/* ============================================================
+   METODOLOGÍA
+============================================================ */
+
+.btn-primario {
+    margin-top: 10px;
+    background: var(--acero);
+    border: none;
+    color: var(--texto-claro);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-primario:hover {
+    background: #162c5e;
+    transform: translateY(-1px);
+}
+
+/* ============================================================
+   EQUIPO
+============================================================ */
+
+.section.equipo p {
+    margin-bottom: 8px;
+}
+
+/* ============================================================
    FOOTER
-========================================================= */
-.footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:40px 0;
-    font-size:14px;
+============================================================ */
+
+.footer {
+    background: #020617;
+    color: var(--texto-claro);
+    text-align: center;
+    padding: 30px 7% 34px;
+    font-size: 14px;
 }
 
-/* =========================================================
+/* ============================================================
    RESPONSIVE
-========================================================= */
-@media(max-width:900px){
-    .section-grid{
-        grid-template-columns:1fr;
+============================================================ */
+
+@media (max-width: 960px) {
+    .pc-topbar {
+        padding-inline: 16px;
+    }
+
+    .section {
+        padding-inline: 16px;
+    }
+
+    .section-inner {
+        padding: 26px 20px;
+    }
+
+    .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero-highlights {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .pc-title {
+        font-size: 30px;
+    }
+
+    .pc-track {
+        width: 94%;
+    }
+
+    .station {
+        font-size: 11px;
+    }
+
+    blockquote {
+        font-size: 18px;
+    }
+
+    iframe {
+        height: 380px;
     }
 }
