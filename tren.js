@@ -56,3 +56,20 @@ window.addEventListener("scroll", () => {
     });
 });
 </script>
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".nav-item");
+
+function activarSeccionActual() {
+    let index = sections.length;
+
+    while (--index && window.scrollY + 150 < sections[index].offsetTop) {}
+
+    navItems.forEach(item => item.classList.remove("active"));
+    sections.forEach(sec => sec.classList.remove("active"));
+
+    navItems[index].classList.add("active");
+    sections[index].classList.add("active");
+}
+
+activarSeccionActual();
+window.addEventListener("scroll", activarSeccionActual);

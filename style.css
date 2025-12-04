@@ -416,3 +416,60 @@ iframe {
     font-size: 1.1rem;
     color: #333;
 }
+/* Colores por sección */
+.section-intro.active,
+.nav-item[data-section="intro"].active {
+    background-color: #1E3A68;
+    color: white !important;
+}
+
+.section-mapa.active,
+.nav-item[data-section="mapa"].active {
+    background-color: #F6E05E;
+    color: #111 !important;
+}
+
+.section-metodologia.active,
+.nav-item[data-section="metodologia"].active {
+    background-color: #2E7D5B;
+    color: white !important;
+}
+
+.section-analisis.active,
+.nav-item[data-section="analisis"].active {
+    background-color: #F2994A;
+    color: #111 !important;
+}
+
+.section-equipo.active,
+.nav-item[data-section="equipo"].active {
+    background-color: #F6F3E8;
+    color: #111 !important;
+}
+
+/* Evitar que se pongan negras */
+.nav-item,
+.nav-item a {
+    color: white;
+}
+
+.nav-item.active a {
+    color: inherit !important;
+}
+.color-legend {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    z-index: 9999;
+    max-width: 250px;
+    line-height: 1.2;
+}
+
+.color-legend strong {
+    color: #F6E05E;
+}
