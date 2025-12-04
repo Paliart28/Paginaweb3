@@ -1,48 +1,65 @@
+/* =========================================================
+   CONFIGURACIÓN DEL TREN
+========================================================= */
+
 const sections = [
-    "inicio","sanb","senial","territorio","patrones","metodologia","equipo"
+    "inicio",
+    "san-bernardo",
+    "senializacion",
+    "territorio",
+    "patrones",
+    "metodologia",
+    "equipo"
 ];
 
-const train = document.getElementById("train");
+const train = document.getElementById("train-icon");
 const stations = document.querySelectorAll(".station");
-const rail = document.querySelector(".rail-line");
+const rail = document.querySelector(".pc-line");
 
-/* Mover tren por clic */
-stations.forEach(btn=>{
-    btn.addEventListener("click",()=>{
+/* =========================================================
+   MOVER TREN AL HACER CLIC
+========================================================= */
+stations.forEach(btn => {
+    btn.addEventListener("click", () => {
+
         const step = parseInt(btn.dataset.step);
         const width = rail.offsetWidth;
-        const x = (step/(sections.length-1))*width;
+
+        const x = (step / (sections.length - 1)) * width;
 
         train.style.transform = `translateX(${x}px)`;
 
-        stations.forEach(b=>b.classList.remove("active"));
-        btn.classList.add("active");
+        stations.forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
 
         document.getElementById(btn.dataset.target).scrollIntoView({
-            behavior:"smooth"
+            behavior: "smooth"
         });
     });
 });
 
-/* Mover tren por scroll */
-window.addEventListener("scroll",()=>{
-    let active = 0;
+/* =========================================================
+   MOVER TREN POR SCROLL
+========================================================= */
+window.addEventListener("scroll", () => {
 
-    sections.forEach((id,i)=>{
-        const secTop = document.getElementById(id).offsetTop;
-        if(window.scrollY >= secTop - window.innerHeight*0.35){
-            active = i;
+    let activeIndex = 0;
+
+    sections.forEach((id, i) => {
+        const sec = document.getElementById(id);
+        if (!sec) return;
+
+        const top = sec.offsetTop;
+        if (window.scrollY >= top - window.innerHeight * 0.4) {
+            activeIndex = i;
         }
     });
 
     const width = rail.offsetWidth;
-    const x = (active/(sections.length-1))*width;
+    const x = (activeIndex / (sections.length - 1)) * width;
+
     train.style.transform = `translateX(${x}px)`;
 
-    stations.forEach(b=>{
-        b.classList.remove("active");
-        if(parseInt(b.dataset.step)===active){
-            b.classList.add("active");
-        }
-    });
+    stations.forEach(s => s.classList.remove("is-active"));
+    stations[activeIndex].classList.add("is-active");
 });

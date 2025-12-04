@@ -1,202 +1,250 @@
-/* ================================================
-   VARIABLES
-================================================ */
+/* =========================================================
+   IDENTIDAD VISUAL
+========================================================= */
 :root {
     --acero:#1E3A68;
+    --azul-oscuro:#0A1320;
     --oxido:#F2994A;
     --senial:#F6E05E;
     --verde:#2E7D5B;
-    --beige:#F5F1E6;
+    --beige:#F9F6EF;
     --gris:#E5EAF1;
-    --negro:#020617;
+    --noche:#020617;
+    --blanco:#ffffff;
 
-    --radius:14px;
-    --shadow:0 4px 14px rgba(0,0,0,0.12);
+    --radius:18px;
+    --shadow:0 6px 20px rgba(0,0,0,0.15);
+    --shadow-soft:0 3px 10px rgba(0,0,0,0.10);
 }
 
-/* ================================================
+/* =========================================================
    RESET
-================================================ */
+========================================================= */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
-    font-family:'Poppins',sans-serif;
+    font-family:"Poppins",sans-serif;
     background:white;
-    color:#111;
+    color:#222;
+    line-height:1.7;
 }
 
-/* ================================================
-   HEADER
-================================================ */
-.header{
-    background:var(--negro);
-    color:white;
-    position:sticky;
-    top:0;
-    z-index:900;
+/* =========================================================
+   HERO PROFESIONAL
+========================================================= */
+#inicio{
+    padding:0;
 }
-.topbar{
+
+.hero-container{
+    position:relative;
+    height:80vh;
+    background:url('tren_hero.jpg') center/cover no-repeat;
     display:flex;
+    justify-content:center;
     align-items:center;
-    padding:12px 28px;
-    gap:12px;
-    background:#0A1320;
-}
-.logo{height:42px;}
-.title{
-    font-family:'Bebas Neue';
-    font-size:34px;
-    letter-spacing:2px;
 }
 
-/* ================================================
-   TREN
-================================================ */
-.trainbar{
-    padding:18px 0;
-    background:var(--negro);
+.hero-overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.4));
 }
-.rail{
-    width:85%;
-    margin:auto;
+
+.hero-text{
+    position:relative;
+    color:white;
+    text-align:center;
+    max-width:900px;
+    padding:20px;
+    animation:fadeIn 1.6s ease;
+}
+
+.hero-text h1{
+    font-family:"Bebas Neue";
+    font-size:64px;
+    line-height:1.1;
+    letter-spacing:1px;
+}
+
+.hero-text .bajada{
+    font-size:20px;
+    margin-top:16px;
+    opacity:0.9;
+}
+
+/* =========================================================
+   APARICIÓN SUAVE
+========================================================= */
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.fade{
+    animation:fadeIn 1.2s ease;
+}
+
+/* =========================================================
+   SECCIONES
+========================================================= */
+.section{
+    padding:100px 10%;
     position:relative;
 }
-.rail-line{
-    width:100%;
-    height:4px;
-    background:#ddd;
-    border-radius:20px;
-}
-.train{
-    position:absolute;
-    top:-18px;
-    left:0;
-    font-size:28px;
-    transition:transform .7s ease;
-}
-.stations{
-    display:flex;
-    justify-content:space-between;
-    margin-top:12px;
-}
-.station{
-    background:none;
-    border:none;
-    color:#aaa;
-    font-size:15px;
-    cursor:pointer;
-}
-.station.active{
-    color:var(--senial);
-    font-weight:600;
-}
 
-/* ================================================
-   SECCIONES
-================================================ */
-.section{
-    padding:90px 10%;
-    border-bottom:1px solid #eee;
+.section-inner{
+    max-width:1150px;
+    margin:auto;
+    animation:fadeIn 1s ease;
 }
 
 .inicio{background:var(--beige);}
-.sanb{background:white;}
+.sanbernardo{background:white;}
 .senial{background:var(--senial);}
 .territorio{background:var(--oxido);}
-.patrones{background:var(--verde);}
-.metodologia{background:var(--gris);}
-.equipo{background:#0A1320;color:white;}
+.patrones{background:var(--verde);color:white;}
+.metodo{background:var(--gris);}
+.equipo{background:var(--azul-oscuro);color:white;}
 
-h2{
-    font-family:'Bebas Neue';
-    font-size:48px;
-    margin-bottom:18px;
-}
-.sub{font-size:22px;margin-bottom:20px;}
-
-.content{
-    max-width:1200px;
-    margin:auto;
-}
-
-.img-hero{
-    width:100%;
-    border-radius:var(--radius);
-    margin:20px 0;
-    box-shadow:var(--shadow);
-}
-
-.quote{
-    font-size:28px;
-    font-family:'Bebas Neue';
+/* =========================================================
+   DROP CAP – capitular
+========================================================= */
+.cronica p:first-letter{
+    float:left;
+    font-size:46px;
+    font-weight:bold;
+    margin-right:10px;
+    line-height:0.8;
     color:var(--acero);
-    margin:30px 0;
 }
 
-/* GRID */
-.two-col{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
+/* =========================================================
+   TITULOS CON ICONOS
+========================================================= */
+h2::before{
+    content:"🛤 ";
+    font-size:32px;
+    vertical-align:middle;
+    margin-right:10px;
 }
 
-/* CARDS */
-.card{
+#senializacion h2::before{content:"🚦 ";}
+#territorio h2::before{content:"🛤 ";}
+#patrones h2::before{content:"🚧 ";}
+#metodologia h2::before{content:"📊 ";}
+#equipo h2::before{content:"👥 ";}
+
+/* =========================================================
+   CARDS EDITORIALES
+========================================================= */
+.tarjeta-mapa, .tarjeta-grafico, .tarjeta-contexto{
     background:white;
-    padding:20px;
+    padding:24px;
     border-radius:var(--radius);
     box-shadow:var(--shadow);
+    margin-bottom:30px;
 }
 
-/* MAPA */
-.map{
+.tarjeta-contexto{
+    border-left:10px solid var(--acero);
+}
+
+/* =========================================================
+   MAPA
+========================================================= */
+.mapa-sb{
     width:100%;
     height:520px;
     border-radius:var(--radius);
     overflow:hidden;
 }
 
-/* IMÁGENES */
-.img-grid{
-    display:flex;
-    gap:20px;
-}
-.img-grid img{
-    width:33%;
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
+/* =========================================================
+   GRID
+========================================================= */
+.section-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
 }
 
-/* IFRAME */
+/* =========================================================
+   IFRAMES
+========================================================= */
 iframe{
     width:100%;
-    height:420px;
+    height:430px;
     border:none;
-    margin:20px 0;
     border-radius:var(--radius);
-    box-shadow:var(--shadow);
+    margin:24px 0;
+    box-shadow:var(--shadow-soft);
 }
-.wide{height:500px;}
 
-/* LEYENDA */
-.legend{
-    position:fixed;
-    top:90px;
-    right:20px;
-    background:#ffffffee;
-    padding:12px 16px;
+/* =========================================================
+   CITA GRANDE
+========================================================= */
+.cita-destacada{
+    padding:90px 0;
+    background:white;
+    text-align:center;
+}
+
+.cita-comillas{
+    font-family:"Bebas Neue";
+    font-size:120px;
+    color:var(--acero);
+    opacity:0.7;
+}
+
+blockquote{
+    font-size:32px;
+    font-weight:300;
+    max-width:800px;
+    margin:auto;
+}
+
+/* =========================================================
+   RIEL DECORATIVO
+========================================================= */
+.riel-deco{
+    width:120px;
+    height:6px;
+    background:var(--acero);
+    margin:40px auto;
+    border-radius:20px;
+}
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+.btn-primario{
+    background:var(--acero);
+    color:white;
+    padding:14px 26px;
+    border:none;
     border-radius:12px;
-    max-width:260px;
-    font-size:14px;
-    box-shadow:var(--shadow);
-    z-index:9999;
-}
-.legend h4{
-    margin-bottom:8px;
-    font-family:'Bebas Neue';
+    font-size:18px;
+    cursor:pointer;
+    margin-top:20px;
+    box-shadow:var(--shadow-soft);
+    transition:0.3s;
 }
 
-/* RESPONSIVE */
+.btn-primario:hover{
+    background:#162a52;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media(max-width:900px){
-    .two-col{grid-template-columns:1fr;}
-    h2{font-size:38px;}
+
+    .section-grid{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:42px;
+    }
 }
