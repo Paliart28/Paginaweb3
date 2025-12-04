@@ -339,3 +339,53 @@ iframe {
     overflow: hidden;
     background: #ddd; /* visible incluso si falla */
 }
+/* LEYENDA DE COLORES */
+.color-legend {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    background: #ffffffdd;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-family: Poppins;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    z-index: 9999;
+}
+
+.color-legend h4 {
+    font-family: 'Bebas Neue';
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.color-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* COLORES INDIVIDUALES */
+.dot-inicio         { background: #F5F1E6; }
+.dot-sanb           { background: #1E3A68; }
+.dot-senial         { background: #F6E05E; }
+.dot-territorio     { background: #F2994A; }
+.dot-patrones       { background: #2E7D5B; }
+.dot-metodo         { background: #E5EAF1; }
+.dot-equipo         { background: #0B1628; }
+
+/* ESTACIONES */
+.station.is-active[data-target="inicio"]        { color: #F5F1E6; }
+.station.is-active[data-target="san-bernardo"]  { color: #1E3A68; }
+.station.is-active[data-target="senializacion"] { color: #F6E05E; }
+.station.is-active[data-target="territorio"]    { color: #F2994A; }
+.station.is-active[data-target="patrones"]      { color: #2E7D5B; }
+.station.is-active[data-target="metodologia"]   { color: #E5EAF1; }
+.station.is-active[data-target="equipo"]        { color: #0B1628; }
