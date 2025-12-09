@@ -1,54 +1,57 @@
-const sections = [
-    "inicio",
-    "san-bernardo",
-    "senializacion",
-    "territorio",
-    "patrones",
-    "metodologia",
-    "equipo"
-];
+document.addEventListener("DOMContentLoaded", () => {
+    const stations = Array.from(document.querySelectorAll(".station"));
+    const train = document.getElementById("train-icon");
 
-const train = document.getElementById("train-icon");
-const stations = document.querySelectorAll(".station");
-const rail = document.querySelector(".pc-line");
+    if (!stations.length || !train) return;
 
-stations.forEach(btn => {
-    btn.addEventListener("click", () => {
+    const sectionsById = {};
+    stations.forEach(btn => {
+        const id = btn.dataset.target;
+        const sec = document.getElementById(id);
+        if (sec) sectionsById[id] = sec;
+    });
 
-        const step = parseInt(btn.dataset.step);
-        const width = rail.offsetWidth;
+    const moveTrainToStep = (stepIndex) => {
+        const total = stations.length - 1;
+        const pct = total > 0 ? (stepIndex / total) * 100 : 0;
+        train.style.left = `${pct}%`;
+    };
 
-        const x = (step / (sections.length - 1)) * width;
-
-        train.style.transform = `translateX(${x}px)`;
-
+    const setActiveStation = (btn) => {
         stations.forEach(b => b.classList.remove("is-active"));
         btn.classList.add("is-active");
+        const step = parseInt(btn.dataset.step || "0", 10);
+        moveTrainToStep(step);
+    };
 
-        document.getElementById(btn.dataset.target).scrollIntoView({
-            behavior: "smooth"
+    stations.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            const targetId = btn.dataset.target;
+            const section = document.getElementById(targetId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+            setActiveStation(btn);
         });
     });
-});
 
-window.addEventListener("scroll", () => {
+    // IntersectionObserver para actualizar el tren según scroll
+    const observer = new IntersectionObserver(
+        (entries) => {
+            const visible = entries
+                .filter(e => e.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-    let activeIndex = 0;
+            if (!visible) return;
+            const id = visible.target.id;
+            const btn = stations.find(b => b.dataset.target === id);
+            if (btn) setActiveStation(btn);
+        },
+        { threshold: 0.35 }
+    );
 
-    sections.forEach((id, i) => {
-        const sec = document.getElementById(id);
-        if (!sec) return;
+    Object.values(sectionsById).forEach(sec => observer.observe(sec));
 
-        const top = sec.offsetTop;
-        if (window.scrollY >= top - window.innerHeight * 0.4) {
-            activeIndex = i;
-        }
-    });
-
-    const width = rail.offsetWidth;
-    const x = (activeIndex / (sections.length - 1)) * width;
-    train.style.transform = `translateX(${x}px)`;
-
-    stations.forEach(s => s.classList.remove("is-active"));
-    stations[activeIndex].classList.add("is-active");
+    // Estado inicial
+    setActiveStation(stations[0]);
 });
