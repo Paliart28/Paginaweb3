@@ -504,3 +504,17 @@ iframe {
 .section.sanbernardo .tarjeta-mapa h3 {
     color: #111827; /* texto oscuro sobre fondo claro */
 }
+/* Título legible en el mapa de San Bernardo */
+.sanbernardo .tarjeta-mapa h3 {
+    color: #1E1E1E !important;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+/* Iframes uniformes y profesionales */
+iframe {
+    width: 100%;
+    min-height: 380px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.15);
+    background: #FFFFFF;
+}

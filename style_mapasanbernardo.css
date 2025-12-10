@@ -77,3 +77,9 @@
     overflow: hidden;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
+#mapa-san-bernardo {
+    height: 360px !important;
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 12px;
+}
