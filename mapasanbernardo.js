@@ -1,20 +1,16 @@
 // ===========================================================
-// MAPA SAN BERNARDO — VERSIÓN PARA NOTA 7,0
-// Contexto ampliado, marcadores múltiples y polígono analítico
+// MAPA SAN BERNARDO — VERSIÓN COMPLETA PARA NOTA 7,0
 // ===========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Coordenadas centrales del accidente
     const accidente = [-33.59333, -70.69960];
 
-    // Coordenadas relevantes del entorno real
     const cruceVehicular = [-33.59285, -70.70080];
     const crucePeatonal = [-33.59390, -70.69860];
     const zonaResidencial = [-33.59240, -70.69790];
     const estacion = [-33.59440, -70.70180];
 
-    // Área analítica (polígono)
     const areaRiesgo = [
         [-33.59200, -70.70180],
         [-33.59450, -70.70140],
@@ -22,84 +18,44 @@ document.addEventListener("DOMContentLoaded", () => {
         [-33.59210, -70.69810]
     ];
 
-    // Inicialización del mapa
     const mapa = L.map("mapa-san-bernardo", {
-        zoomControl: false
+        zoomControl: true
     }).setView(accidente, 16);
 
-    // Capa base limpia
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        minZoom: 10,
         maxZoom: 19,
         attribution: "&copy; OpenStreetMap"
     }).addTo(mapa);
 
-    // Polígono de área de riesgo
+    // Polígono área crítica
     L.polygon(areaRiesgo, {
         color: "#D90429",
         weight: 2,
         fillOpacity: 0.08
     }).addTo(mapa)
-      .bindPopup("<strong>Área crítica:</strong> zona urbana inmediata al accidente, donde convergen cruces, viviendas y tránsito cotidiano.");
+      .bindPopup("<strong>Área crítica:</strong> zona urbana inmediata al accidente.");
 
-    // Marcadores con popups detallados
+    // Marcadores
+    const addMarker = (coord, color, text) => {
+        L.circleMarker(coord, {
+            radius: 8,
+            fillColor: color,
+            color: "#FFFFFF",
+            weight: 2,
+            fillOpacity: 1
+        }).addTo(mapa)
+          .bindPopup(text);
+    };
 
-    // Accidente
-    L.circleMarker(accidente, {
-        radius: 10,
-        fillColor: "#D90429",
-        color: "#ffffff",
-        weight: 2,
-        fillOpacity: 1
-    }).addTo(mapa)
-      .bindPopup(`
+    addMarker(accidente, "#D90429", `
         <h3>Accidente San Bernardo (2024)</h3>
-        <p><strong> Colisión entre tren de pruebas EFE y convoy de carga FEPASA.</strong></p>
-        <p> El incidente expuso debilidades en la coordinación operativa, 
-        dependencias del factor humano y la estrecha convivencia entre la vía y la ciudad.</p>
-      `);
+        <p><strong>Choque entre tren de pruebas EFE y convoy FEPASA.</strong></p>
+        <p>Reveló fallas en señalización, comunicación y convivencia urbana.</p>
+    `);
 
-    // Cruce vehicular
-    L.circleMarker(cruceVehicular, {
-        radius: 7,
-        fillColor: "#F2994A",
-        color: "#ffffff",
-        weight: 2
-    }).addTo(mapa)
-      .bindPopup(`
-        <strong>Cruce vehicular:</strong> punto de tránsito denso donde la visibilidad es limitada y la señalización depende del estado del CTC.
-      `);
+    addMarker(cruceVehicular, "#F2994A", "<strong>Cruce vehicular</strong>: tránsito denso con visibilidad limitada.");
+    addMarker(crucePeatonal, "#F6E05E", "<strong>Cruce peatonal</strong>: uso diario de residentes y escolares.");
+    addMarker(zonaResidencial, "#2E7D5B", "<strong>Barrio residencial</strong>: casas a metros de la vía.");
+    addMarker(estacion, "#1E3A68", "<strong>Estación cercana</strong>: nodo de maniobras y tráfico ferroviario.");
 
-    // Cruce peatonal
-    L.circleMarker(crucePeatonal, {
-        radius: 7,
-        fillColor: "#F6E05E",
-        color: "#111",
-        weight: 2
-    }).addTo(mapa)
-      .bindPopup(`
-        <strong>Cruce peatonal:</strong> acceso usado diariamente por residentes y estudiantes. Representa el tipo de entorno donde ocurren atropellos.
-      `);
-
-    // Zona residencial
-    L.circleMarker(zonaResidencial, {
-        radius: 6,
-        fillColor: "#2E7D5B",
-        color: "#ffffff",
-        weight: 2
-    }).addTo(mapa)
-      .bindPopup(`
-        <strong>Barrio residencial:</strong> viviendas a metros de la vía. Ilustra la convivencia directa entre tren y ciudad.
-      `);
-
-    // Estación cercana
-    L.circleMarker(estacion, {
-        radius: 6,
-        fillColor: "#1E3A68",
-        color: "#ffffff",
-        weight: 2
-    }).addTo(mapa)
-      .bindPopup(`
-        <strong>Estación cercana:</strong> nodo ferroviario que concentra maniobras y circulación frecuente, aumentando la complejidad operativa del sector.
-      `);
 });
