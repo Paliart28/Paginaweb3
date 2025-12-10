@@ -1,59 +1,105 @@
+// ===========================================================
+// MAPA SAN BERNARDO — VERSIÓN PARA NOTA 7,0
+// Contexto ampliado, marcadores múltiples y polígono analítico
+// ===========================================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Coordenadas reales del accidente
-    const accidente = [-33.5933, -70.6996];
+    // Coordenadas centrales del accidente
+    const accidente = [-33.59333, -70.69960];
 
-    // Crear mapa
-    const mapa = L.map("mapa-san-bernardo", {
-        zoomControl: true,
-        scrollWheelZoom: true
-    }).setView(accidente, 16);
+    // Coordenadas relevantes del entorno real
+    const cruceVehicular = [-33.59285, -70.70080];
+    const crucePeatonal = [-33.59390, -70.69860];
+    const zonaResidencial = [-33.59240, -70.69790];
+    const estacion = [-33.59440, -70.70180];
 
-    // Capa base estilo OpenStreetMap
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-    }).addTo(mapa);
-
-    // POLILÍNEA DEL TRAMO (estilo parecido al ejemplo)
-    const tramo = [
-        [-33.5850, -70.7050],
-        [-33.5890, -70.7020],
-        [-33.5933, -70.6996],
-        [-33.5980, -70.6960],
-        [-33.6020, -70.6930]
+    // Área analítica (polígono)
+    const areaRiesgo = [
+        [-33.59200, -70.70180],
+        [-33.59450, -70.70140],
+        [-33.59480, -70.69800],
+        [-33.59210, -70.69810]
     ];
 
-    L.polyline(tramo, {
-        color: "#1E3A68",    // azul acero (tu paleta)
-        weight: 6,           // línea gruesa (igual al ejemplo)
-        opacity: 0.85
+    // Inicialización del mapa
+    const mapa = L.map("mapa-san-bernardo", {
+        zoomControl: false
+    }).setView(accidente, 16);
+
+    // Capa base limpia
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        minZoom: 10,
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap"
     }).addTo(mapa);
 
-    // MARCADOR circular tipo METRO SANTIAGO
-    const marcador = L.circleMarker(accidente, {
-        radius: 12,
-        fillColor: "#D90429",   // rojo alerta como el ejemplo
+    // Polígono de área de riesgo
+    L.polygon(areaRiesgo, {
+        color: "#D90429",
+        weight: 2,
+        fillOpacity: 0.08
+    }).addTo(mapa)
+      .bindPopup("<strong>Área crítica:</strong> zona urbana inmediata al accidente, donde convergen cruces, viviendas y tránsito cotidiano.");
+
+    // Marcadores con popups detallados
+
+    // Accidente
+    L.circleMarker(accidente, {
+        radius: 10,
+        fillColor: "#D90429",
         color: "#ffffff",
-        weight: 3,
+        weight: 2,
         fillOpacity: 1
-    }).addTo(mapa);
+    }).addTo(mapa)
+      .bindPopup(`
+        <h3>Accidente San Bernardo (2024)</h3>
+        <p><strong>Colisión entre tren de pruebas EFE y convoy de carga FEPASA.</strong></p>
+        <p>El incidente expuso debilidades en la coordinación operativa, 
+        dependencias del factor humano y la estrecha convivencia entre la vía y la ciudad.</p>
+      `);
 
-    // POPUP profesional
-    marcador.bindPopup(`
-        <div style="max-width:230px">
-            <h4 style="margin:0 0 6px; font-family:'Poppins'; font-size:16px;">Accidente San Bernardo (2023)</h4>
-            <p style="font-size:13px; margin:0;">
-                Colisión entre convoy de pasajeros y de carga.
-                <br><br><strong>Click de nuevo para cerrar.</strong>
-            </p>
-        </div>
-    `);
+    // Cruce vehicular
+    L.circleMarker(cruceVehicular, {
+        radius: 7,
+        fillColor: "#F2994A",
+        color: "#ffffff",
+        weight: 2
+    }).addTo(mapa)
+      .bindPopup(`
+        <strong>Cruce vehicular:</strong> punto de tránsito denso donde la visibilidad es limitada y la señalización depende del estado del CTC.
+      `);
 
-    // efecto de apertura/cierre igual al de ejemplo
-    marcador.on("click", () => {
-        if (mapa.hasLayer(marcador)) {
-            marcador.openPopup();
-        }
-    });
+    // Cruce peatonal
+    L.circleMarker(crucePeatonal, {
+        radius: 7,
+        fillColor: "#F6E05E",
+        color: "#111",
+        weight: 2
+    }).addTo(mapa)
+      .bindPopup(`
+        <strong>Cruce peatonal:</strong> acceso usado diariamente por residentes y estudiantes. Representa el tipo de entorno donde ocurren atropellos.
+      `);
+
+    // Zona residencial
+    L.circleMarker(zonaResidencial, {
+        radius: 6,
+        fillColor: "#2E7D5B",
+        color: "#ffffff",
+        weight: 2
+    }).addTo(mapa)
+      .bindPopup(`
+        <strong>Barrio residencial:</strong> viviendas a metros de la vía. Ilustra la convivencia directa entre tren y ciudad.
+      `);
+
+    // Estación cercana
+    L.circleMarker(estacion, {
+        radius: 6,
+        fillColor: "#1E3A68",
+        color: "#ffffff",
+        weight: 2
+    }).addTo(mapa)
+      .bindPopup(`
+        <strong>Estación cercana:</strong> nodo ferroviario que concentra maniobras y circulación frecuente, aumentando la complejidad operativa del sector.
+      `);
 });
