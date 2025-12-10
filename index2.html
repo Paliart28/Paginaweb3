@@ -6,13 +6,15 @@
     <title>Punto Ciego — Historia Web</title>
 
     <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+N...ily=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_mapasanbernardo.css">
 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 
 <body>
@@ -22,11 +24,8 @@
 ========================================================= -->
 <header class="pc-header">
     <div class="pc-topbar">
-        <div class="pc-brand">
-            <img src="foto logo.png" class="pc-logo" alt="Logo Punto Ciego">
-            <span class="pc-title">Punto Ciego</span>
-        </div>
-        <span class="pc-subtitle">Atropellos ferroviarios entre Estación Central y el Maule (2014–2024)</span>
+        <img src="foto logo.png" class="pc-logo">
+        <span class="pc-title">Punto Ciego</span>
     </div>
 
     <nav class="pc-trainbar">
@@ -35,13 +34,14 @@
             <div id="train-icon" class="train-icon">🚆</div>
 
             <div class="pc-stations">
-                <button class="station is-active" data-target="inicio">Inicio</button>
-                <button class="station" data-target="san-bernardo">San Bernardo</button>
-                <button class="station" data-target="senializacion">Señalización</button>
-                <button class="station" data-target="territorio">Territorio</button>
-                <button class="station" data-target="patrones">Patrones</button>
-                <button class="station" data-target="metodologia">Metodología</button>
-                <button class="station" data-target="equipo">Equipo</button>
+                <button class="station is-active" data-target="inicio" data-step="0">Inicio</button>
+                <button class="station" data-target="san-bernardo" data-step="1">San Bernardo</button>
+                <button class="station" data-target="senializacion" data-step="2">Señalización</button>
+                <button class="station" data-target="territorio" data-step="3">Territorio</button>
+                <button class="station" data-target="patrones" data-step="4">Patrones</button>
+                <button class="station" data-target="conclusion" data-step="5">Conclusión</button>
+                <button class="station" data-target="metodologia" data-step="6">Metodología</button>
+                <button class="station" data-target="equipo" data-step="7">Equipo</button>
             </div>
         </div>
     </nav>
@@ -52,42 +52,29 @@
 <!-- =========================================================
      INICIO
 ========================================================= -->
-<section id="inicio" class="section inicio fade">
+<section id="inicio" class="section inicio">
     <div class="section-inner">
-        <h1>Más allá de la imprudencia: el sistema que no ve a las personas</h1>
+        <h1>Más allá de la imprudencia: las grietas del sistema ferroviario</h1>
 
         <p>
-            Las ciudades suelen creer que conocen a sus trenes: los horarios, el ruido de las ruedas sobre el fierro,
-            la vibración que anuncia su paso. Lo que casi nunca se ve es el sistema que los sostiene —o los expone—:
-            una combinación de infraestructura antigua, señalización vulnerable y decisiones urbanas que definen quién
-            puede cruzar de forma segura y quién no.
+            Las ciudades suelen creer que conocen a sus trenes: los horarios, el ruido de las ruedas sobre el fierro, la vibración que anuncia su paso. Lo que muchas veces queda fuera de cuadro es el sistema que hace posible —o peligroso— ese movimiento: la combinación entre infraestructura, tecnología y decisiones urbanas que define quién puede cruzar la vía de forma segura y quién no.
         </p>
 
         <p>
-            Esta historia web recorre una década de siniestros ferroviarios del tipo atropello entre Estación Central
-            y la Región del Maule. A partir de registros oficiales, mapas y visualizaciones de datos, el relato muestra
-            que estos hechos no ocurren al azar ni son solo producto de “decisiones imprudentes” de peatones, sino de
-            una estructura que deja a ciertas personas y territorios sistemáticamente más expuestos.
+            Esta historia web recorre una década de atropellos ferroviarios entre Estación Central y la Región del Maule. A partir de registros oficiales, mapas y visualizaciones de datos, el objetivo no es solo contar cuántos siniestros hubo, sino entender por qué ocurren precisamente donde ocurren y qué revela eso de la forma en que el sistema ferroviario convive con las personas.
         </p>
 
-        <p>
-            El viaje avanza por tres capas del problema: los sistemas de control y señalización, la forma en que la vía
-            atraviesa los territorios y los patrones humanos que se repiten en edades, horarios y días de la semana.
-            Cada sección responde una pregunta distinta: <em>¿cómo se controla el paso de trenes?, ¿dónde se concentra el riesgo?,
-            ¿quiénes y cuándo se exponen más?</em>. El objetivo no es solo describir los datos, sino entender qué los hace posibles.
-        </p>
-
-        <div class="inicio-datos">
+        <div class="hero-highlights">
             <div class="highlight">
                 <span class="highlight-label">Período</span>
                 <span class="highlight-value">2014–2024</span>
             </div>
             <div class="highlight">
-                <span class="highlight-label">Tramo analizado</span>
-                <span class="highlight-value">Estación Central – Región del Maule</span>
+                <span class="highlight-label">Tramo</span>
+                <span class="highlight-value">Estación Central – Maule</span>
             </div>
             <div class="highlight">
-                <span class="highlight-label">Tipo de siniestro</span>
+                <span class="highlight-label">Tipo de casos</span>
                 <span class="highlight-value">Atropellos ferroviarios</span>
             </div>
         </div>
@@ -96,7 +83,9 @@
 
 <div class="riel-deco"></div>
 
-<!-- CITA DESTACADA -->
+<!-- =========================================================
+     CITA
+========================================================= -->
 <section class="section cita">
     <div class="section-inner">
         <div class="cita-destacada">
@@ -124,26 +113,15 @@
 
             <article class="cronica">
                 <p>
-                    En junio de 2024, una colisión entre un tren de pruebas de EFE y un convoy de carga de FEPASA
-                    en San Bernardo volvió a poner al sistema ferroviario en el centro de la conversación pública.
-                    No fue un atropello peatonal, por lo que <strong>no forma parte de la base de datos analizada</strong>,
-                    pero sí funciona como puerta de entrada: una escena puntual que expone las costuras de un sistema
-                    donde pequeños desajustes pueden derivar en siniestros de alta magnitud.
+                    En junio de 2024, una colisión entre un tren de pruebas de EFE y un convoy de carga de FEPASA en San Bernardo volvió a poner al sistema ferroviario en el centro de la conversación pública. No fue un atropello peatonal, por lo que no está incluido en las estadísticas que se usan en esta historia, pero sí funciona como puerta de entrada: una escena puntual que expone las costuras de un sistema donde pequeños desajustes pueden derivar en siniestros de alta magnitud.
                 </p>
 
                 <p>
-                    La zona del accidente combina vías férreas, cruces vehiculares, pasos peatonales y barrios residenciales.
-                    El mapa permite recorrer el entorno inmediato del siniestro y observar cómo la vía se inserta en
-                    una comuna densamente habitada. Esa relación entre tren y ciudad —con trazados antiguos que atraviesan
-                    entornos que cambiaron con el tiempo— es similar a la que se repite a lo largo del tramo Estación
-                    Central–Maule, donde sí se concentran los atropellos.
+                    La zona del accidente combina vías férreas, cruces vehiculares, pasos peatonales y barrios residenciales. El mapa permite recorrer el entorno inmediato del siniestro y observar cómo la vía se inserta en una comuna densamente habitada. Esa relación entre tren y ciudad —con trazados antiguos que atraviesan entornos que cambiaron con el tiempo— es similar a la que se repite en muchos puntos del tramo Estación Central–Maule donde sí se concentran los atropellos.
                 </p>
 
                 <p>
-                    San Bernardo se vuelve así un <strong>caso emblemático no por sus estadísticas, sino por lo que revela
-                    del sistema completo</strong>: operaciones complejas, dependencia del factor humano y convivencia
-                    estrecha entre la vía y la vida cotidiana. Lo que aquí ocurre entre trenes también ocurre, a otra escala,
-                    entre trenes y peatones.
+                    San Bernardo se vuelve así un caso emblemático no por sus números, sino por lo que revela del sistema completo: operaciones complejas, dependencia del factor humano y convivencia estrecha entre la vía y la vida cotidiana. Lo que aquí ocurre entre trenes también ocurre, a otra escala, entre trenes y peatones.
                 </p>
             </article>
         </div>
@@ -151,14 +129,12 @@
         <div class="section-visual">
             <div class="tarjeta-mapa">
                 <h3>Mapa analítico del siniestro (2024)</h3>
-                <img src="20-151152_aciv_Diseno-sin-titulo-37-1200x648.png" class="img-sb" alt="Accidente ferroviario en San Bernardo 2024">
+                <img src="accidente-sanbernardo.png" class="img-sb" alt="Accidente ferroviario en San Bernardo 2024">
 
                 <div id="mapa-san-bernardo" class="mapa-sb"></div>
 
                 <p class="nota-mapa">
-                    El mapa delimita el área crítica del siniestro: cruces vehiculares, accesos peatonales, barrios
-                    residenciales y la estación cercana. La proximidad entre la vía y la vida cotidiana ilustra el tipo
-                    de entorno donde, en otros puntos del tramo, sí se repiten los atropellos.
+                    El área crítica del siniestro concentra cruces vehiculares, accesos peatonales, viviendas y maniobras ferroviarias en un radio muy acotado. Esa tensión entre infraestructura y vida cotidiana es similar a la que se repite en otros puntos de la red, donde los atropellos dejan de ser hechos aislados y se transforman en un síntoma del sistema.
                 </p>
             </div>
         </div>
@@ -171,42 +147,19 @@
      SEÑALIZACIÓN
 ========================================================= -->
 <section id="senializacion" class="section senial">
-    <div class="section-inner">
-        <h2>1. Señalización: sistemas pensados para trenes, no para peatones</h2>
+<div class="section-inner">
+ <h2>1. Fallas estructurales: señalización que no siempre alcanza</h2> 
+<article class="cronica"> 
+<p>En la zona de estudio predominan dos sistemas de control: la Autorización de Uso de Vía (AUV) y el Control de Tráfico Centralizado (CTC). Ambos fueron diseñados para evitar colisiones entre trenes, pero no necesariamente para proteger a quienes cruzan la vía a pie.</p>
+<p>En el sistema AUV, el permiso para circular se otorga por tramos, y depende en gran medida de comunicaciones verbales y coordinación humana. El CTC, en cambio, centraliza la información en una sala de control, pero sigue pensado ante todo para la operación ferroviaria, no para la experiencia de peatones y comunidades que viven junto a la línea.</p>
+<p>A esto se suman problemas de infraestructura: fallas en las barreras, robos de cables, cortes de energía y mantenciones diferidas pueden dejar cruces sin protección o con advertencias intermitentes. Para quienes cruzan a diario, la diferencia entre un cruce que “funciona” y uno que no, puede ser la diferencia entre volver a casa o convertirse en una cifra más en las estadísticas.</p>
+</article> 
 
-        <article class="cronica">
-            <p>
-                En el tramo analizado predominan dos sistemas de control: <strong>AUV (Autorización de Uso de Vía)</strong>
-                y <strong>CTC (Control de Tráfico Centralizado)</strong>. Ambos están diseñados para evitar colisiones entre
-                trenes, pero ninguno fue concebido originalmente para proteger a quienes cruzan la vía a pie.
-            </p>
-
-            <p>
-                En <strong>AUV</strong>, el permiso de circulación se entrega por tramos a través de comunicaciones verbales
-                entre el controlador y el maquinista. La seguridad del sistema depende de que la información se emita,
-                repita y ejecute de forma correcta. En la práctica, esto implica que los imprevistos —un peatón,
-                un vehículo detenido sobre la vía— no siempre pueden anticiparse ni gestionarse a tiempo.
-            </p>
-
-            <p>
-                El <strong>CTC</strong> centraliza la información en una sala de control donde se visualiza el estado de
-                la vía en tiempo real. Aunque esto reduce ciertos márgenes de error, sigue siendo un sistema orientado
-                principalmente al flujo ferroviario, no a la experiencia de quienes viven y se mueven junto a la línea.
-            </p>
-
-            <p>
-                A esto se suma la vulnerabilidad de la infraestructura: robos de cables, fallas eléctricas, cortes de energía
-                o mantenciones insuficientes pueden dejar cruces sin barreras, sin luces o sin señales sonoras. Desde la
-                perspectiva del peatón, el cruce “funciona” o “no funciona”; pero desde los datos, lo que se repite es
-                una <strong>intermitencia peligrosa</strong> en las condiciones de advertencia.
-            </p>
-        </article>
-
-        <div class="viz-grid">
-            <iframe src="graficos/andrés_vis1.html" loading="lazy"></iframe>
-            <iframe src="graficos/andrés_vis2.html" loading="lazy"></iframe>
-        </div>
-    </div>
+<div class="viz-grid">
+    <iframe src="andrés_vis1.html" loading="lazy"></iframe>
+    <iframe src="andrés_vis2.html" loading="lazy"></iframe>
+</div>
+</div> 
 </section>
 
 <div class="riel-deco"></div>
@@ -214,42 +167,21 @@
 <!-- =========================================================
      TERRITORIO
 ========================================================= -->
-<section id="territorio" class="section territorio">
-    <div class="section-inner">
-        <h2>2. Territorios en riesgo: cruces irregulares y desigualdad</h2>
+<section id="territorio" class="section territorio"> 
+<div class="section-inner"> 
+<h2>2. Territorios en riesgo: dónde se concentran los atropellos</h2> 
+<article class="cronica"> 
+<p>Los atropellos ferroviarios no se distribuyen de manera homogénea en el territorio. Se concentran en comunas donde la vía atraviesa barrios residenciales, donde existen cruces no regulados o aperturas informales en las líneas de cierre perimetral, y donde la infraestructura no se ha adaptado al crecimiento urbano.</p>
+<p>Para comprender mejor este fenómeno se construyó un índice de peligrosidad que considera variables como la cantidad de atropellos, la presencia de cruces a nivel, la población expuesta y el tipo de entorno (residencial, industrial, mixto). Este índice permite identificar zonas donde el riesgo es estructural, y no solo consecuencia de hechos aislados.</p>
+<p>Lo que aparece una y otra vez es una geografía de la vulnerabilidad: sectores donde el tren convive con viviendas, colegios o centros comerciales sin una separación clara, y donde cruzar la vía termina siendo parte de la rutina diaria.</p>
+</article> 
 
-        <article class="cronica">
-            <p>
-                Los atropellos ferroviarios no se distribuyen de manera homogénea. Se concentran en comunas donde la vía
-                atraviesa barrios residenciales, donde los cruces formales son escasos y donde los pasos irregulares se
-                transforman en la única forma de conectar un lado y otro de la línea.
-            </p>
-
-            <p>
-                Aunque existen cruces habilitados a nivel, muchos de ellos no cuentan con barreras automáticas,
-                iluminación suficiente o advertencias sonoras. Paralelamente, la comunidad abre aperturas en cierres
-                perimetrales y genera accesos improvisados que se usan a diario. La infraestructura disponible no siempre
-                responde a la manera real en que se habita el territorio.
-            </p>
-
-            <p>
-                Para entender esta dimensión se construyó un <strong>Índice de Peligrosidad (IP)</strong> que relaciona
-                la frecuencia de atropellos con variables como población, cantidad de cruces y características del entorno
-                urbano. El IP no solo muestra dónde han ocurrido siniestros, sino dónde las condiciones estructurales
-                hacen más probable que vuelvan a ocurrir.
-            </p>
-        </article>
-
-        <div class="tarjeta-mapa">
-            <h3>Índice de Peligrosidad por comuna</h3>
-            <iframe src="graficos/mariñanco_grafico2.html" loading="lazy"></iframe>
-            <p class="nota-mapa">
-                Las comunas con mayor IP combinan mayor cantidad de atropellos, vías insertas en zonas residenciales,
-                cruces irregulares y menor presencia de barreras físicas. El riesgo no es solo un evento pasado, sino
-                una probabilidad que se proyecta en el tiempo.
-            </p>
-        </div>
-    </div>
+<div class="tarjeta-mapa"> 
+<h3>Índice de peligrosidad por comuna</h3> 
+<iframe src="mariñanco_grafico2.html" loading="lazy"></iframe>
+<p class="nota-mapa">Las comunas con mayor índice combinan más atropellos, menores niveles de protección física y dinámicas urbanas que obligan a cruzar la vía para acceder a servicios básicos. No son puntos aislados, sino zonas completas donde el riesgo está incorporado a la vida diaria.</p>
+</div> 
+</div> 
 </section>
 
 <div class="riel-deco"></div>
@@ -257,99 +189,63 @@
 <!-- =========================================================
      PATRONES HUMANOS
 ========================================================= -->
-<section id="patrones" class="section patrones">
-    <div class="section-inner">
-        <h2>3. Patrones humanos: quiénes y cuándo se exponen más</h2>
+<section id="patrones" class="section patrones"> 
+<div class="section-inner"> 
+<h2>3. Puntos ciegos humanos: edades, horarios y vida cotidiana</h2> 
+<article class="cronica"> 
+<p>La base de datos de atropellos muestra patrones claros en las personas afectadas y en los momentos del día en que ocurren los siniestros. No se trata solo de “imprudencia”, sino de una exposición cotidiana que recae con más fuerza en ciertos grupos.</p>
+<p>Una parte importante de las víctimas corresponde a adultos en edades laborales, que cruzan la vía para ir o volver del trabajo, llevar niños al colegio o hacer trámites. También se observan casos en personas mayores y adolescentes, lo que sugiere que el riesgo se reparte entre quienes usan el espacio de manera distinta, pero comparten la necesidad de atravesar la vía.</p>
+<p>En términos de horarios, los atropellos se concentran en franjas donde coinciden mayor flujo de personas y menor visibilidad, como las tardes y noches. Los fines de semana, en tanto, aparecen casos asociados a actividades recreativas o viajes de larga distancia.</p>
+<p>Estos patrones, lejos de apuntar solo a decisiones individuales, ponen en evidencia que la infraestructura disponible no siempre acompaña las formas reales de habitar la ciudad. Allí donde la señalización no es clara, está dañada o no existe, se forman rutinas peligrosas que terminan en comportamientos esperables en contextos de alta circulación.</p> 
+</article> 
 
-        <article class="cronica">
-            <p>
-                Los datos muestran que los atropellos ferroviarios se concentran en personas adultas, especialmente entre
-                los 30 y 59 años. No se trata solo de “descuido”, sino de una exposición cotidiana: personas que cruzan
-                la vía para ir al trabajo, al colegio, a compras o a trámites, en entornos donde la infraestructura
-                segura no siempre está disponible.
-            </p>
+<div class="tarjeta-mapa"> 
+<h3>Edad de las víctimas</h3> 
+<iframe src="edades.html" loading="lazy"></iframe>
+</div> 
 
-            <p>
-                También se observan concentraciones horarias en las tardes y noches, cuando disminuye la visibilidad
-                y aumenta el flujo de personas que vuelve a sus casas. Los fines de semana y ciertos días laborales
-                muestran patrones propios, asociados al uso recreativo o a viajes interurbanos.
-            </p>
-
-            <p>
-                Mirados en conjunto, estos patrones refuerzan la idea de que el riesgo se instala en la rutina.
-                No es el peatón aislado que “decide cruzar mal”: es la persona que, para llegar a destino, debe tomar
-                decisiones en un entorno que no le ofrece alternativas seguras.
-            </p>
-        </article>
-
-        <div class="tarjeta-mapa">
-            <h3>Edad de las víctimas</h3>
-            <iframe src="graficos/edades.html" loading="lazy"></iframe>
-        </div>
-
-        <div class="viz-grid">
-            <div class="tarjeta-mapa">
-                <h3>Horario de ocurrencia</h3>
-                <iframe src="graficos/zona%20horaria.html" loading="lazy"></iframe>
-            </div>
-            <div class="tarjeta-mapa">
-                <h3>Día de la semana</h3>
-                <iframe src="graficos/dia%20de%20la%20semana.html" loading="lazy"></iframe>
-            </div>
-        </div>
+<div class="viz-grid">
+    <div class="tarjeta-mapa">
+        <h3>Horario de ocurrencia</h3>
+        <iframe src="zona horaria.html" loading="lazy"></iframe>
     </div>
+    <div class="tarjeta-mapa">
+        <h3>Día de la semana</h3>
+        <iframe src="dia de la semana.html" loading="lazy"></iframe>
+    </div>
+</div>
+</div> 
 </section>
 
 <div class="riel-deco"></div>
 
 <!-- =========================================================
-     METODOLOGÍA + CONCLUSIÓN
+     CONCLUSIÓN
 ========================================================= -->
-<section id="metodologia" class="section metodo">
-    <div class="section-inner">
-        <h2>Metodología y lectura de esta historia</h2>
+<section id="conclusion" class="section metodo">
+<div class="section-inner">
+<h2>Conclusión: cuando el sistema no ve a las personas</h2>
+<p>Los atropellos ferroviarios del tramo Estación Central–Maule no son solo el resultado de decisiones individuales. Ocurren en lugares donde la protección es insuficiente, la planificación urbana obliga a cruzar la vía y los sistemas de control fueron pensados principalmente para ordenar trenes, no para resguardar a quienes viven al borde de la línea.</p>
+<p>El caso de San Bernardo expone de forma extrema lo que los datos muestran de manera silenciosa: cuando la infraestructura es frágil, la señalización es intermitente y la ciudad crece sin integrar plenamente la vía férrea, el riesgo se vuelve cotidiano. Las visualizaciones sobre territorios, edades, horarios y días de la semana no describen azar, sino patrones que se repiten en contextos similares.</p>
+<p>Mirar estos puntos ciegos como un problema estructural permite desplazar el foco desde la culpa individual hacia la responsabilidad compartida: autoridades, empresas ferroviarias, municipios y comunidades. Habilitar cruces más seguros, reforzar la mantención de la señalización, planificar mejor los entornos de la vía y escuchar a quienes conviven a diario con el tren son pasos necesarios para que estos recorridos dejen de inscribirse en las estadísticas y vuelvan a ser parte de una ciudad que cuida a las personas.</p>
+</div>
+</section>
 
-        <p>
-            Esta historia se construyó a partir del cruce de bases de datos oficiales sobre siniestros ferroviarios
-            (CONASET y Empresa de Ferrocarriles del Estado), información de cruces a nivel, revisión normativa
-            y observación en terreno en tramos seleccionados entre Estación Central y la Región del Maule.
-        </p>
+<div class="riel-deco"></div>
 
-        <p>
-            Los registros fueron limpiados y estandarizados para unificar criterios de clasificación de siniestros,
-            tipología de cruce y ubicación georreferenciada. A partir de estos datos se calculó un
-            <strong>Índice de Peligrosidad (IP)</strong> que relaciona la frecuencia de atropellos con variables como población,
-            cantidad de cruces y características del entorno urbano. El IP permitió identificar comunas donde el riesgo
-            es estructuralmente mayor.
-        </p>
-
-        <p>
-            Las visualizaciones se realizaron con herramientas de periodismo de datos, privilegiando gráficos
-            simples y legibles. Cada visualización responde a una pregunta concreta: <em>¿dónde se concentran los atropellos?,
-            ¿cómo se relacionan con los sistemas de señalización?, ¿qué papel juegan los territorios?, ¿quiénes y cuándo
-            se exponen más a la vía?</em>.
-        </p>
-
-        <h3>Conclusión: el riesgo no es un accidente, es una estructura</h3>
-
-        <p>
-            Los atropellos ferroviarios del tramo Estación Central–Maule no son una suma de “errores humanos”.
-            Ocurren en lugares donde la protección es insuficiente, la planificación urbana obliga a cruzar la vía
-            y los sistemas de control no alcanzan a resguardar a quienes caminan, pedalean o se desplazan cerca del tren.
-        </p>
-
-        <p>
-            Reconocer estas capas —señalización, territorio y patrones humanos— permite entender que el problema es estructural.
-            La seguridad ferroviaria no puede descansar solo en campañas de responsabilidad individual: requiere inversión
-            en cruces seguros, mejor mantención de los sistemas, revisión de la normativa y una planificación urbana
-            que incorpore la vía férrea como parte de la ciudad y no como una frontera que las personas deben sortear
-            por su cuenta.
-        </p>
-
-        <button class="btn-primario" onclick="window.open('https://github.com/josefamar/PROYECTO', '_blank')">
-            Ver repositorio
-        </button>
-    </div>
+<!-- =========================================================
+     METODOLOGÍA
+========================================================= -->
+<section id="metodologia" class="section metodo"> 
+<div class="section-inner">
+ <h2>Metodología y fuentes de datos</h2> 
+<p>Este proyecto se construyó a partir de bases de datos oficiales de siniestros ferroviarios, principalmente de la Comisión Nacional de Seguridad de Tránsito (CONASET) y de la Empresa de Ferrocarriles del Estado (EFE). Se filtraron los casos correspondientes a atropellos en el tramo comprendido entre Estación Central y la Región del Maule, entre 2014 y 2024.</p>
+<p>Los registros fueron limpiados y estandarizados para unificar criterios de clasificación (tipo de siniestro, ubicación, fecha, hora) y poder cruzarlos con información territorial, como densidad poblacional, tipo de entorno urbano y presencia de cruces a nivel. A partir de este procesamiento se construyeron indicadores como el índice de peligrosidad por comuna y las distribuciones de edad, horario y día de la semana.</p>
+<p>Las visualizaciones se elaboraron con herramientas de periodismo de datos, buscando un equilibrio entre claridad y profundidad. Cada gráfico responde a una pregunta periodística concreta: dónde se concentran los atropellos, qué relación tienen con la infraestructura y cómo se vinculan con los patrones humanos de uso del territorio.</p>
+<button class="btn-primario" onclick="window.open('https://github.com/josefamar/PROYECTO', '_blank')">
+ Ver repositorio
+</button> 
+</div> 
 </section>
 
 <div class="riel-deco"></div>
@@ -368,9 +264,16 @@
 
 </main>
 
-<!-- Scripts -->
+<footer class="footer">
+    <div class="riel-deco"></div>
+    <p>Gracias por viajar con nosotros 🚆</p>
+</footer>
+
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
+
 <script src="tren.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="mapasanbernardo.js"></script>
 
 </body>

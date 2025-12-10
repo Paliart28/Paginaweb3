@@ -3,7 +3,10 @@
 // ===========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-    const accidente = [-33.59333, -70.69960];
+    const container = document.getElementById("mapa-san-bernardo");
+    if (!container || typeof L === "undefined") return;
+
+    const accidente = [-33.5933, -70.6996];
 
     const cruceVehicular = [-33.59285, -70.70080];
     const crucePeatonal = [-33.59390, -70.69860];
@@ -32,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         weight: 2,
         fillOpacity: 0.08
     }).addTo(mapa)
-      .bindPopup("Área crítica: concentración de cruces, viviendas y maniobras ferroviarias.");
+      .bindPopup("Área crítica: convergencia de cruces, viviendas y maniobras ferroviarias.");
 
     const add = (coord, color, html) => {
         L.circleMarker(coord, {
@@ -47,17 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
     add(
         accidente,
         "#D90429",
-        "<h3>Accidente San Bernardo (2024)</h3><p>Choque entre tren de pruebas y convoy de carga. Expuso fallas operativas y de coordinación.</p>"
+        "<h3>Accidente San Bernardo (2024)</h3><p>Colisión entre tren de pruebas y convoy de carga. Expuso fallas operativas y de coordinación en un entorno densamente habitado.</p>"
     );
     add(
         cruceVehicular,
         "#F2994A",
-        "<strong>Cruce vehicular:</strong> alto flujo y visibilidad limitada."
+        "<strong>Cruce vehicular:</strong> alto flujo y visibilidad limitada en horas punta."
     );
     add(
         crucePeatonal,
         "#F6E05E",
-        "<strong>Cruce peatonal:</strong> uso cotidiano de residentes y escolares."
+        "<strong>Cruce peatonal:</strong> uso cotidiano de residentes y escolares del sector."
     );
     add(
         zonaResidencial,
