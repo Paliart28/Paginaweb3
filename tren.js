@@ -3,7 +3,7 @@
 // ================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     const stations = Array.from(document.querySelectorAll(".station"));
     const train = document.getElementById("train-icon");
 
@@ -23,13 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     stations.forEach(btn => {
         btn.addEventListener("click", () => {
-            document.getElementById(btn.dataset.target)
-                .scrollIntoView({ behavior: "smooth" });
+            const target = document.getElementById(btn.dataset.target);
+            if (target) {
+                target.scrollIntoView({ behavior:"smooth" });
+            }
             setActive(btn);
         });
     });
 
-    // SCROLL SYNC
     const observer = new IntersectionObserver(
         (entries) => {
             const visible = entries
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btn = stations.find(b => b.dataset.target === visible.target.id);
             if (btn) setActive(btn);
         },
-        { threshold: 0.35 }
+        { threshold:0.35 }
     );
 
     stations.forEach(btn => {

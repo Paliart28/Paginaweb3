@@ -1,257 +1,263 @@
 /* ===========================================================
-   PUNTO CIEGO — STYLE.CSS FINAL (ÚNICO Y OFICIAL)
-   Paleta cromática por importancia de secciones.
-   Tipografías: Bebas Neue (títulos) / Poppins (texto)
-   ESTE ARCHIVO REEMPLAZA A TODOS LOS CSS ANTERIORES.
+   PUNTO CIEGO — STYLE.CSS FINAL
+   Estructura analítica + colores por importancia
 =========================================================== */
 
-/* RESET */
+/* RESET / BASE */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    background: #020617;
-    color: #111827;
+    font-family:"Poppins",sans-serif;
+    background:#020617;
+    color:#111827;
 }
 
 /* PALETA */
 :root {
-    --acero: #1E3A68;
-    --senial: #F6E05E;
-    --senial-dark: #C2A900;
-    --oxido: #F2994A;
-    --oxido-dark: #D87E2F;
-    --verde: #2E7D5B;
-    --verde-soft: #E1F1E8;
-    --beige: #F6F3E8;
-    --negro: #020617;
-    --gris-claro: #E5EAF1;
+    --acero:#1E3A68;
+    --senial:#F6E05E;
+    --oxido:#F2994A;
+    --verde:#2E7D5B;
+    --beige:#F6F3E8;
+    --negro:#020617;
+    --gris-claro:#E5EAF1;
 }
 
 /* HEADER + TREN */
 .pc-header {
-    position: sticky;
-    top: 0;
-    background: rgba(2, 6, 23, 0.9);
-    backdrop-filter: blur(12px);
-    z-index: 6000;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(2,6,23,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(148,163,184,0.5);
+    color:#F9FAFB;
 }
 
 .pc-topbar {
-    padding: 12px 16px;
-    text-align: center;
-    color: white;
+    padding:10px 16px;
+    text-align:center;
 }
 
 .brand {
-    font-family: "Bebas Neue";
-    font-size: 32px;
-    letter-spacing: 2px;
+    font-family:"Bebas Neue",sans-serif;
+    letter-spacing:2px;
+    font-size:32px;
 }
 
-/* Barra del tren */
+/* Barra tren */
 .pc-trainbar {
-    padding: 14px 0 22px;
+    padding:8px 0 16px;
 }
 
 .pc-track {
-    width: 92%;
-    max-width: 1080px;
-    margin: 0 auto;
-    position: relative;
+    width:92%;
+    max-width:1080px;
+    margin:0 auto;
+    position:relative;
 }
 
 .pc-line {
-    height: 4px;
-    margin-top: 16px;
-    background: linear-gradient(to right, #4B5563, #9CA3AF);
-    border-radius: 999px;
+    height:4px;
+    margin-top:12px;
+    background:linear-gradient(to right,#4B5563,#9CA3AF);
+    border-radius:999px;
 }
 
 .train-icon {
-    position: absolute;
-    top: 6px;
-    left: 0%;
-    transform: translateX(-50%);
-    font-size: 22px;
-    transition: left 0.4s ease;
+    position:absolute;
+    top:2px;
+    left:0%;
+    transform:translateX(-50%);
+    font-size:22px;
+    transition:left .4s ease;
 }
 
 .pc-stations {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 6px;
+    display:flex;
+    justify-content:space-between;
+    margin-top:8px;
 }
 
 .station {
-    background: transparent;
-    border: none;
-    color: #CBD5E1;
-    font-size: 12px;
-    cursor: pointer;
-    padding-top: 10px;
-    position: relative;
+    background:transparent;
+    border:none;
+    color:#CBD5E1;
+    font-size:11px;
+    cursor:pointer;
+    padding-top:12px;
+    position:relative;
 }
 
 .station::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    border: 2px solid #9CA3AF;
-    background: #020617;
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    border:2px solid #9CA3AF;
+    background:#020617;
 }
 
 .station.is-active {
-    color: var(--senial);
-    font-weight: 600;
+    color:var(--senial);
+    font-weight:600;
 }
 
 .station.is-active::before {
-    border-color: var(--senial);
-    background: var(--senial);
+    border-color:var(--senial);
+    background:var(--senial);
 }
 
 /* SECCIONES GENERALES */
+
 .section {
-    padding: 80px 18px;
+    padding:80px 18px;
 }
 
 .section-inner {
-    max-width: 1080px;
-    margin: 0 auto;
+    max-width:1080px;
+    margin:0 auto;
 }
 
 .section h2 {
-    font-family: "Bebas Neue";
-    letter-spacing: 1px;
-    font-size: 36px;
-    margin-bottom: 18px;
+    font-family:"Bebas Neue",sans-serif;
+    letter-spacing:1px;
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.section p {
+    line-height:1.7;
+    margin-bottom:14px;
 }
 
 /* COLORES POR IMPORTANCIA */
+
 .inicio {
-    background: var(--beige);
+    background:var(--beige);
 }
 
 .sanbernardo {
-    background: var(--negro);
-    color: white;
+    background:var(--negro);
+    color:#F9FAFB;
 }
 
 .senial {
-    background: #FFF9C9;
+    background:#FFF7C2; /* amarillo suave */
 }
 
 .territorio {
-    background: var(--oxido-soft);
+    background:#FDE3C4; /* óxido suave */
 }
 
 .patrones {
-    background: var(--verde-soft);
+    background:#E1F1E8; /* verde suave */
 }
 
 .metodo {
-    background: var(--beige);
+    background:var(--beige);
 }
 
 .equipo {
-    background: var(--negro);
-    color: #F1F5F9;
+    background:#020617;
+    color:#E5E7EB;
 }
 
 /* RIEL SEPARADOR */
+
 .riel {
-    height: 6px;
-    background: linear-gradient(to right, #475569, #94A3B8);
-    opacity: .35;
+    height:6px;
+    background:linear-gradient(to right,#475569,#94A3B8);
+    opacity:.45;
 }
 
-/* TARJETAS */
-.tarjeta-mapa,
-iframe {
-    background: white;
-    border-radius: 14px;
-    padding: 14px;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+/* TARJETAS / VISUALIZACIONES */
+
+.tarjeta-mapa {
+    background:#FFFFFF;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:20px;
+    box-shadow:0 8px 22px rgba(15,23,42,0.3);
+}
+
+.tarjeta-mapa h3 {
+    font-family:"Bebas Neue",sans-serif;
+    font-size:22px;
+    margin-bottom:10px;
 }
 
 iframe {
-    width: 100%;
-    height: 360px;
-    border: none;
+    width:100%;
+    height:360px;
+    border:none;
+    border-radius:12px;
+    background:#F9FAFB;
+    box-shadow:0 6px 20px rgba(15,23,42,0.25);
 }
 
 /* IMAGEN ACCIDENTE */
+
 .img-sb {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 12px;
-}
-
-/* BOTÓN ROJO */
-.btn-rojo {
-    background: #D90429;
-    color: white;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-.btn-rojo:hover {
-    background: #A10320;
-}
-
-/* TEXTO DESPLEGABLE ACCIDENTE */
-.sb-oculto {
-    display: none;
-    background: #ffffff;
-    padding: 16px;
-    border-radius: 10px;
-    line-height: 1.65;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    width:100%;
+    border-radius:12px;
+    margin-bottom:12px;
+    display:block;
 }
 
 /* MAPA SAN BERNARDO */
+
 .mapa-sb {
-    width: 100%;
-    height: 380px;
-    border-radius: 14px;
-    overflow: hidden;
+    width:100%;
+    height:380px;
+    border-radius:14px;
+    overflow:hidden;
 }
 
-/* GRID PARA VISUALIZACIONES */
+/* GRID DE VIZ */
+
 .viz-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
 }
 
 /* RESPONSIVE */
-@media (max-width: 860px) {
-    .viz-grid {
-        grid-template-columns: 1fr;
-    }
 
+@media (max-width:880px){
+    .viz-grid {
+        grid-template-columns:1fr;
+    }
     iframe {
-        height: 300px;
+        height:300px;
     }
 }
 
+/* METODO / BOTÓN REPOSITORIO */
+
+.metodo a.repo-link {
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#111827;
+    color:#F9FAFB;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+}
+.metodo a.repo-link:hover {
+    background:#020617;
+}

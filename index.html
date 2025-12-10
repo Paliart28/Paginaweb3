@@ -8,50 +8,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-
-    body{
-        font-family:"Poppins",sans-serif;
-        background:#020617;
-        color:white;
-        height:100vh;
+    * {
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
     }
 
-    .hero{
-        width:100%;
+    body {
+        font-family:"Poppins",sans-serif;
+        background:#020617;
+        color:#F9FAFB;
         height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+    }
+
+    .hero {
+        flex:1;
+        width:100%;
         background:url("portada_tren.png") center/cover no-repeat;
         display:flex;
         justify-content:center;
         align-items:center;
-        flex-direction:column;
-        backdrop-filter:blur(2px);
     }
 
-    .btn-start{
+    .btn-start {
         padding:15px 35px;
         border-radius:999px;
         background:#F6E05E;
         border:none;
-        color:#111;
+        color:#111827;
         font-weight:700;
         cursor:pointer;
         font-size:18px;
         box-shadow:0 8px 20px rgba(0,0,0,0.4);
         transition:0.2s;
     }
-    .btn-start:hover{
+
+    .btn-start:hover {
         transform:scale(1.06);
     }
 
+    footer {
+        text-align:center;
+        font-size:12px;
+        padding:10px 0 16px;
+        color:#9CA3AF;
+    }
+
+    footer a {
+        color:#F6E05E;
+        text-decoration:none;
+        font-weight:600;
+    }
 </style>
 </head>
 
 <body>
-<div class="hero">
-    <button class="btn-start" onclick="window.location.href='index2.html'">
-        Iniciar viaje
-    </button>
-</div>
+    <div class="hero">
+        <button class="btn-start" onclick="window.location.href='index2.html'">
+            Iniciar viaje
+        </button>
+    </div>
+
+    <footer>
+        Proyecto disponible en 
+        <a href="https://github.com/josefamar/PROYECTO" target="_blank" rel="noopener noreferrer">
+            github.com/josefamar/PROYECTO
+        </a>
+    </footer>
 </body>
 </html>

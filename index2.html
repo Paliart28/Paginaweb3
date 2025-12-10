@@ -6,7 +6,6 @@
 <title>Punto Ciego – Historia Web</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
 
 <!-- Leaflet -->
@@ -28,13 +27,14 @@
             <div id="train-icon" class="train-icon">🚆</div>
 
             <div class="pc-stations">
-                <button class="station is-active" data-target="inicio" data-step="0">Inicio</button>
+                <button class="station is-active" data-target="problema" data-step="0">Problema</button>
                 <button class="station" data-target="sanbernardo" data-step="1">San Bernardo</button>
                 <button class="station" data-target="senial" data-step="2">Señalización</button>
                 <button class="station" data-target="territorio" data-step="3">Territorio</button>
                 <button class="station" data-target="patrones" data-step="4">Patrones</button>
-                <button class="station" data-target="metodo" data-step="5">Metodología</button>
-                <button class="station" data-target="equipo" data-step="6">Equipo</button>
+                <button class="station" data-target="sintesis" data-step="5">Síntesis</button>
+                <button class="station" data-target="metodo" data-step="6">Metodología</button>
+                <button class="station" data-target="equipo" data-step="7">Equipo</button>
             </div>
         </div>
     </nav>
@@ -42,53 +42,50 @@
 
 <main>
 
-<!-- ====================== INICIO =========================== -->
-
-<section id="inicio" class="section inicio">
+<!-- 1. PROBLEMA ESTRUCTURAL -->
+<section id="problema" class="section inicio">
     <div class="section-inner">
-        <h2>Más allá de la imprudencia</h2>
+        <h2>Más allá de la imprudencia: un problema estructural</h2>
+
         <p>
-            Esta historia web explora una década de atropellos ferroviarios entre Estación Central y Maule.
-            El objetivo es mostrar que estos siniestros no ocurren por decisiones individuales aisladas,
-            sino porque la infraestructura, la señalización y la forma en que la ciudad crece alrededor
-            de la vía férrea generan condiciones estructurales de riesgo.
+            Entre 2014 y 2024, los atropellos ferroviarios entre Estación Central y Maule se repiten en patrones
+            demasiado consistentes como para explicarlos solo por conductas individuales. La infraestructura, la
+            señalización intermitente y la forma en que los barrios crecen alrededor de la vía férrea generan
+            condiciones estructurales que permiten que estos siniestros ocurran.
+        </p>
+
+        <p>
+            Esta historia parte desde un choque que no corresponde a un atropello, pero que revela cómo funciona —
+            y cómo falla— el sistema ferroviario en zonas urbanas. Desde ahí, avanzamos hacia los elementos
+            estructurales que permiten entender la recurrencia de los atropellos.
         </p>
     </div>
 </section>
 
-<!-- SEPARADOR -->
 <div class="riel"></div>
 
-<!-- ====================== SAN BERNARDO =========================== -->
-
+<!-- 2. SAN BERNARDO -->
 <section id="sanbernardo" class="section sanbernardo">
     <div class="section-inner">
-
         <h2>San Bernardo: el accidente que expuso las costuras del sistema ferroviario</h2>
 
-        <!-- Imagen del accidente real -->
         <div class="tarjeta-mapa">
             <img src="accidente-sanbernardo.png" class="img-sb" alt="Accidente ferroviario en San Bernardo 2024">
 
             <p>
-                El choque del 20 de junio de 2024 entre un tren de pruebas de EFE y un convoy de carga FEPASA no forma parte de la base de datos de atropellos,
-                pero sí revela cómo funciona —y cómo falla— el sistema ferroviario en zonas urbanas. Aunque no hubo peatones involucrados,
-                el siniestro expuso fallas estructurales que también están presentes en los escenarios donde sí se repiten los atropellos.
+                El choque del 20 de junio de 2024 entre un tren de pruebas de EFE y un convoy de carga de FEPASA no forma parte de la base de datos de atropellos,
+                pero sí revela el funcionamiento real del sistema ferroviario. Las fallas observadas —coordinación operativa,
+                comunicación, señalización intermitente y convivencia con zonas residenciales densas— son las mismas que condicionan
+                los atropellos peatonales en el tramo.
             </p>
 
             <p>
-                Entre ellas: comunicación débil entre unidades, señalización intermitente, infraestructura envejecida y la convivencia directa
-                con zonas residenciales densas. Esta combinación opera como un <strong>ecosistema de riesgo</strong>, no como hechos aislados.
-            </p>
-
-            <p>
-                Por eso San Bernardo funciona como un punto de entrada a esta historia: muestra que, incluso en operaciones controladas,
-                la falla puede escalar rápidamente en un entorno urbano complejo. Lo que ocurre aquí ayuda a explicar lo que ocurre en comunas
-                donde <em>sí</em> hay atropellos recurrentes.
+                Entre ellas: comunicación débil entre unidades, infraestructura envejecida y cruces que dependen de sistemas
+                que no siempre tienen redundancia suficiente. Esta combinación opera como un <strong>ecosistema de riesgo</strong>,
+                no como hechos aislados.
             </p>
         </div>
 
-        <!-- Mapa -->
         <div class="tarjeta-mapa">
             <h3>Mapa analítico del siniestro</h3>
             <div id="mapa-san-bernardo" class="mapa-sb"></div>
@@ -102,89 +99,123 @@
     </div>
 </section>
 
-<!-- ========================= SEÑALIZACIÓN =========================== -->
+<div class="riel"></div>
 
+<!-- 3. SEÑALIZACIÓN -->
 <section id="senial" class="section senial">
     <div class="section-inner">
         <h2>Señalización: sistemas que no siempre alcanzan</h2>
 
         <p>
-            Los sistemas AUV y CTC buscan evitar colisiones entre trenes, pero no fueron diseñados para peatones.
-            Cuando fallan por vandalismo, robos de cables o cortes eléctricos, los cruces quedan vulnerables.
+            Los sistemas AUV y CTC están diseñados para evitar colisiones entre trenes, pero no fueron concebidos para
+            proteger a peatones que cruzan por pasos regulares e irregulares. Robos de cables, cortes eléctricos y fallas
+            de comunicación pueden dejar un cruce sin advertencias activas.
+        </p>
+
+        <p>
+            En zonas urbanas, la señalización ferroviaria no solo debe funcionar: debe ser consistente, redundante
+            y visible, algo que no siempre ocurre en el tramo estudiado.
         </p>
 
         <div class="viz-grid">
-            <iframe src="graficos/andrés_vis1.html"></iframe>
-            <iframe src="graficos/andrés_vis2.html"></iframe>
+            <iframe src="andrés_vis1.html"></iframe>
+            <iframe src="andrés_vis2.html"></iframe>
         </div>
     </div>
 </section>
 
 <div class="riel"></div>
 
-<!-- ========================= TERRITORIO =========================== -->
-
+<!-- 4. TERRITORIO -->
 <section id="territorio" class="section territorio">
     <div class="section-inner">
         <h2>Territorio: dónde se concentra el riesgo</h2>
 
         <p>
-            El Índice de Peligrosidad (IP) muestra que los atropellos se concentran en comunas con cruces irregulares,
-            pasos improvisados y barrios donde la vía funciona como frontera.
+            El Índice de Peligrosidad (IP) muestra que los atropellos se concentran en comunas donde la vía actúa como
+            frontera urbana: pasos improvisados, cruces no regulados y viviendas a pocos metros del trazado férreo.
         </p>
 
-        <iframe src="graficos/mariñanco_grafico2.html"></iframe>
+        <iframe src="mariñanco_grafico2.html"></iframe>
     </div>
 </section>
 
 <div class="riel"></div>
 
-<!-- ========================= PATRONES =========================== -->
-
+<!-- 5. PATRONES -->
 <section id="patrones" class="section patrones">
     <div class="section-inner">
         <h2>Patrones: quiénes y cuándo ocurren los atropellos</h2>
 
         <p>
-            Los atropellos se concentran en adultos entre 30 y 59 años, principalmente en horarios de tarde y noche,
-            donde la visibilidad y el flujo peatonal aumentan el riesgo.
+            Los datos muestran que los atropellos se concentran en adultos de entre 30 y 59 años, principalmente en
+            horarios de tarde y noche, donde la visibilidad disminuye y aumenta el flujo peatonal en zonas urbanas.
         </p>
 
-        <iframe src="graficos/edades.html"></iframe>
+        <iframe src="edades.html"></iframe>
 
         <div class="viz-grid">
-            <iframe src="graficos/zona%20horaria.html"></iframe>
-            <iframe src="graficos/dia%20de%20la%20semana.html"></iframe>
+            <iframe src="zona%20horaria.html"></iframe>
+            <iframe src="dia%20de%20la%20semana.html"></iframe>
         </div>
     </div>
 </section>
 
 <div class="riel"></div>
 
-<!-- ========================= METODOLOGÍA =========================== -->
-
-<section id="metodo" class="section metodo">
+<!-- 6. SÍNTESIS -->
+<section id="sintesis" class="section inicio">
     <div class="section-inner">
-        <h2>Metodología</h2>
+        <h2>Lo que esta historia revela</h2>
 
         <p>
-            Base de datos: CONASET, EFE.  
-            Limpieza, estandarización y georreferenciación de registros.  
-            Cálculo del Índice de Peligrosidad y análisis territorial.
+            Los atropellos no son accidentes aislados ni decisiones individuales desconectadas de su entorno.
+            Son el resultado de un sistema ferroviario que convive con zonas urbanas densas, cruces irregulares,
+            señalización intermitente y una geografía que empuja a miles de personas a cruzar la vía en condiciones de riesgo.
+        </p>
+
+        <p>
+            La evidencia de San Bernardo muestra que incluso sin peatones involucrados, las fallas estructurales
+            pueden amplificarse. La distribución territorial y los patrones demográficos confirman que estos riesgos
+            se repiten de forma predecible.
+        </p>
+
+        <p>
+            Entender los atropellos exige mirar el sistema completo: técnica, territorio y conducta.
         </p>
     </div>
 </section>
 
 <div class="riel"></div>
 
-<!-- ========================= EQUIPO =========================== -->
+<!-- 7. METODOLOGÍA -->
+<section id="metodo" class="section metodo">
+    <div class="section-inner">
+        <h2>Metodología</h2>
 
+        <p>
+            • Fuentes principales: CONASET, EFE y prensa. <br>
+            • Registros de siniestros ferroviarios 2014–2024 entre Estación Central y Maule. <br>
+            • Limpieza, estandarización y georreferenciación de los datos. <br>
+            • Cálculo de un Índice de Peligrosidad (IP) por comuna, considerando siniestros, población y presencia de cruces. <br>
+            • Análisis territorial y visualizaciones con herramientas de periodismo de datos.
+        </p>
+
+        <a class="repo-link" href="https://github.com/josefamar/PROYECTO" target="_blank" rel="noopener noreferrer">
+            Ver repositorio en GitHub
+        </a>
+    </div>
+</section>
+
+<div class="riel"></div>
+
+<!-- 8. EQUIPO -->
 <section id="equipo" class="section equipo">
     <div class="section-inner">
         <h2>Equipo</h2>
         <p>Paloma Riquelme — Reportería y narrativa</p>
-        <p>Josefa Mariñanco — Datos y visualizaciones</p>
-        <p>Andrés Hernández — Datos y desarrollo</p>
+        <p>Josefa Mariñanco — Visualización de datos</p>
+        <p>Andrés Hernández — Análisis y desarrollo</p>
     </div>
 </section>
 
@@ -192,13 +223,6 @@
 
 <script src="tren.js"></script>
 <script src="mapasanbernardo.js"></script>
-
-<script>
-function toggleSB(){
-    const box = document.getElementById("sb-texto");
-    box.style.display = (box.style.display === "block") ? "none" : "block";
-}
-</script>
 
 </body>
 </html>
