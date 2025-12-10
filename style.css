@@ -363,6 +363,13 @@ iframe {
     height: 320px;
     border-radius: 14px;
     overflow: hidden;
+    .mapa-sb {
+    width: 100%;
+    height: 360px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
 }
 
 /* Texto de crónica: ajustes de lectura */
