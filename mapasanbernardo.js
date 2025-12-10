@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }).addTo(mapa)
       .bindPopup(`
         <h3>Accidente San Bernardo (2024)</h3>
-        <p><strong>Colisión entre tren de pruebas EFE y convoy de carga FEPASA.</strong></p>
-        <p>El incidente expuso debilidades en la coordinación operativa, 
+        <p><strong> Colisión entre tren de pruebas EFE y convoy de carga FEPASA.</strong></p>
+        <p> El incidente expuso debilidades en la coordinación operativa, 
         dependencias del factor humano y la estrecha convivencia entre la vía y la ciudad.</p>
       `);
 
