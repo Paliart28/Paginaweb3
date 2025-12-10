@@ -1,38 +1,47 @@
 // ================================================
-// TREN — NAVEGACIÓN SINCRONIZADA FINAL
+// TREN — NAVEGACIÓN SINCRONIZADA
 // ================================================
 
 document.addEventListener("DOMContentLoaded", () => {
     const stations = Array.from(document.querySelectorAll(".station"));
     const train = document.getElementById("train-icon");
-    const sections = stations.map(btn => document.getElementById(btn.dataset.target));
     const rail = document.querySelector(".pc-line");
 
     if (!stations.length || !train || !rail) return;
 
-    const setActive = (btn) => {
-        stations.forEach(b => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
+    const sections = stations.map(btn => document.getElementById(btn.dataset.target));
 
-        const idx = stations.indexOf(btn);
+    const moveTrain = (index) => {
         const total = stations.length - 1;
+        if (total <= 0) return;
         const width = rail.offsetWidth;
-        const x = total > 0 ? (idx / total) * width : 0;
+        const x = (index / total) * width;
         train.style.transform = `translateX(${x}px)`;
     };
 
-    // Click en estación
-    stations.forEach(btn => {
+    const setActive = (index) => {
+        stations.forEach((b, i) => {
+            if (i === index) {
+                b.classList.add("is-active");
+            } else {
+                b.classList.remove("is-active");
+            }
+        });
+        moveTrain(index);
+    };
+
+    // Click en estación → scroll + tren
+    stations.forEach((btn, index) => {
         btn.addEventListener("click", () => {
             const target = document.getElementById(btn.dataset.target);
             if (target) {
                 target.scrollIntoView({ behavior: "smooth", block: "start" });
             }
-            setActive(btn);
+            setActive(index);
         });
     });
 
-    // Scroll: detectar sección dominante en pantalla
+    // Scroll → detectar sección dominante
     const observer = new IntersectionObserver(
         (entries) => {
             const visible = entries
@@ -41,16 +50,24 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!visible) return;
 
             const secId = visible.target.id;
-            const btn = stations.find(b => b.dataset.target === secId);
-            if (btn) setActive(btn);
+            const index = sections.findIndex(sec => sec && sec.id === secId);
+            if (index !== -1) {
+                setActive(index);
+            }
         },
-        { threshold: 0.35 }
+        { threshold: 0.4 }
     );
 
     sections.forEach(sec => {
         if (sec) observer.observe(sec);
     });
 
+    // Ajuste en resize
+    window.addEventListener("resize", () => {
+        const activeIndex = stations.findIndex(b => b.classList.contains("is-active"));
+        if (activeIndex >= 0) moveTrain(activeIndex);
+    });
+
     // Estado inicial
-    setActive(stations[0]);
+    setActive(0);
 });

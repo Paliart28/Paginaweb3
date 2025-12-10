@@ -500,3 +500,7 @@ iframe {
         height: 26px;
     }
 }
+/* Asegura que el título del mapa en San Bernardo sea legible */
+.section.sanbernardo .tarjeta-mapa h3 {
+    color: #111827; /* texto oscuro sobre fondo claro */
+}

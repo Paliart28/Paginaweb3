@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     add(
         accidente,
         "#D90429",
-        "<h3>Accidente San Bernardo (2024)</h3><p>Colisión entre tren de pruebas y convoy de carga. Expuso fallas operativas y de coordinación en un entorno densamente habitado.</p>"
+        "<h3>Accidente San Bernardo (2024)</h3><p>Colisión entre tren de pruebas EFE y tren de carga FEPASA entre Lo Blanco y Lo Herrera. Dos maquinistas fallecidos y nueve heridos.</p>"
     );
     add(
         cruceVehicular,
