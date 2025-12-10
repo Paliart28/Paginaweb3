@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         moveTrainToStep(step);
     };
 
-    stations.forEach((btn, index) => {
+    stations.forEach((btn) => {
         btn.addEventListener("click", () => {
             const targetId = btn.dataset.target;
             const section = document.getElementById(targetId);
@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // IntersectionObserver para actualizar el tren según scroll
     const observer = new IntersectionObserver(
         (entries) => {
             const visible = entries
