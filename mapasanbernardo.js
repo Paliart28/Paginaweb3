@@ -1,9 +1,6 @@
-// ===========================================================
-// MAPA SAN BERNARDO — VERSIÓN COMPLETA
-// ===========================================================
+// MAPA SAN BERNARDO — MAPA ANALÍTICO
 
 document.addEventListener("DOMContentLoaded", () => {
-
     const accidente = [-33.59333, -70.69960];
 
     const cruceVehicular = [-33.59285, -70.70080];
@@ -19,35 +16,36 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const mapa = L.map("mapa-san-bernardo", {
-        zoomControl:true
+        zoomControl: true
     }).setView(accidente, 16);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom:19,
-        attribution:"&copy; OpenStreetMap"
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap"
     }).addTo(mapa);
 
+    // Área crítica
     L.polygon(areaRiesgo, {
-        color:"#D90429",
-        weight:2,
-        fillOpacity:0.08
+        color: "#D90429",
+        weight: 2,
+        fillOpacity: 0.08
     }).addTo(mapa)
       .bindPopup("Área crítica: concentración de cruces, viviendas y maniobras ferroviarias.");
 
     const add = (coord, color, html) => {
         L.circleMarker(coord, {
-            radius:8,
-            fillColor:color,
-            color:"#FFFFFF",
-            weight:2,
-            fillOpacity:1
+            radius: 8,
+            fillColor: color,
+            color: "#FFFFFF",
+            weight: 2,
+            fillOpacity: 1
         }).addTo(mapa).bindPopup(html);
     };
 
     add(
         accidente,
         "#D90429",
-        "<h3>Accidente San Bernardo (2024)</h3><p>Choque entre tren de pruebas EFE y convoy FEPASA. Expuso fallas operativas y señalización intermitente.</p>"
+        "<h3>Accidente San Bernardo (2024)</h3><p>Choque entre tren de pruebas EFE y convoy de carga. Expuso fallas operativas y de coordinación.</p>"
     );
     add(
         cruceVehicular,
