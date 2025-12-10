@@ -1,4 +1,6 @@
-// MAPA SAN BERNARDO — MAPA ANALÍTICO
+// ===========================================================
+// MAPA SAN BERNARDO — VERSIÓN ANALÍTICA
+// ===========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
     const accidente = [-33.59333, -70.69960];
@@ -45,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     add(
         accidente,
         "#D90429",
-        "<h3>Accidente San Bernardo (2024)</h3><p>Choque entre tren de pruebas EFE y convoy de carga. Expuso fallas operativas y de coordinación.</p>"
+        "<h3>Accidente San Bernardo (2024)</h3><p>Choque entre tren de pruebas y convoy de carga. Expuso fallas operativas y de coordinación.</p>"
     );
     add(
         cruceVehicular,

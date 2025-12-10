@@ -1,263 +1,495 @@
-/* ===========================================================
-   PUNTO CIEGO — STYLE.CSS FINAL
-   Estructura analítica + colores por importancia
-=========================================================== */
+/* ============================================================
+   IDENTIDAD VISUAL — PUNTO CIEGO
+   Paleta ferroviaria con jerarquía de color
+============================================================ */
 
-/* RESET / BASE */
+:root {
+    --acero: #1E3A68;       /* Azul acero principal */
+    --azul-oscuro: #0B1628; /* Header y fondo profundo */
+    --negro: #020617;
+
+    --oxido: #F2994A;       /* Acento editorial */
+    --oxido-soft: #FFF1E3;
+
+    --senial: #F6E05E;      /* Señalética / advertencias */
+    --senial-soft: #FFF9CF;
+
+    --verde: #2E7D5B;       /* Patrones / comportamiento */
+    --verde-soft: #E5F7ED;
+
+    --gris-fondo: #f3f4f6;
+    --gris-borde: #e5e7eb;
+
+    --texto: #111827;
+    --texto-claro: #f9fafb;
+
+    --radius: 18px;
+    --shadow-soft: 0 14px 28px rgba(15, 23, 42, 0.22);
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family:"Poppins",sans-serif;
-    background:#020617;
-    color:#111827;
+    font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--gris-fondo);
+    color: var(--texto);
+    line-height: 1.7;
 }
 
-/* PALETA */
-:root {
-    --acero:#1E3A68;
-    --senial:#F6E05E;
-    --oxido:#F2994A;
-    --verde:#2E7D5B;
-    --beige:#F6F3E8;
-    --negro:#020617;
-    --gris-claro:#E5EAF1;
-}
+/* ============================================================
+   HEADER + TREN
+============================================================ */
 
-/* HEADER + TREN */
 .pc-header {
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(2,6,23,0.95);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(148,163,184,0.5);
-    color:#F9FAFB;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--azul-oscuro);
+    color: var(--texto-claro);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
 }
 
 .pc-topbar {
-    padding:10px 16px;
-    text-align:center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 7%;
 }
 
-.brand {
-    font-family:"Bebas Neue",sans-serif;
-    letter-spacing:2px;
-    font-size:32px;
+.pc-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
 }
 
-/* Barra tren */
+.pc-title {
+    font-family: "Bebas Neue", system-ui;
+    font-size: 30px;
+    letter-spacing: 1.5px;
+}
+
+.pc-subtitle {
+    display: block;
+    margin-left: auto;
+    font-size: 12px;
+    color: #cbd5f5;
+}
+
+/* Barra del tren */
+
 .pc-trainbar {
-    padding:8px 0 16px;
+    background: #020617;
+    padding: 14px 0 18px;
 }
 
 .pc-track {
-    width:92%;
-    max-width:1080px;
-    margin:0 auto;
-    position:relative;
+    width: min(960px, 90%);
+    margin: 0 auto;
+    position: relative;
 }
 
 .pc-line {
-    height:4px;
-    margin-top:12px;
-    background:linear-gradient(to right,#4B5563,#9CA3AF);
-    border-radius:999px;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #e5e7eb, #cbd5f5);
+    border-radius: 999px;
+    position: relative;
+    overflow: hidden;
 }
 
 .train-icon {
-    position:absolute;
-    top:2px;
-    left:0%;
-    transform:translateX(-50%);
-    font-size:22px;
-    transition:left .4s ease;
+    position: absolute;
+    top: -18px;
+    left: 0%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.35));
+    transition: left 0.35s ease-out;
 }
 
 .pc-stations {
-    display:flex;
-    justify-content:space-between;
-    margin-top:8px;
+    width: 100%;
+    margin: 8px auto 0;
+    display: flex;
+    justify-content: space-between;
 }
+
+/* Botones de estación */
 
 .station {
-    background:transparent;
-    border:none;
-    color:#CBD5E1;
-    font-size:11px;
-    cursor:pointer;
-    padding-top:12px;
-    position:relative;
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 4px;
+    transition: color 0.2s ease, transform 0.15s ease;
 }
 
-.station::before {
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    border:2px solid #9CA3AF;
-    background:#020617;
+.station:hover {
+    color: #e5e7eb;
+    transform: translateY(-1px);
 }
 
 .station.is-active {
-    color:var(--senial);
-    font-weight:600;
+    color: var(--senial);
+    font-weight: 600;
 }
 
-.station.is-active::before {
-    border-color:var(--senial);
-    background:var(--senial);
-}
-
-/* SECCIONES GENERALES */
+/* ============================================================
+   SECCIONES GENERALES
+============================================================ */
 
 .section {
-    padding:80px 18px;
+    padding: 80px 7%;
 }
 
 .section-inner {
-    max-width:1080px;
-    margin:0 auto;
+    max-width: 1120px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 36px 40px;
+}
+
+.section h1,
+.section h2 {
+    font-family: "Bebas Neue", system-ui;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.section h1 {
+    font-size: 36px;
 }
 
 .section h2 {
-    font-family:"Bebas Neue",sans-serif;
-    letter-spacing:1px;
-    font-size:34px;
-    margin-bottom:20px;
+    font-size: 30px;
 }
 
 .section p {
-    line-height:1.7;
-    margin-bottom:14px;
+    margin-bottom: 12px;
 }
 
-/* COLORES POR IMPORTANCIA */
+/* ============================================================
+   FONDOS POR SECCIÓN (COLOR SEGÚN IMPORTANCIA)
+============================================================ */
 
-.inicio {
-    background:var(--beige);
+.section.inicio {
+    background: #e5e7eb;
 }
 
-.sanbernardo {
-    background:var(--negro);
-    color:#F9FAFB;
+.section.inicio .section-inner {
+    border-left: 6px solid var(--acero);
 }
 
-.senial {
-    background:#FFF7C2; /* amarillo suave */
+.section.sanbernardo {
+    background: #020617;
 }
 
-.territorio {
-    background:#FDE3C4; /* óxido suave */
+.section.sanbernardo .section-inner {
+    background: #020617;
+    color: var(--texto-claro);
+    border: 1px solid rgba(148, 163, 184, 0.5);
 }
 
-.patrones {
-    background:#E1F1E8; /* verde suave */
+.section.senial {
+    background: var(--senial-soft);
 }
 
-.metodo {
-    background:var(--beige);
+.section.senial .section-inner {
+    border-left: 6px solid var(--senial);
 }
 
-.equipo {
-    background:#020617;
-    color:#E5E7EB;
+.section.territorio {
+    background: var(--oxido-soft);
 }
 
-/* RIEL SEPARADOR */
-
-.riel {
-    height:6px;
-    background:linear-gradient(to right,#475569,#94A3B8);
-    opacity:.45;
+.section.territorio .section-inner {
+    border-left: 6px solid var(--oxido);
 }
 
-/* TARJETAS / VISUALIZACIONES */
-
-.tarjeta-mapa {
-    background:#FFFFFF;
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:20px;
-    box-shadow:0 8px 22px rgba(15,23,42,0.3);
+.section.patrones {
+    background: #ecfdf3;
 }
 
-.tarjeta-mapa h3 {
-    font-family:"Bebas Neue",sans-serif;
-    font-size:22px;
-    margin-bottom:10px;
+.section.patrones .section-inner {
+    border-left: 6px solid var(--verde);
+}
+
+.section.metodo {
+    background: #e5eaf1;
+}
+
+.section.metodo .section-inner {
+    border-left: 6px solid #64748b;
+}
+
+.section.equipo {
+    background: #020617;
+}
+
+.section.equipo .section-inner {
+    background: #020617;
+    color: var(--texto-claro);
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+/* ============================================================
+   CITA DESTACADA
+============================================================ */
+
+.cita-destacada {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: #111827;
+    color: #f9fafb;
+    padding: 30px 32px;
+    position: relative;
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.5);
+}
+
+.cita-comillas {
+    position: absolute;
+    font-family: "Bebas Neue", system-ui;
+    font-size: 70px;
+    opacity: 0.2;
+}
+
+.cita-comillas:first-child {
+    top: -10px;
+    left: 16px;
+}
+
+.cita-comillas.cierre {
+    bottom: -42px;
+    right: 24px;
+}
+
+.cita-contenido {
+    font-size: 18px;
+    max-width: 720px;
+}
+
+/* ============================================================
+   GRIDS Y TARJETAS
+============================================================ */
+
+.section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.section-texto p:last-child {
+    margin-bottom: 0;
+}
+
+.section-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Tarjetas de mapa y contexto */
+
+.tarjeta-mapa,
+.tarjeta-grafico {
+    background: #ffffff;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.28);
+    padding: 18px 18px 20px;
+}
+
+.tarjeta-mapa h3,
+.tarjeta-grafico h3 {
+    font-family: "Bebas Neue", system-ui;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.nota-mapa {
+    font-size: 13px;
+    color: #4b5563;
+    margin-top: 10px;
+}
+
+/* Imagen del accidente */
+
+.img-sb {
+    width: 100%;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+/* Grilla para visualizaciones */
+
+.viz-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 18px;
 }
 
 iframe {
-    width:100%;
-    height:360px;
-    border:none;
-    border-radius:12px;
-    background:#F9FAFB;
-    box-shadow:0 6px 20px rgba(15,23,42,0.25);
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+    min-height: 320px;
 }
 
-/* IMAGEN ACCIDENTE */
-
-.img-sb {
-    width:100%;
-    border-radius:12px;
-    margin-bottom:12px;
-    display:block;
-}
-
-/* MAPA SAN BERNARDO */
+/* Mapa Leaflet */
 
 .mapa-sb {
-    width:100%;
-    height:380px;
-    border-radius:14px;
-    overflow:hidden;
+    width: 100%;
+    height: 320px;
+    border-radius: 14px;
+    overflow: hidden;
 }
 
-/* GRID DE VIZ */
+/* Texto de crónica: ajustes de lectura */
 
-.viz-grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+.cronica p {
+    margin-bottom: 14px;
 }
 
-/* RESPONSIVE */
+/* ============================================================
+   HIGHLIGHTS INTRO
+============================================================ */
 
-@media (max-width:880px){
-    .viz-grid {
-        grid-template-columns:1fr;
+.hero-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.hero-highlights .highlight {
+    flex: 1 1 140px;
+    background: rgba(15, 23, 42, 0.04);
+    border-radius: 999px;
+    padding: 8px 14px;
+    border: 1px dashed rgba(148, 163, 184, 0.8);
+}
+
+.hero-highlights .highlight-label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+}
+
+.hero-highlights .highlight-value {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   BOTÓN PRIMARIO
+============================================================ */
+
+.btn-primario {
+    margin-top: 18px;
+    background: var(--azul-oscuro);
+    color: var(--texto-claro);
+    border-radius: 999px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.btn-primario:hover {
+    background: #020617;
+}
+
+/* ============================================================
+   RIELES DECORATIVOS + NODOS
+============================================================ */
+
+.riel-deco {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #4b5563 10%, #9ca3af 50%, #4b5563 90%);
+    opacity: 0.5;
+}
+
+/* Nodos circulares tipo “unión de riel” en el borde de cada sección */
+
+.section-inner {
+    position: relative;
+}
+
+.section-inner::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: -10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: #020617;
+    border: 3px solid rgba(148, 163, 184, 0.6);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 900px) {
+    .pc-topbar {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
     }
+
+    .pc-subtitle {
+        display: none;
+    }
+
+    .section {
+        padding: 56px 4%;
+    }
+
+    .section-inner {
+        padding: 26px 20px;
+    }
+
+    .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     iframe {
-        height:300px;
+        min-height: 260px;
     }
-}
 
-/* METODO / BOTÓN REPOSITORIO */
+    .pc-title {
+        font-size: 26px;
+    }
 
-.metodo a.repo-link {
-    display:inline-block;
-    margin-top:10px;
-    padding:10px 18px;
-    border-radius:999px;
-    background:#111827;
-    color:#F9FAFB;
-    text-decoration:none;
-    font-size:13px;
-    font-weight:600;
-}
-.metodo a.repo-link:hover {
-    background:#020617;
+    .pc-logo {
+        height: 26px;
+    }
 }
